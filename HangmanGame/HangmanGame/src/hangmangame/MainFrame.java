@@ -45,6 +45,11 @@ public class MainFrame extends javax.swing.JFrame {
                 jB_PracticeMouseClicked(evt);
             }
         });
+        jB_Practice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_PracticeActionPerformed(evt);
+            }
+        });
 
         jB_Competitive.setLabel("Competitive");
         jB_Competitive.setName(""); // NOI18N
@@ -217,6 +222,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void jB_UserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_UserMouseClicked
         HangmanGame.GetUserData();
     }//GEN-LAST:event_jB_UserMouseClicked
+
+    private void jB_PracticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_PracticeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jB_PracticeActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

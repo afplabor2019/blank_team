@@ -118,6 +118,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jB_PracticeMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_PracticeActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jB_Competitive">

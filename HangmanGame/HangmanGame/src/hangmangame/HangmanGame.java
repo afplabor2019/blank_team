@@ -29,8 +29,7 @@ public class HangmanGame
     
     public static void main(String[] args) 
     {
-        
-        
+
         lF.setResizable(false);
         mF.setResizable(false);
         gF.setResizable(false);
