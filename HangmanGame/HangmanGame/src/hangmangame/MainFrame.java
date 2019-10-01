@@ -1,6 +1,8 @@
 package hangmangame;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -24,33 +26,77 @@ public class MainFrame extends javax.swing.JFrame {
         jB_Settings = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(960, 540));
         setResizable(false);
         setSize(new java.awt.Dimension(960, 540));
 
         jB_WorldCup.setActionCommand("jB_WorldCup");
         jB_WorldCup.setLabel("WorldCup");
         jB_WorldCup.setName("jB_WorldCup"); // NOI18N
+        jB_WorldCup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_WorldCupMouseClicked(evt);
+            }
+        });
 
         jB_Practice.setLabel("Practice");
         jB_Practice.setPreferredSize(new java.awt.Dimension(73, 180));
+        jB_Practice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_PracticeMouseClicked(evt);
+            }
+        });
 
         jB_Competitive.setLabel("Competitive");
         jB_Competitive.setName(""); // NOI18N
+        jB_Competitive.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_CompetitiveMouseClicked(evt);
+            }
+        });
 
         jB_Campaign.setLabel("Campaign");
+        jB_Campaign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_CampaignMouseClicked(evt);
+            }
+        });
 
         jB_Infinite.setLabel("Infinite");
+        jB_Infinite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_InfiniteMouseClicked(evt);
+            }
+        });
 
         jB_Statistics.setLabel("Statistics");
+        jB_Statistics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_StatisticsMouseClicked(evt);
+            }
+        });
 
         jB_Sponsors.setLabel("Sponsors");
+        jB_Sponsors.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_SponsorsMouseClicked(evt);
+            }
+        });
 
         jB_User.setText("U");
         jB_User.setPreferredSize(new java.awt.Dimension(60, 60));
+        jB_User.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_UserMouseClicked(evt);
+            }
+        });
 
         jB_Settings.setText("S");
         jB_Settings.setPreferredSize(new java.awt.Dimension(60, 60));
+        jB_Settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jB_SettingsMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jP_mainLayout = new javax.swing.GroupLayout(jP_main);
         jP_main.setLayout(jP_mainLayout);
@@ -114,6 +160,63 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_PracticeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_PracticeMouseClicked
+        HangmanGame.ChooseGameMode();
+    }//GEN-LAST:event_jB_PracticeMouseClicked
+
+    private void jB_WorldCupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_WorldCupMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_WorldCupMouseClicked
+
+    private void jB_CompetitiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_CompetitiveMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_CompetitiveMouseClicked
+
+    private void jB_CampaignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_CampaignMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_CampaignMouseClicked
+
+    private void jB_InfiniteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_InfiniteMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_InfiniteMouseClicked
+
+    private void jB_StatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_StatisticsMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_StatisticsMouseClicked
+
+    private void jB_SponsorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_SponsorsMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_SponsorsMouseClicked
+
+    private void jB_SettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_SettingsMouseClicked
+        JOptionPane optionPane = new JOptionPane("Sorry. this part of the game does not available yet.", JOptionPane.ERROR_MESSAGE);    
+        JDialog dialog = optionPane.createDialog("Error");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jB_SettingsMouseClicked
+
+    private void jB_UserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_UserMouseClicked
+        HangmanGame.GetUserData();
+    }//GEN-LAST:event_jB_UserMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
