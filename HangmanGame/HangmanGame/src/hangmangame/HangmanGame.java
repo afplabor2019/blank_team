@@ -43,11 +43,21 @@ public class HangmanGame
 //        mF.setContentPane(new JLabel(new ImageIcon(img)));
 //        mF.setLayout(null);
 //        mF.setLocationRelativeTo(null);
-        
-        
-        
-        lF.setVisible(true);        
+       
+        lF.setVisible(true);  
     }    
+    
+        public static Image getScaledImage(Image srcImg, int w, int h)
+        {
+            BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2 = resizedImg.createGraphics();
+
+            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g2.drawImage(srcImg, 0, 0, w, h, null);
+            g2.dispose();
+
+            return resizedImg;
+        }
     
     public static void LoginUser(String name, String password)
     {
@@ -59,7 +69,7 @@ public class HangmanGame
         }  
         else
         {
-            JOptionPane optionPane = new JOptionPane("Hibás felhasználónevet vagy jelszót adtál meg!", JOptionPane.ERROR_MESSAGE);    
+            JOptionPane optionPane = new JOptionPane("You given an incorrect username or password!", JOptionPane.ERROR_MESSAGE);    
             JDialog dialog = optionPane.createDialog("You are a failure. Try again.");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);

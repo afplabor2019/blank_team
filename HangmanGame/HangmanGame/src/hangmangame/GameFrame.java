@@ -261,7 +261,6 @@ public class GameFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1500, 700));
@@ -632,6 +631,7 @@ public class GameFrame extends javax.swing.JFrame {
                                                 .addComponent(jB_A21))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(jB_A12)
+                                                .addGap(0, 0, 0)
                                                 .addComponent(jB_A13)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jB_A14))))
@@ -730,8 +730,6 @@ public class GameFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jB_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        jLabel2.getAccessibleContext().setAccessibleParent(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
