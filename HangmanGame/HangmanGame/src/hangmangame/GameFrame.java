@@ -12,7 +12,9 @@ public class GameFrame extends javax.swing.JFrame {
 
     public ArrayList<JButton> buttonList = new ArrayList<JButton>();
     public ArrayList<String> list = new ArrayList<>();
+    public ArrayList<JButton> lineList = new ArrayList<JButton>();
     public int tries =0;
+    public int goodTries =0;
     public Random r = new Random();
     public String GeneratedWord ="";
     public GameFrame() {
@@ -21,34 +23,213 @@ public class GameFrame extends javax.swing.JFrame {
 
     private void StartGame()
     {
-        FillList();
+        goodTries =0;
+        FillList(); 
         GenerateWord(); 
         GetButtons();
-        SwitchButtons(true);
+        SwitchButtons(true); //konstrukotr
         jB_Back1.setEnabled(false);
         MakeALLButtonVisible();
+        GetLines(); //konstruktor
+        LoadLines();
+        PlaceGeneratedWord();
+        WordSetVisibleFalse();
+
+    }
+    
+    public void PlaceGeneratedWord()
+    {
+        switch(GeneratedWord.length())
+        {
+            case 1:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                break;
+                 case 2:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                break;
+                 case 3:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                break;
+                case 4:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                break;
+                case 5:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                jLabel16.setText(GeneratedWord.charAt(4) +"");
+                break;
+                case 6:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                jLabel16.setText(GeneratedWord.charAt(4) +"");
+                jLabel17.setText(GeneratedWord.charAt(5) +"");
+                break;
+                case 7:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                jLabel16.setText(GeneratedWord.charAt(4) +"");
+                jLabel17.setText(GeneratedWord.charAt(5) +"");
+                jLabel18.setText(GeneratedWord.charAt(6) +"");
+                break;
+                case 8:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                jLabel16.setText(GeneratedWord.charAt(4) +"");
+                jLabel17.setText(GeneratedWord.charAt(5) +"");
+                jLabel18.setText(GeneratedWord.charAt(6) +"");
+                 jLabel19.setText(GeneratedWord.charAt(7) +"");
+                break;
+                 case 9:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                jLabel16.setText(GeneratedWord.charAt(4) +"");
+                jLabel17.setText(GeneratedWord.charAt(5) +"");
+                jLabel18.setText(GeneratedWord.charAt(6) +"");
+                 jLabel19.setText(GeneratedWord.charAt(7) +"");
+                 jLabel20.setText(GeneratedWord.charAt(8) +"");
+                break;
+                case 10:
+                jLabel12.setText(GeneratedWord.charAt(0) +"");
+                jLabel13.setText(GeneratedWord.charAt(1) +"");
+                jLabel14.setText(GeneratedWord.charAt(2) +"");
+                jLabel15.setText(GeneratedWord.charAt(3) +"");
+                jLabel16.setText(GeneratedWord.charAt(4) +"");
+                jLabel17.setText(GeneratedWord.charAt(5) +"");
+                jLabel18.setText(GeneratedWord.charAt(6) +"");
+                 jLabel19.setText(GeneratedWord.charAt(7) +"");
+                 jLabel20.setText(GeneratedWord.charAt(8) +"");
+                 jLabel21.setText(GeneratedWord.charAt(9) +"");
+                break;
+        }
+    }
+    public void GetLines()
+    {
+
+         lineList.add(jb1);
+          lineList.add(jb2);
+           lineList.add(jb3);
+            lineList.add(jb4);
+             lineList.add(jb5);
+              lineList.add(jb6);
+               lineList.add(jb7);
+                lineList.add(jb8);
+                lineList.add(jb9);
+                lineList.add(jb10);
+                
+                for (int i = 0; i < lineList.size(); i++) 
+                {
+                    lineList.get(i).setVisible(false);
+                }
+    }
+    public void LoadLines()
+    {
+        for (int i = 0; i < GeneratedWord.length(); i++)
+        {
+            lineList.get(i).setVisible(true);
+        }
     }
     public void GenerateWord()
     {
         GeneratedWord = list.get(r.nextInt(list.size()));
-        jLabel2.setText(GeneratedWord);
         System.out.println(GeneratedWord);
     }
     
+    public void WordSetVisibleFalse()
+    {
+        jLabel12.setVisible(false);
+        jLabel13.setVisible(false);
+        jLabel14.setVisible(false);
+        jLabel15.setVisible(false);
+        jLabel16.setVisible(false);
+        jLabel17.setVisible(false);
+        jLabel18.setVisible(false);
+        jLabel19.setVisible(false);
+        jLabel20.setVisible(false);
+        jLabel21.setVisible(false);
+    }
     private void FillList()
     {
-        list.add("alma");
-         list.add("körte");
-          list.add("cseresznye");
+       list.add("apple");
     }
-    
+
     public void CheckLetter(String s)
     {
         System.out.println("CheckingLetter : " +s);
          if (GeneratedWord.contains(s)) 
         {
-            System.out.println("in");
-        }else {
+            if (jLabel12.getText().equals(s)) 
+            {
+                jLabel12.setVisible(true);
+                goodTries++;
+            }
+             if (jLabel13.getText().equals(s)) 
+            {
+                jLabel13.setVisible(true);
+                 goodTries++;
+            }
+              if (jLabel14.getText().equals(s)) 
+            {
+                jLabel14.setVisible(true);
+                 goodTries++;
+            }
+               if (jLabel15.getText().equals(s)) 
+            {
+                jLabel15.setVisible(true);
+                 goodTries++;
+            }
+                if (jLabel16.getText().equals(s)) 
+            {
+                jLabel16.setVisible(true);
+                 goodTries++;
+            }
+                 if (jLabel17.getText().equals(s)) 
+            {
+                jLabel17.setVisible(true);
+                 goodTries++;
+            }
+                  if (jLabel18.getText().equals(s)) 
+            {
+                jLabel18.setVisible(true);
+                 goodTries++;
+            }
+                   if (jLabel19.getText().equals(s)) 
+            {
+                jLabel19.setVisible(true);
+                 goodTries++;
+            }
+                    if (jLabel20.getText().equals(s)) 
+            {
+                jLabel20.setVisible(true);
+                 goodTries++;
+            }
+                     if (jLabel21.getText().equals(s)) 
+            {
+                jLabel21.setVisible(true);
+                 goodTries++;
+            }
+                     
+                     if (GeneratedWord.length() == goodTries) 
+                     {
+                         Winner();
+                     }
+        }
+         else {
              tries++;
              System.out.println("not in");
              DrawHangMan();            
@@ -140,8 +321,9 @@ public class GameFrame extends javax.swing.JFrame {
     
     public void Winner()
     {
+        System.out.println("Nyertünk");
          jB_Back1.setEnabled(true);
-         SwitchButtons(true);
+         SwitchButtons(false);
     }
     
     public void MakeALLButtonVisible()
@@ -194,9 +376,28 @@ public class GameFrame extends javax.swing.JFrame {
         jB_A23 = new javax.swing.JButton();
         jB_A24 = new javax.swing.JButton();
         jB_A25 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jB_A26 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jb9 = new javax.swing.JButton();
+        jb1 = new javax.swing.JButton();
+        jb2 = new javax.swing.JButton();
+        jb3 = new javax.swing.JButton();
+        jb4 = new javax.swing.JButton();
+        jb5 = new javax.swing.JButton();
+        jb6 = new javax.swing.JButton();
+        jb7 = new javax.swing.JButton();
+        jb8 = new javax.swing.JButton();
+        jb10 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -209,6 +410,8 @@ public class GameFrame extends javax.swing.JFrame {
         jTF_Opponent.setAutoscrolls(false);
         getContentPane().add(jTF_Opponent);
         jTF_Opponent.setBounds(776, 40, 184, 28);
+
+        jTF_Opp_Name.setText("CPU");
         getContentPane().add(jTF_Opp_Name);
         jTF_Opp_Name.setBounds(776, 80, 184, 28);
 
@@ -504,18 +707,6 @@ public class GameFrame extends javax.swing.JFrame {
         getContentPane().add(jB_A25);
         jB_A25.setBounds(930, 390, 50, 28);
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 40, 267, 69);
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel1.setOpaque(true);
-        jLabel1.setPreferredSize(new java.awt.Dimension(650, 600));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(21, 26, 650, 600);
-
         jB_A26.setText("V");
         jB_A26.setEnabled(false);
         jB_A26.addActionListener(new java.awt.event.ActionListener() {
@@ -525,6 +716,143 @@ public class GameFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jB_A26);
         jB_A26.setBounds(730, 390, 50, 28);
+
+        jLabel12.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(50, 60, 60, 60);
+
+        jLabel13.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(100, 120, 60, 60);
+
+        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(170, 60, 60, 60);
+
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(220, 120, 60, 60);
+
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(280, 60, 60, 60);
+
+        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(340, 120, 60, 60);
+
+        jLabel18.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(410, 60, 60, 60);
+
+        jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(460, 120, 60, 60);
+
+        jLabel20.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(510, 60, 60, 60);
+
+        jb9.setBackground(new java.awt.Color(0, 0, 0));
+        jb9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb9.setEnabled(false);
+        jb9.setOpaque(true);
+        getContentPane().add(jb9);
+        jb9.setBounds(510, 120, 70, 10);
+
+        jb1.setBackground(new java.awt.Color(0, 0, 0));
+        jb1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb1.setEnabled(false);
+        jb1.setOpaque(true);
+        getContentPane().add(jb1);
+        jb1.setBounds(50, 120, 70, 10);
+
+        jb2.setBackground(new java.awt.Color(0, 0, 0));
+        jb2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb2.setEnabled(false);
+        jb2.setOpaque(true);
+        getContentPane().add(jb2);
+        jb2.setBounds(100, 180, 70, 10);
+
+        jb3.setBackground(new java.awt.Color(0, 0, 0));
+        jb3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb3.setEnabled(false);
+        jb3.setOpaque(true);
+        getContentPane().add(jb3);
+        jb3.setBounds(170, 120, 70, 10);
+
+        jb4.setBackground(new java.awt.Color(0, 0, 0));
+        jb4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb4.setEnabled(false);
+        jb4.setOpaque(true);
+        getContentPane().add(jb4);
+        jb4.setBounds(220, 180, 70, 10);
+
+        jb5.setBackground(new java.awt.Color(0, 0, 0));
+        jb5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb5.setEnabled(false);
+        jb5.setOpaque(true);
+        getContentPane().add(jb5);
+        jb5.setBounds(280, 120, 70, 10);
+
+        jb6.setBackground(new java.awt.Color(0, 0, 0));
+        jb6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb6.setEnabled(false);
+        jb6.setOpaque(true);
+        getContentPane().add(jb6);
+        jb6.setBounds(340, 180, 70, 10);
+
+        jb7.setBackground(new java.awt.Color(0, 0, 0));
+        jb7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb7.setEnabled(false);
+        jb7.setOpaque(true);
+        getContentPane().add(jb7);
+        jb7.setBounds(400, 120, 70, 10);
+
+        jb8.setBackground(new java.awt.Color(0, 0, 0));
+        jb8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb8.setEnabled(false);
+        jb8.setOpaque(true);
+        getContentPane().add(jb8);
+        jb8.setBounds(450, 180, 70, 10);
+
+        jb10.setBackground(new java.awt.Color(0, 0, 0));
+        jb10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
+        jb10.setEnabled(false);
+        jb10.setOpaque(true);
+        getContentPane().add(jb10);
+        jb10.setBounds(560, 180, 70, 10);
+
+        jLabel21.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel21);
+        jLabel21.setBounds(570, 120, 60, 60);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setMaximumSize(new java.awt.Dimension(700, 700));
+        jLabel1.setOpaque(true);
+        jLabel1.setPreferredSize(new java.awt.Dimension(650, 600));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 10, 650, 870);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -745,12 +1073,31 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JButton jB_Back;
     private javax.swing.JButton jB_Back1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JTextField jTF_ETime;
     private javax.swing.JTextField jTF_E_Time;
     private javax.swing.JTextField jTF_Opp_Name;
     private javax.swing.JTextField jTF_Opponent;
     private javax.swing.JTextField jTF_Round;
     private javax.swing.JTextField jTF_Round_type;
+    private javax.swing.JButton jb1;
+    private javax.swing.JButton jb10;
+    private javax.swing.JButton jb2;
+    private javax.swing.JButton jb3;
+    private javax.swing.JButton jb4;
+    private javax.swing.JButton jb5;
+    private javax.swing.JButton jb6;
+    private javax.swing.JButton jb7;
+    private javax.swing.JButton jb8;
+    private javax.swing.JButton jb9;
     // End of variables declaration//GEN-END:variables
 }
