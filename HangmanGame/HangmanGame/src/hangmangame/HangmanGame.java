@@ -24,7 +24,18 @@ public class HangmanGame
     public static GameFrame gF = new GameFrame();
     public static UserFrame uF = new UserFrame();
     
-    public static Image img = Toolkit.getDefaultToolkit().getImage("alaphatter.png");
+    public static Image i1 = Toolkit.getDefaultToolkit().getImage("1.png");
+    public static Image i2 = Toolkit.getDefaultToolkit().getImage("2.png");
+    public static Image i3 = Toolkit.getDefaultToolkit().getImage("3.png");
+    public static Image i4 = Toolkit.getDefaultToolkit().getImage("4.png");
+    public static Image i5 = Toolkit.getDefaultToolkit().getImage("5.png");
+    public static Image i6 = Toolkit.getDefaultToolkit().getImage("6.png");
+    public static Image i7 = Toolkit.getDefaultToolkit().getImage("7.png");
+    public static Image i8 = Toolkit.getDefaultToolkit().getImage("8.png");
+    public static Image i9= Toolkit.getDefaultToolkit().getImage("9.png");
+    public static Image i10 = Toolkit.getDefaultToolkit().getImage("10.png");
+    public static Image i11 = Toolkit.getDefaultToolkit().getImage("11.png");
+    public static Image i12 = Toolkit.getDefaultToolkit().getImage("12.png");
     public static boolean guestmode;
     
     public static void main(String[] args) 

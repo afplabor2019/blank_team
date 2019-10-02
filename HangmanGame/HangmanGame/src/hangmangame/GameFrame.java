@@ -3,12 +3,14 @@ package hangmangame;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class GameFrame extends javax.swing.JFrame {
 
+    public ArrayList<JButton> buttonList = new ArrayList<JButton>();
     public ArrayList<String> list = new ArrayList<>();
     public int tries =0;
     public Random r = new Random();
@@ -20,19 +22,11 @@ public class GameFrame extends javax.swing.JFrame {
     private void StartGame()
     {
         FillList();
-        GenerateWord();
-        //kezdésnek eltűntetjük mindet
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
-        jLabel11.setVisible(false);
-        jLabel12.setVisible(false);
-        
+        GenerateWord(); 
+        GetButtons();
+        SwitchButtons(true);
+        jB_Back1.setEnabled(false);
+        MakeALLButtonVisible();
     }
     public void GenerateWord()
     {
@@ -57,8 +51,7 @@ public class GameFrame extends javax.swing.JFrame {
         }else {
              tries++;
              System.out.println("not in");
-             DrawHangMan();
-             
+             DrawHangMan();            
          }  
         
     }
@@ -67,144 +60,102 @@ public class GameFrame extends javax.swing.JFrame {
        switch(tries)
        {
            case 1:
-               System.out.println("megörténik " + tries);
-               jLabel3.setVisible(true);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+               jLabel1.setIcon(new ImageIcon(HangmanGame.i1));
                break;
            case 2:
-                  System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(true);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
-                        break;
+                jLabel1.setIcon(new ImageIcon(HangmanGame.i2));
+                break;
            case 3:
-                  System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(true);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+                jLabel1.setIcon(new ImageIcon(HangmanGame.i3));
                break;
                case 4:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(true);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i4));
                break;
                case 5:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(true);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i5));
                break;
                case 6:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(true);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i6));
                break;
                case 7:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(true);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i7));
                break;
                case 8:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(true);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i8));
                break;
                case 9:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(true);
-                        jLabel12.setVisible(false);
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i9));
                break;
                case 10:
-                      System.out.println("megörténik " + tries);
-               jLabel3.setVisible(false);
-                jLabel4.setVisible(false);
-                 jLabel5.setVisible(false);
-                  jLabel6.setVisible(false);
-                   jLabel7.setVisible(false);
-                    jLabel8.setVisible(false);
-                     jLabel9.setVisible(false);
-                      jLabel10.setVisible(false);
-                       jLabel11.setVisible(false);
-                        jLabel12.setVisible(true);
-                        tries =0;
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i10));
+                       
+               case 11:
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i11));
+                   break;
+               case 12:
+                    jLabel1.setIcon(new ImageIcon(HangmanGame.i12));
+                            tries =0;
                         Loser();
                break;
        }
         
     }
+    
+    public void GetButtons()
+    {
+        buttonList.add(jB_A);
+         buttonList.add(jB_A1);
+          buttonList.add(jB_A2);
+           buttonList.add(jB_A3);
+            buttonList.add(jB_A4);
+             buttonList.add(jB_A5);
+              buttonList.add(jB_A6);
+               buttonList.add(jB_A7);
+                buttonList.add(jB_A8);
+                 buttonList.add(jB_A9);
+                  buttonList.add(jB_A10);
+                   buttonList.add(jB_A11);
+                    buttonList.add(jB_A12);
+                     buttonList.add(jB_A13);
+                      buttonList.add(jB_A14);
+                       buttonList.add(jB_A15);
+                        buttonList.add(jB_A16);
+                         buttonList.add(jB_A17);
+                          buttonList.add(jB_A18);
+                           buttonList.add(jB_A19);
+                            buttonList.add(jB_A20);
+                             buttonList.add(jB_A21);
+                              buttonList.add(jB_A26);
+                               buttonList.add(jB_A23);
+                                buttonList.add(jB_A24);
+                                 buttonList.add(jB_A25);
+    }
         
     public void Loser()
     {
         System.out.println("Vesztettünk");
+        jB_Back1.setEnabled(true);
+         SwitchButtons(false);
+    }
+    
+    public void Winner()
+    {
+         jB_Back1.setEnabled(true);
+         SwitchButtons(true);
+    }
+    
+    public void MakeALLButtonVisible()
+    {
+        for (int i = 0; i < buttonList.size(); i++) {
+            buttonList.get(i).setVisible(true);
+        }
+    }
+    
+    public void SwitchButtons(boolean b)
+    {
+        for (int i = 0; i < buttonList.size(); i++) {
+            buttonList.get(i).setEnabled(b);
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -240,44 +191,48 @@ public class GameFrame extends javax.swing.JFrame {
         jB_A19 = new javax.swing.JButton();
         jB_A20 = new javax.swing.JButton();
         jB_A21 = new javax.swing.JButton();
-        jB_A22 = new javax.swing.JButton();
         jB_A23 = new javax.swing.JButton();
         jB_A24 = new javax.swing.JButton();
         jB_A25 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jB_A26 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1500, 700));
+        getContentPane().setLayout(null);
 
         jTF_Opponent.setText("Opponent Name");
         jTF_Opponent.setAutoscrolls(false);
+        getContentPane().add(jTF_Opponent);
+        jTF_Opponent.setBounds(776, 40, 184, 28);
+        getContentPane().add(jTF_Opp_Name);
+        jTF_Opp_Name.setBounds(776, 80, 184, 28);
 
         jTF_ETime.setText("Elapsed time");
+        getContentPane().add(jTF_ETime);
+        jTF_ETime.setBounds(776, 110, 184, 28);
+        getContentPane().add(jTF_E_Time);
+        jTF_E_Time.setBounds(776, 140, 184, 28);
 
         jTF_Round.setText("Round");
+        getContentPane().add(jTF_Round);
+        jTF_Round.setBounds(776, 180, 184, 28);
+        getContentPane().add(jTF_Round_type);
+        jTF_Round_type.setBounds(776, 210, 184, 28);
 
         jB_A.setText("A");
+        jB_A.setEnabled(false);
         jB_A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_AActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A);
+        jB_A.setBounds(685, 304, 50, 28);
 
         jB_Back.setText("Back");
         jB_Back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,6 +245,8 @@ public class GameFrame extends javax.swing.JFrame {
                 jB_BackActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_Back);
+        jB_Back.setBounds(804, 626, 180, 40);
 
         jB_Back1.setText("Start");
         jB_Back1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,434 +259,272 @@ public class GameFrame extends javax.swing.JFrame {
                 jB_Back1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_Back1);
+        jB_Back1.setBounds(776, 258, 180, 40);
 
         jB_A1.setText("B");
+        jB_A1.setEnabled(false);
         jB_A1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A1);
+        jB_A1.setBounds(721, 304, 50, 28);
 
         jB_A2.setText("C");
+        jB_A2.setEnabled(false);
         jB_A2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A2);
+        jB_A2.setBounds(758, 304, 50, 28);
 
         jB_A3.setText("D");
+        jB_A3.setEnabled(false);
         jB_A3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A3);
+        jB_A3.setBounds(795, 304, 50, 28);
 
         jB_A4.setText("E");
+        jB_A4.setEnabled(false);
+        jB_A4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_A4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_A4);
+        jB_A4.setBounds(837, 304, 50, 28);
 
         jB_A5.setText("F");
+        jB_A5.setEnabled(false);
+        jB_A5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_A5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_A5);
+        jB_A5.setBounds(878, 304, 50, 28);
 
         jB_A6.setText("G");
+        jB_A6.setEnabled(false);
         jB_A6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A6);
+        jB_A6.setBounds(921, 304, 50, 28);
 
         jB_A7.setText("H");
+        jB_A7.setEnabled(false);
         jB_A7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A7ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A7);
+        jB_A7.setBounds(680, 330, 50, 28);
 
         jB_A8.setText("I");
         jB_A8.setToolTipText("");
+        jB_A8.setEnabled(false);
         jB_A8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A8ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A8);
+        jB_A8.setBounds(720, 330, 40, 28);
 
         jB_A9.setText("J");
+        jB_A9.setEnabled(false);
         jB_A9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A9ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A9);
+        jB_A9.setBounds(760, 330, 40, 28);
 
         jB_A10.setText("K");
+        jB_A10.setEnabled(false);
         jB_A10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A10ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A10);
+        jB_A10.setBounds(790, 330, 50, 28);
 
         jB_A11.setText("L");
+        jB_A11.setEnabled(false);
         jB_A11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A11ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A11);
+        jB_A11.setBounds(840, 330, 50, 28);
 
         jB_A12.setText("M");
+        jB_A12.setEnabled(false);
         jB_A12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A12ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A12);
+        jB_A12.setBounds(890, 330, 50, 28);
 
         jB_A13.setText("N");
+        jB_A13.setEnabled(false);
         jB_A13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A13ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A13);
+        jB_A13.setBounds(940, 330, 50, 28);
 
         jB_A14.setText("O");
         jB_A14.setToolTipText("");
+        jB_A14.setEnabled(false);
         jB_A14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A14ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A14);
+        jB_A14.setBounds(680, 360, 50, 28);
 
         jB_A15.setText("P");
+        jB_A15.setEnabled(false);
         jB_A15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A15ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A15);
+        jB_A15.setBounds(730, 360, 50, 28);
 
         jB_A16.setText("Q");
+        jB_A16.setEnabled(false);
         jB_A16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A16ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A16);
+        jB_A16.setBounds(780, 360, 50, 28);
 
         jB_A17.setText("R");
+        jB_A17.setEnabled(false);
         jB_A17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A17ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A17);
+        jB_A17.setBounds(830, 360, 50, 28);
 
         jB_A18.setText("T");
+        jB_A18.setEnabled(false);
         jB_A18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A18ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A18);
+        jB_A18.setBounds(930, 360, 50, 28);
 
         jB_A19.setText("S");
+        jB_A19.setEnabled(false);
         jB_A19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A19ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A19);
+        jB_A19.setBounds(880, 360, 50, 28);
 
         jB_A20.setText("U");
+        jB_A20.setEnabled(false);
         jB_A20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A20ActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_A20);
+        jB_A20.setBounds(680, 390, 50, 28);
 
-        jB_A21.setText("V");
+        jB_A21.setText("W");
+        jB_A21.setEnabled(false);
         jB_A21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_A21ActionPerformed(evt);
             }
         });
-
-        jB_A22.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
-        jB_A22.setText("W");
-        jB_A22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_A22ActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jB_A21);
+        jB_A21.setBounds(780, 390, 50, 28);
 
         jB_A23.setText("X");
+        jB_A23.setEnabled(false);
+        jB_A23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_A23ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_A23);
+        jB_A23.setBounds(830, 390, 50, 28);
 
         jB_A24.setText("Y");
+        jB_A24.setEnabled(false);
+        jB_A24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_A24ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_A24);
+        jB_A24.setBounds(880, 390, 50, 28);
 
         jB_A25.setText("Z");
+        jB_A25.setEnabled(false);
+        jB_A25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_A25ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_A25);
+        jB_A25.setBounds(930, 390, 50, 28);
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/1.png"))); // NOI18N
-        jLabel4.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel4.setName("jl1"); // NOI18N
-        jLabel4.setOpaque(true);
-        jLabel4.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/2.png"))); // NOI18N
-        jLabel3.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel3.setName("jl2"); // NOI18N
-        jLabel3.setOpaque(true);
-        jLabel3.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/3.png"))); // NOI18N
-        jLabel5.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel5.setName("jl3"); // NOI18N
-        jLabel5.setOpaque(true);
-        jLabel5.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/4.png"))); // NOI18N
-        jLabel6.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel6.setName("jl4"); // NOI18N
-        jLabel6.setOpaque(true);
-        jLabel6.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/5.png"))); // NOI18N
-        jLabel7.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel7.setName("jl5"); // NOI18N
-        jLabel7.setOpaque(true);
-        jLabel7.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/6.png"))); // NOI18N
-        jLabel8.setLabelFor(jLabel8);
-        jLabel8.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel8.setName("jl6"); // NOI18N
-        jLabel8.setOpaque(true);
-        jLabel8.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/7.png"))); // NOI18N
-        jLabel9.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel9.setName("jl7"); // NOI18N
-        jLabel9.setOpaque(true);
-        jLabel9.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/8.png"))); // NOI18N
-        jLabel10.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel10.setName("jl8"); // NOI18N
-        jLabel10.setOpaque(true);
-        jLabel10.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/9.png"))); // NOI18N
-        jLabel11.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel11.setName("jl9"); // NOI18N
-        jLabel11.setOpaque(true);
-        jLabel11.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/10.png"))); // NOI18N
-        jLabel12.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel12.setName("jl10"); // NOI18N
-        jLabel12.setOpaque(true);
-        jLabel12.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/11.png"))); // NOI18N
-        jLabel13.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel13.setName("jl11"); // NOI18N
-        jLabel13.setOpaque(true);
-        jLabel13.setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/12.png"))); // NOI18N
-        jLabel14.setMaximumSize(new java.awt.Dimension(700, 700));
-        jLabel14.setName("jl12"); // NOI18N
-        jLabel14.setOpaque(true);
-        jLabel14.setPreferredSize(new java.awt.Dimension(650, 600));
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(230, 40, 267, 69);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setMaximumSize(new java.awt.Dimension(700, 700));
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(650, 600));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(21, 26, 650, 600);
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
-        jLabel2.setText("jLabel2");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(209, 209, 209)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTF_Opponent, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTF_Opp_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTF_ETime, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTF_E_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTF_Round, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTF_Round_type, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jB_Back1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jB_A)
-                                .addGap(0, 0, 0)
-                                .addComponent(jB_A1)
-                                .addGap(0, 0, 0)
-                                .addComponent(jB_A2)
-                                .addGap(0, 0, 0)
-                                .addComponent(jB_A3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jB_A4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jB_A5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jB_A6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jB_A7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jB_A17)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jB_A19)
-                                                .addGap(1, 1, 1)
-                                                .addComponent(jB_A18))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jB_A8)
-                                                .addGap(0, 0, 0)
-                                                .addComponent(jB_A9)
-                                                .addGap(1, 1, 1)
-                                                .addComponent(jB_A10)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jB_A11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(1, 1, 1)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jB_A20)
-                                                .addGap(2, 2, 2)
-                                                .addComponent(jB_A22)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jB_A21))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jB_A12)
-                                                .addGap(0, 0, 0)
-                                                .addComponent(jB_A13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jB_A14))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jB_A24)
-                                        .addGap(0, 0, 0)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jB_A16)
-                                            .addComponent(jB_A25))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jB_A15)
-                                    .addComponent(jB_A23)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(804, 804, 804)
-                        .addComponent(jB_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTF_Opponent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(jTF_Opp_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(jTF_ETime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(jTF_E_Time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(jTF_Round, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(jTF_Round_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jB_Back1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jB_A)
-                                    .addComponent(jB_A1)
-                                    .addComponent(jB_A2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jB_A3)
-                                        .addComponent(jB_A4)
-                                        .addComponent(jB_A5)
-                                        .addComponent(jB_A6)
-                                        .addComponent(jB_A7)))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jB_A8)
-                                    .addComponent(jB_A9)
-                                    .addComponent(jB_A10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jB_A12)
-                                        .addComponent(jB_A11))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jB_A13)
-                                        .addComponent(jB_A14)
-                                        .addComponent(jB_A15)))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jB_A17)
-                                        .addComponent(jB_A16))
-                                    .addComponent(jB_A19)
-                                    .addComponent(jB_A18)
-                                    .addComponent(jB_A20)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jB_A21)
-                                        .addComponent(jB_A23))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jB_A22)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jB_A24)
-                                    .addComponent(jB_A25))))))
-                .addGap(0, 0, 0)
-                .addComponent(jB_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jB_A26.setText("V");
+        jB_A26.setEnabled(false);
+        jB_A26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_A26ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jB_A26);
+        jB_A26.setBounds(730, 390, 50, 28);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -852,15 +647,40 @@ public class GameFrame extends javax.swing.JFrame {
         jB_A20.setVisible(false);
     }//GEN-LAST:event_jB_A20ActionPerformed
 
-    private void jB_A22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A22ActionPerformed
-         CheckLetter("w");
-        jB_A22.setVisible(false);
-    }//GEN-LAST:event_jB_A22ActionPerformed
-
     private void jB_A21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A21ActionPerformed
-         CheckLetter("v");
+         CheckLetter("w");
         jB_A21.setVisible(false);
     }//GEN-LAST:event_jB_A21ActionPerformed
+
+    private void jB_A26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A26ActionPerformed
+        CheckLetter("v");
+        jB_A26.setVisible(false);
+    }//GEN-LAST:event_jB_A26ActionPerformed
+
+    private void jB_A4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A4ActionPerformed
+        CheckLetter("e");
+        jB_A4.setVisible(false);
+    }//GEN-LAST:event_jB_A4ActionPerformed
+
+    private void jB_A5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A5ActionPerformed
+        CheckLetter("f");
+        jB_A5.setVisible(false);
+    }//GEN-LAST:event_jB_A5ActionPerformed
+
+    private void jB_A24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A24ActionPerformed
+       CheckLetter("y");
+        jB_A24.setVisible(false);
+    }//GEN-LAST:event_jB_A24ActionPerformed
+
+    private void jB_A25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A25ActionPerformed
+        CheckLetter("z");
+        jB_A25.setVisible(false);
+    }//GEN-LAST:event_jB_A25ActionPerformed
+
+    private void jB_A23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A23ActionPerformed
+        CheckLetter("x");
+        jB_A23.setVisible(false);
+    }//GEN-LAST:event_jB_A23ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -911,10 +731,10 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JButton jB_A2;
     private javax.swing.JButton jB_A20;
     private javax.swing.JButton jB_A21;
-    private javax.swing.JButton jB_A22;
     private javax.swing.JButton jB_A23;
     private javax.swing.JButton jB_A24;
     private javax.swing.JButton jB_A25;
+    private javax.swing.JButton jB_A26;
     private javax.swing.JButton jB_A3;
     private javax.swing.JButton jB_A4;
     private javax.swing.JButton jB_A5;
@@ -925,19 +745,7 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JButton jB_Back;
     private javax.swing.JButton jB_Back1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTF_ETime;
     private javax.swing.JTextField jTF_E_Time;
     private javax.swing.JTextField jTF_Opp_Name;
