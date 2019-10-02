@@ -1,0 +1,8 @@
+apple
+pearl
+house
+mouse
+cherry
+cat
+laptop
+game

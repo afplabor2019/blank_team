@@ -1,14 +1,21 @@
 package hangmangame;
 
 import java.awt.List;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-public class GameFrame extends javax.swing.JFrame {
+public class GameFrame extends javax.swing.JFrame 
+{
 
     public ArrayList<JButton> buttonList = new ArrayList<JButton>();
     public ArrayList<String> list = new ArrayList<>();
@@ -21,7 +28,7 @@ public class GameFrame extends javax.swing.JFrame {
         initComponents();  
     }
 
-    private void StartGame()
+    private void StartGame() throws IOException 
     {
         goodTries =0;
         FillList(); 
@@ -163,9 +170,17 @@ public class GameFrame extends javax.swing.JFrame {
         jLabel20.setVisible(false);
         jLabel21.setVisible(false);
     }
-    private void FillList()
+    private void FillList() throws FileNotFoundException, IOException
     {
-       list.add("apple");
+       RandomAccessFile raf = new RandomAccessFile("data.txt","r");
+        while (raf.readLine() != null) 
+        {
+            list.add(raf.readLine());
+        }
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+        raf.close();
     }
 
     public void CheckLetter(String s)
@@ -876,7 +891,12 @@ public class GameFrame extends javax.swing.JFrame {
 
     private void jB_Back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Back1ActionPerformed
         System.out.println("elindul a program");
-        StartGame();
+        try {
+            StartGame();
+        } catch (IOException ex) {
+            Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("nincs meg a fájl");
+        }
     }//GEN-LAST:event_jB_Back1ActionPerformed
 
     private void jB_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_AActionPerformed
