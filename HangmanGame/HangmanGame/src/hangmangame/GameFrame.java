@@ -30,6 +30,16 @@ public class GameFrame extends javax.swing.JFrame
 
     private void StartGame() throws IOException 
     {
+        jLabel12.setText("");
+                jLabel13.setText("");
+                jLabel14.setText("");
+                jLabel15.setText("");
+                jLabel16.setText("");
+                jLabel17.setText("");
+                jLabel18.setText("");
+                 jLabel19.setText("");
+                 jLabel20.setText("");
+                 jLabel21.setText("");
         goodTries =0;
         FillList(); 
         GenerateWord(); 
@@ -38,7 +48,7 @@ public class GameFrame extends javax.swing.JFrame
         jB_Back1.setEnabled(false);
         MakeALLButtonVisible();
         GetLines(); //konstruktor
-        LoadLines();
+        LoadLines(true);
         PlaceGeneratedWord();
         WordSetVisibleFalse(false);
 
@@ -144,11 +154,11 @@ public class GameFrame extends javax.swing.JFrame
                     lineList.get(i).setVisible(false);
                 }
     }
-    public void LoadLines()
+    public void LoadLines(boolean b)
     {
         for (int i = 0; i < GeneratedWord.length(); i++)
         {
-            lineList.get(i).setVisible(true);
+            lineList.get(i).setVisible(b);
         }
     }
     public void GenerateWord()
@@ -429,6 +439,8 @@ public class GameFrame extends javax.swing.JFrame
         jb10 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2.setIcon(new ImageIcon(HangmanGame.image));
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -890,6 +902,12 @@ public class GameFrame extends javax.swing.JFrame
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 150, 650, 730);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/alaphatter.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1060, 670);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1055,7 +1073,7 @@ public class GameFrame extends javax.swing.JFrame
     }//GEN-LAST:event_jB_A23ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
+      
     }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
@@ -1129,6 +1147,7 @@ public class GameFrame extends javax.swing.JFrame
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JTextField jTF_ETime;
