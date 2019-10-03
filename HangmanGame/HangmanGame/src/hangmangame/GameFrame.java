@@ -40,7 +40,7 @@ public class GameFrame extends javax.swing.JFrame
         GetLines(); //konstruktor
         LoadLines();
         PlaceGeneratedWord();
-        WordSetVisibleFalse();
+        WordSetVisibleFalse(false);
 
     }
     
@@ -157,30 +157,30 @@ public class GameFrame extends javax.swing.JFrame
         System.out.println(GeneratedWord);
     }
     
-    public void WordSetVisibleFalse()
+    public void WordSetVisibleFalse(boolean b)
     {
-        jLabel12.setVisible(false);
-        jLabel13.setVisible(false);
-        jLabel14.setVisible(false);
-        jLabel15.setVisible(false);
-        jLabel16.setVisible(false);
-        jLabel17.setVisible(false);
-        jLabel18.setVisible(false);
-        jLabel19.setVisible(false);
-        jLabel20.setVisible(false);
-        jLabel21.setVisible(false);
+        jLabel12.setVisible(b);
+        jLabel13.setVisible(b);
+        jLabel14.setVisible(b);
+        jLabel15.setVisible(b);
+        jLabel16.setVisible(b);
+        jLabel17.setVisible(b);
+        jLabel18.setVisible(b);
+        jLabel19.setVisible(b);
+        jLabel20.setVisible(b);
+        jLabel21.setVisible(b);
     }
     private void FillList() throws FileNotFoundException, IOException
     {
        RandomAccessFile raf = new RandomAccessFile("data.txt","r");
-        while (raf.readLine() != null) 
+       String sor;
+        while ((sor = raf.readLine()) != null) 
         {
-            list.add(raf.readLine());
+            list.add(sor);
         }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
+
         raf.close();
+        System.out.println(list);
     }
 
     public void CheckLetter(String s)
@@ -327,11 +327,26 @@ public class GameFrame extends javax.swing.JFrame
                                  buttonList.add(jB_A25);
     }
         
+    public void ResetWord()
+    {
+        jLabel12.setText("");
+         jLabel13.setText("");
+          jLabel14.setText("");
+           jLabel15.setText("");
+            jLabel16.setText("");
+             jLabel17.setText("");
+              jLabel18.setText("");
+               jLabel19.setText("");
+                jLabel20.setText("");
+                jLabel21.setText("");
+    }
+    
     public void Loser()
     {
         System.out.println("Vesztettünk");
         jB_Back1.setEnabled(true);
          SwitchButtons(false);
+         WordSetVisibleFalse(true);
     }
     
     public void Winner()
@@ -339,6 +354,7 @@ public class GameFrame extends javax.swing.JFrame
         System.out.println("Nyertünk");
          jB_Back1.setEnabled(true);
          SwitchButtons(false);
+         tries =0;
     }
     
     public void MakeALLButtonVisible()
@@ -419,6 +435,11 @@ public class GameFrame extends javax.swing.JFrame
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1500, 700));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jTF_Opponent.setText("Opponent Name");
@@ -736,138 +757,138 @@ public class GameFrame extends javax.swing.JFrame
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(50, 60, 60, 60);
+        jLabel12.setBounds(50, 170, 60, 60);
 
         jLabel13.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(100, 120, 60, 60);
+        jLabel13.setBounds(100, 230, 60, 60);
 
         jLabel14.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(170, 60, 60, 60);
+        jLabel14.setBounds(170, 170, 60, 60);
 
         jLabel15.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(220, 120, 60, 60);
+        jLabel15.setBounds(220, 230, 60, 60);
 
         jLabel16.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(280, 60, 60, 60);
+        jLabel16.setBounds(280, 170, 60, 60);
 
         jLabel17.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(340, 120, 60, 60);
+        jLabel17.setBounds(340, 230, 60, 60);
 
         jLabel18.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(410, 60, 60, 60);
+        jLabel18.setBounds(410, 170, 60, 60);
 
         jLabel19.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(460, 120, 60, 60);
+        jLabel19.setBounds(460, 230, 60, 60);
 
         jLabel20.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(510, 60, 60, 60);
+        jLabel20.setBounds(510, 170, 60, 60);
 
         jb9.setBackground(new java.awt.Color(0, 0, 0));
         jb9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb9.setEnabled(false);
         jb9.setOpaque(true);
         getContentPane().add(jb9);
-        jb9.setBounds(510, 120, 70, 10);
+        jb9.setBounds(510, 230, 70, 10);
 
         jb1.setBackground(new java.awt.Color(0, 0, 0));
         jb1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb1.setEnabled(false);
         jb1.setOpaque(true);
         getContentPane().add(jb1);
-        jb1.setBounds(50, 120, 70, 10);
+        jb1.setBounds(50, 230, 70, 10);
 
         jb2.setBackground(new java.awt.Color(0, 0, 0));
         jb2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb2.setEnabled(false);
         jb2.setOpaque(true);
         getContentPane().add(jb2);
-        jb2.setBounds(100, 180, 70, 10);
+        jb2.setBounds(100, 290, 70, 10);
 
         jb3.setBackground(new java.awt.Color(0, 0, 0));
         jb3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb3.setEnabled(false);
         jb3.setOpaque(true);
         getContentPane().add(jb3);
-        jb3.setBounds(170, 120, 70, 10);
+        jb3.setBounds(170, 230, 70, 10);
 
         jb4.setBackground(new java.awt.Color(0, 0, 0));
         jb4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb4.setEnabled(false);
         jb4.setOpaque(true);
         getContentPane().add(jb4);
-        jb4.setBounds(220, 180, 70, 10);
+        jb4.setBounds(220, 290, 70, 10);
 
         jb5.setBackground(new java.awt.Color(0, 0, 0));
         jb5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb5.setEnabled(false);
         jb5.setOpaque(true);
         getContentPane().add(jb5);
-        jb5.setBounds(280, 120, 70, 10);
+        jb5.setBounds(280, 230, 70, 10);
 
         jb6.setBackground(new java.awt.Color(0, 0, 0));
         jb6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb6.setEnabled(false);
         jb6.setOpaque(true);
         getContentPane().add(jb6);
-        jb6.setBounds(340, 180, 70, 10);
+        jb6.setBounds(340, 290, 70, 10);
 
         jb7.setBackground(new java.awt.Color(0, 0, 0));
         jb7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb7.setEnabled(false);
         jb7.setOpaque(true);
         getContentPane().add(jb7);
-        jb7.setBounds(400, 120, 70, 10);
+        jb7.setBounds(400, 230, 70, 10);
 
         jb8.setBackground(new java.awt.Color(0, 0, 0));
         jb8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb8.setEnabled(false);
         jb8.setOpaque(true);
         getContentPane().add(jb8);
-        jb8.setBounds(450, 180, 70, 10);
+        jb8.setBounds(450, 290, 70, 10);
 
         jb10.setBackground(new java.awt.Color(0, 0, 0));
         jb10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/csik.png"))); // NOI18N
         jb10.setEnabled(false);
         jb10.setOpaque(true);
         getContentPane().add(jb10);
-        jb10.setBounds(560, 180, 70, 10);
+        jb10.setBounds(560, 290, 70, 10);
 
         jLabel21.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(570, 120, 60, 60);
+        jLabel21.setBounds(570, 230, 60, 60);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setMaximumSize(new java.awt.Dimension(700, 700));
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(650, 600));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 10, 650, 870);
+        jLabel1.setBounds(10, 150, 650, 730);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -896,6 +917,9 @@ public class GameFrame extends javax.swing.JFrame
         } catch (IOException ex) {
             Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("nincs meg a fájl");
+        }
+        finally{
+            jLabel1.setIcon(null);
         }
     }//GEN-LAST:event_jB_Back1ActionPerformed
 
@@ -961,7 +985,7 @@ public class GameFrame extends javax.swing.JFrame
     }//GEN-LAST:event_jB_A13ActionPerformed
 
     private void jB_A14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_A14ActionPerformed
-         CheckLetter("0");
+         CheckLetter("o");
         jB_A14.setVisible(false);
     }//GEN-LAST:event_jB_A14ActionPerformed
 
@@ -1029,6 +1053,10 @@ public class GameFrame extends javax.swing.JFrame
         CheckLetter("x");
         jB_A23.setVisible(false);
     }//GEN-LAST:event_jB_A23ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+    }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

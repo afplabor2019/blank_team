@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.text.CharacterIterator;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -23,6 +24,11 @@ public class HangmanGame
     public static MainFrame mF = new MainFrame();
     public static GameFrame gF = new GameFrame();
     public static UserFrame uF = new UserFrame();
+    
+    
+    public static Image hatter = Toolkit.getDefaultToolkit().getImage("alaphatter.png");
+    public static ImageIcon hattericon = new ImageIcon(hatter);
+    public static Image image= hattericon.getImage().getScaledInstance(1070, 670, Image.SCALE_SMOOTH);
     
     public static Image i1 = Toolkit.getDefaultToolkit().getImage("1.png");
     public static Image i2 = Toolkit.getDefaultToolkit().getImage("2.png");

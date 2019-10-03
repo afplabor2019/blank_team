@@ -1,8 +1,11 @@
 apple
-pearl
 house
-mouse
-cherry
+television
+umbrella
+sun
 cat
-laptop
-game
+water
+shirt
+watch
+hair
+lamp
