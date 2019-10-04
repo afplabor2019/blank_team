@@ -24,6 +24,7 @@ public class GameFrame extends javax.swing.JFrame
     public int goodTries =0;
     public Random r = new Random();
     public String GeneratedWord ="";
+    
     public GameFrame() {
         initComponents();  
     }
@@ -439,8 +440,6 @@ public class GameFrame extends javax.swing.JFrame
         jb10 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2.setIcon(new ImageIcon(HangmanGame.image));
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -902,12 +901,6 @@ public class GameFrame extends javax.swing.JFrame
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 150, 650, 730);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hangmangame/alaphatter.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setOpaque(true);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1060, 670);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1147,7 +1140,6 @@ public class GameFrame extends javax.swing.JFrame
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JTextField jTF_ETime;
