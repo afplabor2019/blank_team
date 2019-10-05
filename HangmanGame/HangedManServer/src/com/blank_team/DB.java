@@ -2,6 +2,7 @@ package com.blank_team;
 
 import jdk.jshell.spi.ExecutionControl;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
@@ -53,12 +54,14 @@ public class DB {
             if(count != 0){
                 throw new ClientError("Email exists");
             }
+            resultSet.close();
 
             PreparedStatement stmt2 = connection.prepareStatement("SELECT COUNT(usr) FROM user WHERE usr = ?");
             stmt2.setString(1, usr);
             resultSet = stmt2.executeQuery();
             resultSet.next();
             count = resultSet.getInt(1);
+            resultSet.close();
             if(count != 0){
                 throw  new ClientError("Username exists");
             }
@@ -78,19 +81,21 @@ public class DB {
     public User Login(String userName, String password) throws SQLException, ClientError {
         User user = null;
         try (Connection connection = GetConnection(); PreparedStatement stmt = connection.prepareStatement(
-                "SELECT usr, email, psw, score FROM user WHERE usr = ? OR email = ?"
+                "SELECT id, usr, email, psw, score FROM user WHERE usr = ? OR email = ?"
         )) {
             stmt.setString(1, userName);
             stmt.setString(2, userName); //User can log in with email also, yay!
             ResultSet resultSet = stmt.executeQuery();
             String psw = null;
             while (resultSet.next()){
-                String usr = resultSet.getString(1);
-                String email = resultSet.getString(2);
-                psw = resultSet.getString(3);
-                int score = resultSet.getInt(4);
-                user = new User(usr, email, score);
+                int id = resultSet.getInt(1);
+                String usr = resultSet.getString(2);
+                String email = resultSet.getString(3);
+                psw = resultSet.getString(4);
+                int score = resultSet.getInt(5);
+                user = new User(id, usr, email, score);
             }
+            resultSet.close();
             if(user == null){
                 throw new ClientError((userName.contains("@") ? "Email" : "Username") + " doesn't exists");
             }
@@ -105,8 +110,49 @@ public class DB {
         return user;
     }
 
-    public boolean AddGame(String p1, String p1_word){
-        //TODO: game_log, scoring system
-        return false;
+    public String GetRandomWord() throws SQLException {
+        return GetRandomWord(0);
+    }
+
+    public String GetRandomWord(int MinScore) throws SQLException {
+        return GetRandomWord(MinScore, 99999);
+    }
+
+    public String GetRandomWord(int MinScore, int MaxScore) throws SQLException {
+        String word = null;
+        try (Connection connection = GetConnection(); PreparedStatement statement = connection.prepareStatement(
+                "SELECT `id`, `word`, (`extra_score` + LENGTH(`word`)) AS \"total_score\" FROM `words` WHERE ((`extra_score` + LENGTH(`word`)) > ?) AND ((`extra_score` + LENGTH(`word`)) < ?) ORDER BY RAND() LIMIT 1")
+            )
+        {
+            statement.setInt(1, MinScore);
+            statement.setInt(2, MaxScore);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                word = resultSet.getString(2);
+            }
+            resultSet.close();
+        }
+        return word;
+    }
+
+    public void AddGame(@NotNull User p1, String p1_word) throws SQLException {
+        try(Connection connection = GetConnection(); PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO `game_log`( `id`, `p1`, `p2`, `p1_word`, `p2_word`, `p1_score`, `p2_score`, `time` ) VALUES( NULL, ?, 0, (SELECT `id` FROM `words` WHERE `word` = ?), NULL, (SELECT (`extra_score` + LENGTH(`word`)) FROM `words` WHERE `word` = ?), NULL, NULL )"
+        )){
+            statement.setInt(1, p1.getId());
+            statement.setString(2, p1_word);
+            statement.setString(3, p1_word);
+            statement.execute();
+
+            try(PreparedStatement statement2 = connection.prepareStatement(
+                    "UPDATE `user` SET `score` =((SELECT (`extra_score` + LENGTH(`word`)) FROM `words` WHERE `word` = ?) + `score`) WHERE `id` = ?"
+            )){
+                statement2.setString(1, p1_word);
+                statement2.setInt(2, p1.getId());
+                int x = statement2.executeUpdate();
+                System.out.println(x);
+            }
+        }
+        //TODO: 1v1 game_log
     }
 }
