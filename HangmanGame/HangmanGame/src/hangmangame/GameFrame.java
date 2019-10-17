@@ -164,7 +164,10 @@ public class GameFrame extends javax.swing.JFrame
     }
     public void GenerateWord()
     {
-        GeneratedWord = list.get(r.nextInt(list.size()));
+        do {
+            GeneratedWord = list.get(r.nextInt(list.size()));
+        } while (GeneratedWord.length() == 0 || GeneratedWord.length() > 10);
+        
         System.out.println(GeneratedWord);
     }
     

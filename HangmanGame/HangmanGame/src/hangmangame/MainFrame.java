@@ -1,5 +1,12 @@
 package hangmangame;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -7,7 +14,21 @@ import javax.swing.JOptionPane;
 public class MainFrame extends javax.swing.JFrame {
 
     public MainFrame() {
-        initComponents();     
+        initComponents();
+        
+        BufferedImage u_img = null;
+        try {
+            u_img = ImageIO.read(new File("usericon.png"));
+        } catch (IOException e) {
+        }
+        jB_User.setIcon(new ImageIcon(u_img));
+        
+        BufferedImage s_img = null;
+        try {
+            s_img = ImageIO.read(new File("settingsicon.png"));
+        } catch (IOException e) {
+        }
+        jB_Settings.setIcon(new ImageIcon(s_img));
     }
 
     @SuppressWarnings("unchecked")
@@ -29,6 +50,14 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(960, 540));
 
+        jP_main.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jP_mainFocusGained(evt);
+            }
+        });
+
+        jB_WorldCup.setBackground(new java.awt.Color(57, 165, 255));
+        jB_WorldCup.setForeground(new java.awt.Color(255, 255, 255));
         jB_WorldCup.setActionCommand("jB_WorldCup");
         jB_WorldCup.setLabel("WorldCup");
         jB_WorldCup.setName("jB_WorldCup"); // NOI18N
@@ -38,6 +67,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jB_Practice.setBackground(new java.awt.Color(57, 165, 255));
+        jB_Practice.setForeground(new java.awt.Color(255, 255, 255));
         jB_Practice.setLabel("Practice");
         jB_Practice.setPreferredSize(new java.awt.Dimension(73, 180));
         jB_Practice.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -51,6 +82,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jB_Competitive.setBackground(new java.awt.Color(57, 165, 255));
+        jB_Competitive.setForeground(new java.awt.Color(255, 255, 255));
         jB_Competitive.setLabel("Competitive");
         jB_Competitive.setName(""); // NOI18N
         jB_Competitive.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -59,6 +92,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jB_Campaign.setBackground(new java.awt.Color(57, 165, 255));
+        jB_Campaign.setForeground(new java.awt.Color(255, 255, 255));
         jB_Campaign.setLabel("Campaign");
         jB_Campaign.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,6 +101,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jB_Infinite.setBackground(new java.awt.Color(57, 165, 255));
+        jB_Infinite.setForeground(new java.awt.Color(255, 255, 255));
         jB_Infinite.setLabel("Infinite");
         jB_Infinite.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -73,6 +110,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jB_Statistics.setBackground(new java.awt.Color(57, 165, 255));
+        jB_Statistics.setForeground(new java.awt.Color(255, 255, 255));
         jB_Statistics.setLabel("Statistics");
         jB_Statistics.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,6 +119,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jB_Sponsors.setBackground(new java.awt.Color(57, 165, 255));
+        jB_Sponsors.setForeground(new java.awt.Color(255, 255, 255));
         jB_Sponsors.setLabel("Sponsors");
         jB_Sponsors.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,15 +128,29 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jB_User.setText("U");
+        jB_User.setBackground(new java.awt.Color(255, 255, 255));
+        jB_User.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jB_User.setBorderPainted(false);
+        jB_User.setIconTextGap(0);
+        jB_User.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jB_User.setOpaque(false);
         jB_User.setPreferredSize(new java.awt.Dimension(60, 60));
         jB_User.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jB_UserMouseClicked(evt);
             }
         });
+        jB_User.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jB_UserComponentShown(evt);
+            }
+        });
 
-        jB_Settings.setText("S");
+        jB_Settings.setBackground(new java.awt.Color(255, 255, 255));
+        jB_Settings.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jB_Settings.setBorderPainted(false);
+        jB_Settings.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jB_Settings.setOpaque(false);
         jB_Settings.setPreferredSize(new java.awt.Dimension(60, 60));
         jB_Settings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,8 +189,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jP_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Settings, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jB_User, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                    .addComponent(jB_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jB_WorldCup, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jB_Practice, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,7 +204,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jP_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_Sponsors, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jB_Statistics, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,6 +281,14 @@ public class MainFrame extends javax.swing.JFrame {
     private void jB_PracticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_PracticeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jB_PracticeActionPerformed
+
+    private void jP_mainFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jP_mainFocusGained
+
+    }//GEN-LAST:event_jP_mainFocusGained
+
+    private void jB_UserComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jB_UserComponentShown
+
+    }//GEN-LAST:event_jB_UserComponentShown
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
