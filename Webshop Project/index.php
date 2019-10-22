@@ -1,9 +1,4 @@
 <?php
-/**
- * User: Dombi Tibor (HL5U4V)
- * Date: 2019. 10. 17.
- * Time: 9:02
- */
 session_start();
 require_once 'lib/config.php';
 $p = 'main';
