@@ -1,11 +1,7 @@
 <?php
-/**
- * User: Dombi Tibor (HL5U4V)
- * Date: 2019. 10. 17.
- * Time: 9:02
- */
 session_start();
 require_once 'lib/config.php';
+require_once 'lib/functions.php';
 $p = 'main';
 if(!empty($_GET['p']))
     $p = $_GET['p'];
@@ -31,6 +27,7 @@ if(!empty($_GET['p']))
     <?php
     require_once 'pages/main.php';
     ?>
+    szia
 </main>
 <footer>
     <?php

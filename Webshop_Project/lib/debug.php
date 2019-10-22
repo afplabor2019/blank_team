@@ -1,11 +1,12 @@
-<?php
+<?php 
 /**
  *  * User: Dombi Tibor HL5U4V
  * Date: 2019. 10. 17.
  * Time: 9:09
  */
 
-define('DEBUG', true); //Change this to false on release!
+
+//define('DEBUG', true); //Change this to false on release!
 
 class Debug
 {
@@ -43,5 +44,5 @@ class Debug
             var_dump($data);
             echo $newLine . '----------------------------------------' . $newLine;
         }
-    }
-}
+    } 
+} 

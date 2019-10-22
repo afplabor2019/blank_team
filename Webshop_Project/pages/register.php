@@ -2,9 +2,9 @@
 /**
  *  * User: Dombi Tibor HL5U4V
  * Date: 2019. 10. 17.
- * Time: 10:10
+ * Time: 10:12
  */
-session_start();
+//session_start();
 if(empty($_SESSION['u_id'])):
     ?>
     <!--HTML ha ki van jelentkezve a felhasználó-->
