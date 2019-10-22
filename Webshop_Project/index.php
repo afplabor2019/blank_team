@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'lib/config.php';
+require_once 'lib/functions.php';
 $p = 'main';
 if(!empty($_GET['p']))
     $p = $_GET['p'];
@@ -26,6 +27,7 @@ if(!empty($_GET['p']))
     <?php
     require_once 'pages/main.php';
     ?>
+    szia
 </main>
 <footer>
     <?php

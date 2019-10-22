@@ -5,7 +5,7 @@
  * Time: 9:18
  */
 
-define('DEBUG', true);              //In production?
+//define('DEBUG', true);              //In production?
 define('LIB_PATH', 'lib/' );        //Lib folder
 
 define('DBH', 'localhost');         //Database host
