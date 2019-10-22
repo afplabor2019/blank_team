@@ -6,6 +6,7 @@
  */
 
 //define('DEBUG', true);              //In production?
+define('DOMAIN', 'http://localhost:8080/Webshop_Project/');
 define('LIB_PATH', 'lib/' );        //Lib folder
 
 define('DBH', 'localhost');         //Database host
