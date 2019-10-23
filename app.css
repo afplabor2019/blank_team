@@ -1,0 +1,15 @@
+* {
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-align: justify;
+    background: #f2f2f2;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
