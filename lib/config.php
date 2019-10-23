@@ -9,8 +9,8 @@
 define('DOMAIN', 'http://localhost:8080/blank_team/');
 define('LIB_PATH', 'lib/' );        //Lib folder
 
-define('DBH', 'localhost');         //Database host
-define('DBN', 'afp_blank_team');    //Database name
+define('DBH', '127.0.0.1');         //Database host
+define('DBN', 'webshop');    //Database name
 define('DBU', 'root');              //User name for db
 define('DBP', '');                  //USer password for db
 
