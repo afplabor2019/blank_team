@@ -16,8 +16,11 @@
                         <li>
                             <a>Home</a>
                             <a>Products</a>
-                            <a>User site</a>
+                            <a>Search</a>
+                            <a>Login</a>
+                            <a>Register</a>
                             <a>Shopping cart</a>
+                            <!--<a><img src="images/cart.png" alt="Shooping cart" width="50" height="50"></a>-->
                         </li>
                         <li>
                         </li>
