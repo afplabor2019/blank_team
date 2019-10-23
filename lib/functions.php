@@ -15,6 +15,7 @@ function asset($asset) {
     return DOMAIN . $asset;
 }
 
+
 function GenerateID($digits = 5)
 {
     $chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ_-"; //base64, but '=' and '/' is problematic in URL

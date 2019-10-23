@@ -14,11 +14,22 @@ if(is_post())
 
     //email
     if ($email == null) $errors['email'][] = 'Email is required!';
-    //if (!(strpos($email, '.') && strpos($email, '@'))) $errors['email'][] = 'Invalid email!';
     if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
     $sql = new SQL();
     $emails[] = $sql->execute("SELECT `email` FROM users");
-    if(count($emails) != 0) $errors['email'][] = 'Email already taken!';
+    $noemails = true;
+    if(count($emails) != 0) 
+    {
+        foreach ($emails as $value)
+        {
+            if($value == $email)
+            $noemails = false;
+        }
+           
+        if(!$noemails)
+        $errors['email'][] = 'Email already taken!';
+    }
+   
 
     //userName 
     if($userName == null) $errors['userName'][] = 'User name is required!';
@@ -26,7 +37,26 @@ if(is_post())
     if(strlen($userName) > 25) $errors['userName'][] = 'User name can not be longer than 25 characters!';
     $sql = new SQL();
     $userNames[] = $sql->execute("SELECT `user_name` FROM users");
-    if(count($userNames) != 0) $errors['userName'][] = 'User name already taken!';
+    $nousernames = true;
+    echo count($userNames);
+    echo 'starting username check';
+    if(count($userNames) != 0) 
+    {
+        echo 'usernames set';
+        foreach ($userNames as $value)
+           { 
+               echo 'foreach';
+               echo $value;
+               if($value == $userName)
+               { 
+                   $nousernames = false;
+                   echo 'duplicate username found';
+               }
+           }
+
+    }
+    if(!$nousernames)
+        $errors['userName'][] = 'User name already taken!';
 
     //full name
     if($fullName == null) $errors['fullName'][] = 'Full name is required!';
@@ -50,6 +80,7 @@ if(is_post())
 
     if(count($errors) == 0)
         {
+            echo 'Connection';
             $id = GenerateID();
             $shippingid = GenerateID();
 
