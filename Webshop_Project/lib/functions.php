@@ -11,4 +11,9 @@ function url($page) // visszaadja a paraméter url-jét.
      return $url;
 }
 
+function asset($asset) {
+    return DOMAIN . $asset;
+}
+
 ?>
+
