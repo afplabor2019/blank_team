@@ -1,5 +1,5 @@
+<h1>Register</h1>
 <?php 
-require_once 'lib/functions.php';
 $errors =[];
 if(is_post())
 {
@@ -17,10 +17,9 @@ if(is_post())
     else if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
     $sql = new SQL();
     $emails = $sql->execute("SELECT `email` FROM users");
-    foreach($emails as $row) {
+    foreach($emails as $row) 
         if($row['email'] == $email)
             $errors['email'][] = 'Email is already taken!';
-    }
 
     //userName 
     if($userName == null) $errors['userName'][] = 'User name is required!';
@@ -66,29 +65,43 @@ if(is_post())
 
 <!--WRITE BACK-->
 <form action ="<?php echo url('register'); ?>" method ="POST" >
-<label for="email"> Email </label>
-<input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
-<?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="email"> Email </label>
+    <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
+    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<label for="userName"> User Name </label>
-<input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> <br>
-<?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="userName"> User Name </label>
+    <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> <br>
+    <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<label for="fullName"> Full Name </label>
-<input type ="text" name ="fullName" value = "<?php echo isset($fullName) ? $fullName : ""; ?>"> <br>
-<?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="fullName"> Full Name </label>
+    <input type ="text" name ="fullName" value = "<?php echo isset($fullName) ? $fullName : ""; ?>"> <br>
+    <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<label for="password"> Password </label>
-<input type ="password" name ="password" value ="Proba1234"> <br>
-<?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="password"> Password </label>
+    <input type ="password" name ="password"> <br>
+    <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<label for="cpassword"> Confirm Password </label>
-<input type ="password" name ="cpassword" value ="Proba1234"> <br>
-<?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="cpassword"> Confirm Password </label>
+    <input type ="password" name ="cpassword"> <br>
+    <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<label for="age"> Age </label>
-<input type ="number" name ="age" value = "<?php echo isset($age) ? $age : ""; ?>"> <br>
-<?php if(isset($errors['age'])) foreach ($errors['age'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="age"> Age </label>
+    <input type ="number" name ="age" value = "<?php echo isset($age) ? $age : ""; ?>"> <br>
+    <?php if(isset($errors['age'])) foreach ($errors['age'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<button class ="button" type="submit">Register</button>
+    <button class ="button" type="submit">Register</button>
 </form>
+
+<a href ="<?php echo url('login')?>">Log In </a>
+
+
+<?php 
+
+//TODO: születési dátum bekérése, abból számítani kort. - születési évre valami minimum. lel.
+//      validálások ellenőrzése, változtatása.
+//      adatbázisok véglegesítése.
+//      email-lel is be lehessen lépni felhasználónév helyett.
+//      kell e a sok sql = new SQL()?
+//      jelszó titkosítás
+//      elfelejtett jelszó? email a felhasználónak.
+
