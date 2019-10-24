@@ -14,88 +14,53 @@ if(is_post())
 
     //email
     if ($email == null) $errors['email'][] = 'Email is required!';
-    if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
+    else if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
     $sql = new SQL();
-    $emails[] = $sql->execute("SELECT `email` FROM users");
-    $noemails = true;
-    if(count($emails) != 0) 
-    {
-        foreach ($emails as $value)
-        {
-            if($value == $email)
-            $noemails = false;
-        }
-           
-        if(!$noemails)
-        $errors['email'][] = 'Email already taken!';
+    $emails = $sql->execute("SELECT `email` FROM users");
+    foreach($emails as $row) {
+        if($row['email'] == $email)
+            $errors['email'][] = 'Email is already taken!';
     }
-   
 
     //userName 
     if($userName == null) $errors['userName'][] = 'User name is required!';
-    if(strlen($userName) < 6) $errors['userName'][] = 'User name has to be at least 6 characters long!';
-    if(strlen($userName) > 25) $errors['userName'][] = 'User name can not be longer than 25 characters!';
+    else if(strlen($userName) < 6) $errors['userName'][] = 'User name has to be at least 6 characters long!';
+    else if(strlen($userName) > 25) $errors['userName'][] = 'User name can not be longer than 25 characters!';
     $sql = new SQL();
-    $userNames[] = $sql->execute("SELECT `user_name` FROM users");
-    $nousernames = true;
-    echo count($userNames);
-    echo 'starting username check';
-    if(count($userNames) != 0) 
-    {
-        echo 'usernames set';
-        foreach ($userNames as $value)
-           { 
-               echo 'foreach';
-               echo $value;
-               if($value == $userName)
-               { 
-                   $nousernames = false;
-                   echo 'duplicate username found';
-               }
-           }
-
+    $userNames = $sql->execute("SELECT `user_name` FROM users");
+    foreach($userNames as $row) {
+        if($row['user_name'] == $userName)
+            $errors['userName'][] = 'User name is already taken!';
     }
-    if(!$nousernames)
-        $errors['userName'][] = 'User name already taken!';
-
+    
     //full name
     if($fullName == null) $errors['fullName'][] = 'Full name is required!';
-    if(strlen($fullName) < 4) $errors['fullName'][] = 'full name is too short!';
-    if(strlen($fullName) > 255) $errors['fullName'][] = 'full name is too long!';
+    else if(strlen($fullName) < 4) $errors['fullName'][] = 'full name is too short!';
+    else if(strlen($fullName) > 255) $errors['fullName'][] = 'full name is too long!';
 
     //age
     if($age == null) $errors['age'][] = 'Age is required!';
-    if($age < 18) $errors['age'][] = 'You have to be at least 18 years old! Ask your parents...';
-    if($age > date("Y")) $errors['age'][] = 'You have to be alive to use this side dude...';
+    else if($age < 18) $errors['age'][] = 'You have to be at least 18 years old! Ask your parents...';
+    else if($age > date("Y")) $errors['age'][] = 'You have to be alive to use this side dude...';
 
     //password
     if($password == null) $errors['password'][] = 'Password is required!';
-    if(strlen($password) < 8) $errors['password'][] = 'Password is too short!';
-    if(strlen($password) > 50) $errors['password'][] = 'Password is too long!';
-    if(!(preg_match("*[A-Z]*",$password))) $errors['password'][] = 'Password has to contain at least one upper case letter!';
-    if(!(preg_match("*[0-9]*",$password))) $errors['password'][] = 'Password has to contain at least one number!';
-
+    else {
+        if(strlen($password) < 8) $errors['password'][] = 'Password is too short!';
+        else if(strlen($password) > 50) $errors['password'][] = 'Password is too long!';
+        if(!(preg_match("*[A-Z]*",$password))) $errors['password'][] = 'Password has to contain at least one upper case letter!';
+        if(!(preg_match("*[0-9]*",$password))) $errors['password'][] = 'Password has to contain at least one number!';
+    }
     //cpassword
     if($cpassword != $password) {$errors['cpassword'][] = 'Passwords does not match!'; $errors['password'][] = 'Passwords does not match!';}
 
+    //Insert into database
     if(count($errors) == 0)
-        {
-            echo 'Connection';
-            $id = GenerateID();
-            $shippingid = GenerateID();
-
-            $sql = new SQL();
-            $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `age`) 
-            VALUES(?,?,?,?,?,?,?,?,?)",$id,$userName,$fullName,$email,$password,0,$shippingid,0,$age);
-            
-            /*$db = db_connect();
-            $sql = $db->prepare("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `age`) 
-            VALUES(?,?,?,?,?,?,?,?,?)");          
-            $sql->bind_param("sssssssii", $id,$userName,$fullName,$email,$password,'user',$shippingid,0,$age);   
-            $sql->execute();
-            $sql->close();
-            db_close(); */
-        }
+    {
+        $sql = new SQL();
+        $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `age`) 
+        VALUES(?,?,?,?,?,?,?,?,?)",GenerateID(),$userName,$fullName,$email,$password,0,GenerateID(),0,$age);           
+    }
 }
 ?>
 
@@ -114,11 +79,11 @@ if(is_post())
 <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
 <label for="password"> Password </label>
-<input type ="password" name ="password"> <br>
+<input type ="password" name ="password" value ="Proba1234"> <br>
 <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
 <label for="cpassword"> Confirm Password </label>
-<input type ="password" name ="cpassword"> <br>
+<input type ="password" name ="cpassword" value ="Proba1234"> <br>
 <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
 <label for="age"> Age </label>
