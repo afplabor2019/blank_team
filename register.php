@@ -3,19 +3,18 @@
 $errors =[];
 if(is_post())
 {
+    $sql = new SQL();
     $email = $_POST['email'];
     $userName = $_POST['userName'];
     $fullName = $_POST['fullName'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $age = $_POST['age'];
-
+    $birthDate = $_POST['bday'];
     //VERIFICATION
 
     //email
     if ($email == null) $errors['email'][] = 'Email is required!';
     else if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
-    $sql = new SQL();
     $emails = $sql->execute("SELECT `email` FROM users");
     foreach($emails as $row) 
         if($row['email'] == $email)
@@ -25,22 +24,18 @@ if(is_post())
     if($userName == null) $errors['userName'][] = 'User name is required!';
     else if(strlen($userName) < 6) $errors['userName'][] = 'User name has to be at least 6 characters long!';
     else if(strlen($userName) > 25) $errors['userName'][] = 'User name can not be longer than 25 characters!';
-    $sql = new SQL();
     $userNames = $sql->execute("SELECT `user_name` FROM users");
-    foreach($userNames as $row) {
+    foreach($userNames as $row)
         if($row['user_name'] == $userName)
             $errors['userName'][] = 'User name is already taken!';
-    }
     
     //full name
     if($fullName == null) $errors['fullName'][] = 'Full name is required!';
     else if(strlen($fullName) < 4) $errors['fullName'][] = 'full name is too short!';
     else if(strlen($fullName) > 255) $errors['fullName'][] = 'full name is too long!';
 
-    //age
-    if($age == null) $errors['age'][] = 'Age is required!';
-    else if($age < 18) $errors['age'][] = 'You have to be at least 18 years old! Ask your parents...';
-    else if($age > date("Y")) $errors['age'][] = 'You have to be alive to use this side dude...';
+    //birth date
+    if($birthDate == null) $errors['bdate'][] = 'Birth date is required!';
 
     //password
     if($password == null) $errors['password'][] = 'Password is required!';
@@ -56,9 +51,8 @@ if(is_post())
     //Insert into database
     if(count($errors) == 0)
     {
-        $sql = new SQL();
-        $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `age`) 
-        VALUES(?,?,?,?,?,?,?,?,?)",GenerateID(),$userName,$fullName,$email,$password,0,GenerateID(),0,$age);           
+        $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `birth_date`,`age`) 
+        VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)))",GenerateID(),$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,GenerateID(),0,$birthDate,$birthDate);           
     }
 }
 ?>
@@ -85,9 +79,9 @@ if(is_post())
     <input type ="password" name ="cpassword"> <br>
     <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="age"> Age </label>
-    <input type ="number" name ="age" value = "<?php echo isset($age) ? $age : ""; ?>"> <br>
-    <?php if(isset($errors['age'])) foreach ($errors['age'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <label for="bday"> Birth Date </label>
+    <input type="date" name="bday" min ="1900-01-01" max=<?php echo date("Y-m-d") ?> value = "<?php echo isset($birthDate) ? $birthDate : ''; ?>">
+    <?php if(isset($errors['bdate'])) foreach ($errors['bdate'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
 
     <button class ="button" type="submit">Register</button>
 </form>
@@ -97,11 +91,9 @@ if(is_post())
 
 <?php 
 
-//TODO: születési dátum bekérése, abból számítani kort. - születési évre valami minimum. lel.
+//TODO: 
 //      validálások ellenőrzése, változtatása.
-//      adatbázisok véglegesítése.
+//      user adatbázis véglegesítése.
 //      email-lel is be lehessen lépni felhasználónév helyett.
-//      kell e a sok sql = new SQL()?
-//      jelszó titkosítás
 //      elfelejtett jelszó? email a felhasználónak.
 

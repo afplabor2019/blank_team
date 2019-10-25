@@ -24,12 +24,10 @@ if(is_post())
     if(count($errors) == 0)
     {
         $dbpassword = $sql->execute("SELECT `password` FROM `users` WHERE `user_name` = ?",$userName);
-        foreach($dbpassword as $row) {
-            if($row['password'] == $password)  
-                header("Location: ".url('home'));   
-            else  
-                $errors['password'][] = 'Invalid password!';            
-        }
+        if(password_verify($password,$dbpassword[0]['password']))  
+            header("Location: ".url('home'));   
+        else  
+            $errors['password'][] = 'Invalid password!';            
     }
 }
 ?>
@@ -51,4 +49,3 @@ if(is_post())
 
 
 <a href="<?php echo url('register')?>"> Register </a> <br>
-<a href="<?php echo url('home')?>"> Home </a>

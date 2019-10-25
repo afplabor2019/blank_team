@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nagyon kreatív webshop</title>
+    <title>WSNAME</title>
     <link rel="stylesheet" href="<?php echo asset("app.css"); ?>">
 </head>
 <body>
@@ -17,8 +17,8 @@
                             <a>Home</a>
                             <a>Products</a>
                             <a>Search</a>
-                            <a>Login</a>
-                            <a>Register</a>
+                            <a href ="<?php echo url('login') ?>">Login</a>
+                            <a href ="<?php echo url('register') ?>">Register</a>
                             <a>Shopping cart</a>
                             <!--<a><img src="images/cart.png" alt="Shooping cart" width="50" height="50"></a>-->
                         </li>

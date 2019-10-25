@@ -1,5 +1,6 @@
 <?php
 //define('DEBUG', true);              //In production?
+define('WSNAME','Nagyon kreatív webshop');
 define('DOMAIN', 'http://localhost:8080/blank_team/');
 define('LIB_PATH', 'lib/' );       
 
