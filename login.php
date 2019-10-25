@@ -13,17 +13,22 @@ if(is_post())
     else if(strlen($userName) < 6) $errors['userName'][] = 'User name is least 6 characters long!';
     else if(strlen($userName) > 25) $errors['userName'][] = 'User name is shorter than 25 characters!';
     $userFound = false;
+    $emailFound = false;
     $userNames = $sql->execute("SELECT `user_name` FROM users");
+    $emails = $sql->execute("SELECT `email` FROM `users`");
     foreach($userNames as $row) 
         if($row['user_name'] == $userName)  
-               $userFound = true;                      
-    if(!$userFound)
+               $userFound = true;
+    foreach($emails as $row) 
+        if($row['email'] == $userName)  
+            $emailFound = true;                      
+    if(!$userFound && !$emailFound)
         $errors['userName'][] = 'User name does not exist!';
 
     //Password
     if(count($errors) == 0)
     {
-        $dbpassword = $sql->execute("SELECT `password` FROM `users` WHERE `user_name` = ?",$userName);
+        $dbpassword = $sql->execute("SELECT `password` FROM `users` WHERE `user_name` = ? OR `email` = ?",$userName,$userName);
         if(password_verify($password,$dbpassword[0]['password']))  
             header("Location: ".url('home'));   
         else  

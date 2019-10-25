@@ -10,6 +10,7 @@ if(is_post())
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $birthDate = $_POST['bday'];
+
     //VERIFICATION
 
     //email
@@ -22,13 +23,16 @@ if(is_post())
 
     //userName 
     if($userName == null) $errors['userName'][] = 'User name is required!';
-    else if(strlen($userName) < 6) $errors['userName'][] = 'User name has to be at least 6 characters long!';
-    else if(strlen($userName) > 25) $errors['userName'][] = 'User name can not be longer than 25 characters!';
-    $userNames = $sql->execute("SELECT `user_name` FROM users");
-    foreach($userNames as $row)
-        if($row['user_name'] == $userName)
-            $errors['userName'][] = 'User name is already taken!';
-    
+    else 
+    {
+        if(strpos($userName,"@")) $errors['userName'][] = 'User name can not contain "@" character!';
+        if(strlen($userName) < 6) $errors['userName'][] = 'User name has to be at least 6 characters long!';
+        else if(strlen($userName) > 25) $errors['userName'][] = 'User name can not be longer than 25 characters!';
+        $userNames = $sql->execute("SELECT `user_name` FROM users");
+        foreach($userNames as $row)
+            if($row['user_name'] == $userName)
+                $errors['userName'][] = 'User name is already taken!';
+    }
     //full name
     if($fullName == null) $errors['fullName'][] = 'Full name is required!';
     else if(strlen($fullName) < 4) $errors['fullName'][] = 'full name is too short!';
@@ -51,8 +55,8 @@ if(is_post())
     //Insert into database
     if(count($errors) == 0)
     {
-        $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `birth_date`,`age`) 
-        VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)))",GenerateID(),$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,GenerateID(),0,$birthDate,$birthDate);           
+        $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `birth_date`,`age`,`registration_date`) 
+        VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)),?)",GenerateID(),$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,GenerateID(),0,$birthDate,$birthDate,date('y-m-d-h-m-s'));           
     }
 }
 ?>
@@ -93,7 +97,5 @@ if(is_post())
 
 //TODO: 
 //      validálások ellenőrzése, változtatása.
-//      user adatbázis véglegesítése.
-//      email-lel is be lehessen lépni felhasználónév helyett.
 //      elfelejtett jelszó? email a felhasználónak.
 
