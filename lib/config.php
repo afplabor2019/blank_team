@@ -1,5 +1,7 @@
 <?php
 //define('DEBUG', true);              //In production?
+//Webshop email: coolestwebshop@gmail.com 
+//        pw:CoolestPasswordEver
 define('WSNAME','Nagyon kreatív webshop');
 define('DOMAIN', 'http://localhost:8080/blank_team/');
 define('LIB_PATH', 'lib/' );       

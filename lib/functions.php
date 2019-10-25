@@ -26,6 +26,15 @@ function GenerateID($digits = 5)
     return $result; 
 }
 
+function GenerateRestorationCode($digits = 8)
+{  
+    $result = "";
+    for ($i = 0; $i < $digits; $i++){
+        $result .= rand(0,9);
+    }
+    return $result; 
+}
+
 function db_connect()
 {
     $conn = new mysqli(DBH,DBU,DBP,DBN);
