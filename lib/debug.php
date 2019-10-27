@@ -6,7 +6,7 @@
  */
 
 
-//define('DEBUG', true); //Change this to false on release!
+define('DEBUG', true); //Change this to false on release!
 
 class Debug
 {

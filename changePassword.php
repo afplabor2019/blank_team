@@ -12,8 +12,8 @@ $cnpassword = $_POST['cnpassword'];
         else if(strlen($npassword) > 50) $errors['npassword'][] = 'Password is too long!';
         if(!(preg_match("*[A-Z]*",$npassword))) $errors['npassword'][] = 'Password has to contain at least one upper case letter!';
         if(!(preg_match("*[0-9]*",$npassword))) $errors['npassword'][] = 'Password has to contain at least one number!';
-        $oldPassword['password'][0] = $sql->execute("SELECT `password` FROM `users` WHERE email = ?",$_SESSION['email']);
-        if($oldPassword == $npassword) $errors['npassword'][] = 'Old password can not be the new pasword.';
+        $oldPassword = $sql->execute("SELECT `password` FROM `users` WHERE `email` = ?",$_SESSION['email']);
+        if(password_verify($npassword,$oldPassword[0]['password'])) $errors['npassword'][] = 'Old password can not be the new pasword.'; 
     }
     if($cnpassword != $npassword) {$errors['cnpassword'][] = 'Passwords does not match!'; $errors['npassword'][] = 'Passwords does not match!';}
     //Change password

@@ -1,7 +1,7 @@
 <?php
-//define('DEBUG', true);              //In production?
 //Webshop email: coolestwebshop@gmail.com 
 //        pw:CoolestPasswordEver
+// email küldés local-hoston: https://www.youtube.com/watch?v=qqm64zHlFUg
 define('WSNAME','Nagyon kreatív webshop');
 define('DOMAIN', 'http://localhost:8080/blank_team/');
 define('LIB_PATH', 'lib/' );       

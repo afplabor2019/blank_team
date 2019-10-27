@@ -18,10 +18,10 @@ function asset($asset) {
 
 function GenerateID($digits = 5)
 {
-    $chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ_-"; //base64, but '=' and '/' is problematic in URL
+    $chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ"; //base64, but '=' and '/' is problematic in URL - kitöröltem a - meg a _ karaktert mert csúnya <3
     $result = "";
     for ($i = 0; $i < $digits; $i++){
-        $result .= $chars[rand(0,strlen($chars))];
+        $result .= $chars[rand(0,strlen($chars)-1)];
     }
     return $result; 
 }
