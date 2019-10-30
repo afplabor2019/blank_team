@@ -18,10 +18,10 @@ class ID
      * @return string
      */
     static function GenerateID($digits = 5){
-        $chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ_-"; //base64, but '=' and '/' is problematic in URL
+        $chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ";
         $result = "";
         for ($i = 0; $i < $digits; $i++){
-            $result .= $chars[rand(0,strlen($chars))];
+            $result .= $chars[rand(0,strlen($chars)-1)];
         }
         return $result;
     }
