@@ -94,9 +94,7 @@ if(is_post())
 </script>
  <!-- EZ a div a captcha -->
 <div id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
 <button class ="button" type="submit">Register</button>
 </form>
 <a href ="<?php echo url('login')?>">Log In</a>

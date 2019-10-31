@@ -3,8 +3,8 @@
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+    font: inherit; 
+    vertical-align: baseline; 
     box-sizing: border-box;
 }
 
@@ -14,7 +14,6 @@ html, body {
     background-color: #f2f2f2;
 }
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -22,6 +21,9 @@ body {
 
 .container {
     margin: auto;
+    padding-top : 15%;
+    margin-top : 0%;
+    margin-left : 20%;
 }
 
 .header {
@@ -49,6 +51,7 @@ body {
     width: 60%;
     font-size: 16px;
     line-height: 25px;
+
 }
 
 .header a {
@@ -96,4 +99,6 @@ header nav ul li a.active {
     width: 100%;
     background: black;
     color: #d9d9d9;
+    
 }
+
