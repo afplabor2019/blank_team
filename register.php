@@ -52,19 +52,10 @@ if(is_post())
     //cpassword
     if($cpassword != $password) {$errors['cpassword'][] = 'Passwords does not match!'; $errors['password'][] = 'Passwords does not match!';}
 
-    ?>
-<script src="https://www.google.com/recaptcha/api.js?render=6Le4gMAUAAAAAMnUeowrtvf_zWAj0rfAP3Js29F5"></script>
-<script>
-  grecaptcha.ready(function() {
-      grecaptcha.execute('6Le4gMAUAAAAAMnUeowrtvf_zWAj0rfAP3Js29F5', {action: 'homepage'}).then(function(token) {
-        // pass the token to the backend script for verification
-      });
-  });
-</script>
-  <?php
-
+    //recaptcha
+    if($_POST["g-recaptcha-response"] == '') $errors['captcha'][] = "Please verify that you are not a robot.";
     //Insert into database
-    if(count($errors) == 0)
+    if(count($errors) == 0 )
     {
         $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `birth_date`,`age`,`registration_date`) 
         VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)),?)",GenerateID(),$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,GenerateID(),0,$birthDate,$birthDate,date('y-m-d-h-m-s'));           
@@ -98,7 +89,15 @@ if(is_post())
     <input type="date" name="bday" min ="1900-01-01" max=<?php echo date("Y-m-d") ?> value = "<?php echo isset($birthDate) ? $birthDate : ''; ?>">
     <?php if(isset($errors['bdate'])) foreach ($errors['bdate'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
 
-    <button class ="button" type="submit">Register</button>
+<script type="text/javascript">
+    var onloadCallback = function() { grecaptcha.render('html_element',{'sitekey' : '6LeAgcAUAAAAALIya8oqHrmjIajlp46W3l_ejOuH'});};
+</script>
+ <!-- EZ a div a captcha -->
+<div id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
+<button class ="button" type="submit">Register</button>
 </form>
 <a href ="<?php echo url('login')?>">Log In</a>
 
