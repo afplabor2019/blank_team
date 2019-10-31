@@ -52,6 +52,17 @@ if(is_post())
     //cpassword
     if($cpassword != $password) {$errors['cpassword'][] = 'Passwords does not match!'; $errors['password'][] = 'Passwords does not match!';}
 
+    ?>
+<script src="https://www.google.com/recaptcha/api.js?render=6Le4gMAUAAAAAMnUeowrtvf_zWAj0rfAP3Js29F5"></script>
+<script>
+  grecaptcha.ready(function() {
+      grecaptcha.execute('6Le4gMAUAAAAAMnUeowrtvf_zWAj0rfAP3Js29F5', {action: 'homepage'}).then(function(token) {
+        // pass the token to the backend script for verification
+      });
+  });
+</script>
+  <?php
+
     //Insert into database
     if(count($errors) == 0)
     {
@@ -61,7 +72,7 @@ if(is_post())
 }
 ?>
 
-<!--WRITE BACK-->
+<!--HTML-->
 <form action ="<?php echo url('register'); ?>" method ="POST" >
     <label for="email"> Email </label>
     <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
@@ -89,13 +100,6 @@ if(is_post())
 
     <button class ="button" type="submit">Register</button>
 </form>
+<a href ="<?php echo url('login')?>">Log In</a>
 
-<a href ="<?php echo url('login')?>">Log In </a>
-
-
-<?php 
-
-//TODO: 
-//      validálások ellenőrzése, változtatása.
-//      elfelejtett jelszó? email a felhasználónak.
 
