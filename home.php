@@ -1,22 +1,24 @@
 <?php require_once "pages/head.php"; ?> 
 <div class="page-home">
-    <h1>Üdvözlünk webshopunkon!</h1>
-    <p>
-        Legújabb termékeink
-    </p>
-    <div></div>
-    <div>
+    <div class="main-column">
+        <h1>Üdvözlünk webshopunkon!</h1>
         <p>
-            Óriási reklám helye
+            Legújabb termékeink
         </p>
+        <div></div>
+        <div>
+            <p>
+                Óriási reklám helye
+            </p>
+        </div>
+        <p>
+            Akciós termékek
+        </p>
+        <div></div>
+        <p>
+            Még valaminek a helye
+        <p>
+        <div></div>
     </div>
-    <p>
-        Akciós termékek
-    </p>
-    <div></div>
-    <p>
-        Még valaminek a helye
-    <p>
-    <div></div>
 </div> 
 <?php require_once "pages/footer.php"; ?>

@@ -11,7 +11,9 @@
 html, body {
     width: 100%;
     height: 100%;
+    background-color: #f2f2f2;
 }
+
 
 body {
     display: flex;
@@ -20,7 +22,6 @@ body {
 
 .container {
     margin: auto;
-    width: 50%;
 }
 
 .header {
@@ -85,8 +86,7 @@ header nav ul li a.active {
     .header-right {
       float: none;
     }
-  }
-
+}
 
 .footer {
     flex-shrink: 0;
