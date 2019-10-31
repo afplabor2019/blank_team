@@ -1,30 +1,22 @@
 <?php require_once "pages/head.php"; ?> 
 <div class="page-home">
     <h1>Üdvözlünk webshopunkon!</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-     Unde vitae sed obcaecati! Adipisci sed totam alias aperiam
-    beatae eius maxime, illo laboriosam amet excepturi culpa
-    natus laborum voluptatibus illum necessitatibus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-     Unde vitae sed obcaecati! Adipisci sed totam alias aperiam
-    beatae eius maxime, illo laboriosam amet excepturi culpa
-    natus laborum voluptatibus illum necessitatibus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-     Unde vitae sed obcaecati! Adipisci sed totam alias aperiam
-    beatae eius maxime, illo laboriosam amet excepturi culpa
-    natus laborum voluptatibus illum necessitatibus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-     Unde vitae sed obcaecati! Adipisci sed totam alias aperiam
-    beatae eius maxime, illo laboriosam amet excepturi culpa
-    natus laborum voluptatibus illum necessitatibus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-     Unde vitae sed obcaecati! Adipisci sed totam alias aperiam
-    beatae eius maxime, illo laboriosam amet excepturi culpa
-    natus laborum voluptatibus illum necessitatibus!</p>
+    <p>
+        Legújabb termékeink
+    </p>
+    <div></div>
+    <div>
+        <p>
+            Óriási reklám helye
+        </p>
+    </div>
+    <p>
+        Akciós termékek
+    </p>
+    <div></div>
+    <p>
+        Még valaminek a helye
+    <p>
+    <div></div>
 </div> 
-
-<div class="form-group"> 
-    <button class="btn" type="submit">Hasznos gomb</button>
-    <button class="btn" type="submit">Haszontalan gomb</button>
-</div>
 <?php require_once "pages/footer.php"; ?>
