@@ -1,6 +1,6 @@
 </main>
 <footer>
-    <div class="container">
+    <div class="footer">
         <p>&copy; 2019. Blank Team. All rights reserved. </p>
         <div>
             </p>Vásárlási információk</p>
