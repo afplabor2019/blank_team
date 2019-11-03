@@ -20,6 +20,7 @@ body {
 }
 
 .container {
+    flex: 1 0 auto;
     padding-top : 10%;
     margin-top : 0%;
     margin-left : 20%;
@@ -93,14 +94,18 @@ header nav ul li a.active {
     }
 }
 
+p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .footer {
-    flex-shrink: 0;
+    bottom: 0;
+    position: fixed;
     margin-top: 0px;
     padding-left: 20%;
-    padding: 20px 20%;
     width: 100%;
     background: black;
     color: #d9d9d9;
-    
 }
 
