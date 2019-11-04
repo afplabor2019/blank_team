@@ -22,7 +22,7 @@ body {
 .container {
     flex: 1 0 auto;
     padding-top : 10%;
-    margin-top : 1%;
+    margin-top : 3%;
     margin-left : 20%;
     background-color: white;
     width: 60%;
@@ -45,7 +45,11 @@ body {
     font-size: 20px;
     line-height: 25px;
     padding-left: 20%;
+    padding-right: 20%;
+    float: left;
+    width: 100%;
 }
+
 
 .lower-row {
     overflow: hidden;
@@ -98,10 +102,17 @@ body {
     border-radius: 4px;
 }
 
-.header a.logo {
+.header a.mainlogo {
     font-size: 36px;
     font-weight: bold;
     background: red;
+}
+
+.header a.img-logo {
+    padding: 60px;
+    align-content: center;
+    margin: auto;
+    width: 50%;
 }
 
 header nav ul li {

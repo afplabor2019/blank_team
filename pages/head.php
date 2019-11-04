@@ -15,7 +15,8 @@
                     <nav>
                         <ul>
                             <li>
-                                <a class="logo" href ="<?php echo url('home') ?>">Nagyon kreatív webshop</a>
+                                <a class="mainlogo" href ="<?php echo url('home') ?>">Nagyon kreatív webshop</a>
+                            </li>
                             <li>
                                 <div class="search-container">
                                 <form action="<?php echo url('products'); ?>" method="POST">
@@ -25,10 +26,10 @@
                                 </div>
                             </li>
                             <li>
-                                <a href ="<?php echo url('login') ?>">Login</a>
+                                <a class="img-logo" href ="<?php echo url('login') ?>"><img class="icon" src="images/user.png" alt="User" height="60" width="60"></a>
                             </li>
                             <li>
-                                <a href ="<?php echo url('cart') ?>">Shopping cart</a>
+                                <a class="img-logo" href ="<?php echo url('cart') ?>"><img class="icon" src="images/cart.png" alt="Shopping cart" height="60" width="60"></a>
                             </li>
                         </ul>
                     </nav>
