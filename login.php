@@ -57,13 +57,13 @@ if(is_post())
 
 
 <div class="login-div">
-<h1 class="login-h"> Log In </h1>
-    <form action ="<?php echo url('login'); ?>" method ="POST">
-        <label for="userName"> User Name </label><br>
+<h1 class="login-h"> Log In </h1><br>
+    <form class="login-form" action ="<?php echo url('login'); ?>" method ="POST">
+        <label class="login-label" for="userName"> User Name </label><br>
         <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : '' ?>"> <br>
         <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-        <label for="password"> Password </label><br>
+        <label class="login-label" for="password"> Password </label><br>
         <input type ="password" name ="password"> <br>
         <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
         
