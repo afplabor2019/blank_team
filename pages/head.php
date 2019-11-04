@@ -26,10 +26,10 @@
                                 </div>
                             </li>
                             <li>
-                                <a class="img-logo" href ="<?php echo url('login') ?>"><img class="icon" src="images/user.png" alt="User" height="60" width="60"></a>
+                                <!--<a class="img-logo" href ="<?php echo url('login') ?>"><img class="icon" src="images/user.png" alt="User" height="60" width="60"></a> -->
                             </li>
                             <li>
-                                <a class="img-logo" href ="<?php echo url('cart') ?>"><img class="icon" src="images/cart.png" alt="Shopping cart" height="60" width="60"></a>
+                                <!--<a class="img-logo" href ="<?php echo url('cart') ?>"><img class="icon" src="images/cart.png" alt="Shopping cart" height="60" width="60"></a> -->
                             </li>
                         </ul>
                     </nav>
@@ -49,6 +49,12 @@
                             <li>
                                 <a href ="<?php echo url('register') ?>">Register</a>
                             </li>
+                            <?php 
+                            if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) : ?>
+                            <li>
+                                <a href ="<?php echo url('addProduct') ?>">Add Product</a>
+                            </li>   
+                            <?php endif;?>
                         </ul>
                     </nav>
                 </div>

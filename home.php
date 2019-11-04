@@ -1,4 +1,4 @@
-<?php // require_once "pages/head.php";
+<?php require_once "pages/head.php";
 ?> 
 <div class="page-home">
     <div class="main-column">
