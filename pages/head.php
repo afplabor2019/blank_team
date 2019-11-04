@@ -26,10 +26,10 @@
                                 </div>
                             </li>
                             <li>
-                                <!--<a class="img-logo" href ="<?php echo url('login') ?>"><img class="icon" src="images/user.png" alt="User" height="60" width="60"></a> -->
+                                <a href ="<?php echo url('login') ?>">Login</a>
                             </li>
                             <li>
-                                <!--<a class="img-logo" href ="<?php echo url('cart') ?>"><img class="icon" src="images/cart.png" alt="Shopping cart" height="60" width="60"></a> -->
+                                <a href ="<?php echo url('cart') ?>">Shopping cart</a>
                             </li>
                         </ul>
                     </nav>

@@ -59,15 +59,15 @@ if(is_post())
 <div class="login-div">
 <h1 class="login-h"> Log In </h1>
     <form action ="<?php echo url('login'); ?>" method ="POST">
-        <label for="userName"> User Name </label>
+        <label for="userName"> User Name </label><br>
         <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : '' ?>"> <br>
         <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-        <label for="password"> Password </label>
+        <label for="password"> Password </label><br>
         <input type ="password" name ="password"> <br>
         <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
         
-        <button class ="button" type="submit" > Log In </button>
+        <button class ="login-button" style="vertical-align:middle" type="submit" ><Span>Log In</span></button>
     </form>
 
 
