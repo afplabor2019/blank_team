@@ -56,8 +56,8 @@ if(is_post())
 ?>
 
 
-
-<h1> Log In </h1>
+<div class="login-div">
+<h1 class="login-h"> Log In </h1>
     <form action ="<?php echo url('login'); ?>" method ="POST">
         <label for="userName"> User Name </label>
         <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : '' ?>"> <br>
@@ -73,5 +73,6 @@ if(is_post())
 
 <a href="<?php echo url('register')?>"> Register </a> <br>
 <a href = "<?php echo url('forgottenPassword') ?>"> Forgot your password? </a>
+</div>
 </div>
 <?php require_once "pages/footer.php"; ?>
