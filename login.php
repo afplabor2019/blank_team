@@ -31,8 +31,24 @@ if(is_post())
     if(count($errors) == 0)
     {
         $dbpassword = $sql->execute("SELECT `password` FROM `users` WHERE `user_name` = ? OR `email` = ?",$userName,$userName);
-        if(password_verify($password,$dbpassword[0]['password']))  
-            header("Location: ".url('home'));   
+        if(password_verify($password,$dbpassword[0]['password'])) //Sikeres bejelentkezés
+        {
+            require_once "lib/userClass.php";
+            $user = $sql->execute("SELECT * FROM `users` WHERE `user_name` = ? OR `email` = ?",$userName,$userName);
+            $_SESSION['user_id'] = $user[0]['id'];
+            $_SESSION['user_user_name'] = $user[0]['user_name'];
+            $_SESSION['user_email'] = $user[0]['email'];
+            $_SESSION['user_fullname'] = $user[0]['fullname'];
+            $_SESSION['user_birth_date'] = $user[0]['birth_date'];
+            $_SESSION['user_age'] = $user[0]['age'];
+            $_SESSION['user_role'] = $user[0]['role'];
+            $_SESSION['user_registration_date'] = $user[0]['registration_date'];
+            $_SESSION['user_shippingID'] = $user[0]['shipping_id'];
+            $_SESSION['user_del'] = $user[0]['del'];
+
+            header("Location: ".url('home'));
+        }  
+
         else  
             $errors['password'][] = 'Invalid password!';            
     }
