@@ -16,14 +16,19 @@
                         <ul>
                             <li>
                                 <a class="logo" href ="<?php echo url('home') ?>">Nagyon kreatív webshop</a>
-                            <li>    
-                                <a href ="<?php echo url('') ?>">Search</a>
+                            <li>
+                                <div class="search-container">
+                                <form action="<?php echo url('products'); ?>" method="POST">
+                                <input type="text" placeholder ="Search..." name="search">
+                                <button type="submit"><img class="icon" src="images/search.png" alt="Search" height="17" width="17"></button>
+                                </form>
+                                </div>
                             </li>
                             <li>
                                 <a href ="<?php echo url('login') ?>">Login</a>
                             </li>
                             <li>
-                                <a href ="<?php echo url('') ?>">Shopping cart</a>
+                                <a href ="<?php echo url('cart') ?>">Shopping cart</a>
                             </li>
                         </ul>
                     </nav>
@@ -32,11 +37,13 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href ="<?php echo url('login') ?>">Home</a>
+                                <a href ="<?php echo url('home') ?>">Home</a>
                             </li>
-                                <a href ="<?php echo url('home') ?>">Products</a>
                             <li>
-                                <a href ="<?php echo url('') ?>">Platforms</a>
+                                <a href ="<?php echo url('products') ?>">Products</a>
+                            </li>
+                            <li>
+                                <a href ="<?php echo url('products') ?>">Platforms</a>
                             </li>
                             <li>
                                 <a href ="<?php echo url('register') ?>">Register</a>

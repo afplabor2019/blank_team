@@ -2,7 +2,7 @@
 <div class="page-home">
     <div class="main-column">
         <h1>Üdvözlünk webshopunkon!</h1>
-        <img src="menogif.gif" alt="So 2004">
+        <!--<img src="menogif.gif" alt="So 2004">-->
         <p>
             Legújabb termékeink
         </p>

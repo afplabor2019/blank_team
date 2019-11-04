@@ -1,3 +1,5 @@
+<?php require_once "pages/head.php"; ?> 
+<div class="register">
 <h1>Register</h1>
 <?php 
 $errors =[];
@@ -98,5 +100,6 @@ if(is_post())
 <button class ="button" type="submit">Register</button>
 </form>
 <a href ="<?php echo url('login')?>">Log In</a>
-
+</div>
+<?php require_once "pages/footer.php"; ?>
 

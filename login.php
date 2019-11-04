@@ -1,3 +1,5 @@
+<?php require_once "pages/head.php"; ?> 
+<div class="login">
 <?php
 $errors = [];
 if(is_post())
@@ -55,3 +57,5 @@ if(is_post())
 
 <a href="<?php echo url('register')?>"> Register </a> <br>
 <a href = "<?php echo url('forgottenPassword') ?>"> Forgot your password? </a>
+</div>
+<?php require_once "pages/footer.php"; ?>
