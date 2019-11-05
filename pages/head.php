@@ -46,9 +46,6 @@
                             <li>
                                 <a href ="<?php echo url('products') ?>">Platforms</a>
                             </li>
-                            <li>
-                                <a href ="<?php echo url('register') ?>">Register</a>
-                            </li>
                             <?php 
                             if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) : ?>
                             <li>
