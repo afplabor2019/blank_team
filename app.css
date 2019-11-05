@@ -30,6 +30,10 @@ body {
     padding-right: 2.5%;
 }
 
+input[type=text]:focus {
+    border: 3px solid #555;
+  }
+  
 .header {
     position: fixed;
     top: 0;
@@ -47,7 +51,6 @@ body {
     padding-left: 20%;
     padding-right: 20%;
 }
-
 
 .lower-row {
     overflow: hidden;
@@ -141,9 +144,6 @@ header nav ul li a.active {
         margin: 0;
         padding: 14px;
     }
-    .upper-row  input[type=text] {
-        border: 1px solid #ccc;  
-      }
 }
 
 p {
@@ -174,10 +174,6 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #45a049;
-  }
-
-input[type=text]:focus {
-    border: 3px solid #555;
   }
 
   input[type=password]:focus {
