@@ -66,7 +66,7 @@ if(is_post())
 ?>
 
 <!--HTML-->
-<form action ="<?php echo url('register'); ?>" method ="POST" >
+<form action ="<?php echo url('register'); ?>" method ="POST" autocomplete="off">
     <label for="email"> Email </label>
     <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
     <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
