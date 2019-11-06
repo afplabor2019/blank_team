@@ -58,7 +58,7 @@ if(is_post())
 
 <div class="login-div">
 <h1 class="login-h"> Log In </h1><br>
-    <form class="login-form" action ="<?php echo url('login'); ?>" method ="POST" autocomplete="off">
+    <form class="login-form" action ="<?php echo url('login'); ?>" method ="POST">
         <label class="login-label" for="userName"> User Name </label><br>
         <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : '' ?>"> <br>
         <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
