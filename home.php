@@ -11,9 +11,17 @@
         </div>
         <div class="home-ad-image">
             <img src="images/ds-home2.jpg" alt="Death Stranding" class="home-image">
-            <div class="home-img-button">
-            <div class="text">Vásárlás</div>
-            </div>
+                <div class="home-img-button">
+                    <div class="home-btn-text">Vásárlás</div>
+                    <div class="home-text-button">
+                    <div class="home-img-textarea">
+                            Éld át Hideo Kojima (a Metal Gear Solid sorozat alkotója) legújabb akciójátékát,
+                            amely a közeli jövőben játszódik, és amelyben a szétszakadt társadalmat kell újra
+                            egyesítened. Ez egy új, filmszerű kaland, amely megreformálja a műfajt!
+                    </div>
+                    </div>
+                </div>
+                
         </div>
         </section>
         <div></div>
