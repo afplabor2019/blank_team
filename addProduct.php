@@ -13,30 +13,7 @@ if(is_post())
     $description = $_POST['description'];
 
     //VALIDATION
-    //name
-    if($name == null) $errors['name'][]= "Name is required!";
-
-    //publisher
-    if($publisher == null) $errors['publisher'][]= "Publisher is required!";
-
-    //type
-    if($type == null)  $errors['type'][]= "Type is required!";
-    if($type == "Select Type") $errors['type'][]= "Please select a type!";
-
-    //price
-    if($price == null)  $errors['price'][]= "Price is required!";
-
-    //platform
-    if($platform == null) $errors['platform'][]= "Platform is required!";
-    if($platform == "Select Platform") $errors['platform'][] = "Please select a platform!";
-
-    //release year
-    if($release_year == null)  $errors['release_year'][]= "Release year is required!";
-
-    //description
-    if(strlen($description) > 1000)  $errors['description'][]= "Description too long!";
-
-
+    
     //INSERT INTO DATABASE
     if(count($errors) == 0){
     $sql = new SQL();
@@ -46,7 +23,7 @@ if(is_post())
 ?>
 
 <!-- HTML -->
-<form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" >
+<form action ="<?php echo url('addProduct'); ?>" method ="POST" >
     <label for="name"> Name </label> <br>
     <input type ="text" name ="name" value = "<?php echo isset($name) ? $name : ""; ?>"> <br>
     <?php if(isset($errors['name'])) foreach ($errors['name'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
@@ -56,36 +33,15 @@ if(is_post())
     <?php if(isset($errors['publisher'])) foreach ($errors['publisher'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
     <label for="type"> Type </label> <br>
-    <select name ="type">
-        <option value="Select Type" selected>Select Type</option>
-        <option value="Strategy">Strategy</option>
-        <option value="Shooter">Shooter</option>
-        <option value="Moba">Moba</option>
-        <option value="Open world">Open world</option>
-    </select> <br>
+    <input type ="text" name ="type" value = "<?php echo isset($type) ? $type : ""; ?>"> <br>
     <?php if(isset($errors['type'])) foreach ($errors['type'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-
     <label for="price"> Price </label> <br>
-    <input type ="number" step="0.01" min ="0.0" name ="price" value = "<?php echo isset($price) ? $price : ""; ?>"> <br>
+    <input type ="text" name ="price" value = "<?php echo isset($price) ? $price : ""; ?>"> <br>
     <?php if(isset($errors['price'])) foreach ($errors['price'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
     <label for="platform"> Platform </label> <br>
-    <select name ="platform">
-        <option value="Select Platform" selected>Select Platform</option>
-        <option value="PC">PC</option>
-        <option value="Nintendo Switch">Nintendo Switch</option>
-        <option value="Nintendo Wii">Nintendo Wii</option>
-        <option value="Nintendo DS">Nintendo DS</option>
-        <option value="Nintendo GameCube">Nintendo GameCube</option>
-        <option value="Nintendo 64">Nintendo 64</option>
-        <option value="XBOX 360">XBOX 360</option>
-        <option value="XBOX One">XBOX One</option>
-        <option value="PS2">PS2</option>
-        <option value="PS3">PS3</option>
-        <option value="PS4">PS4</option>
-        <option value="PSP">PSP</option>
-    </select> <br>
+    <input type ="text" name ="platform" value = "<?php echo isset($platform) ? $platform : ""; ?>"> <br>
     <?php if(isset($errors['platform'])) foreach ($errors['platform'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
     <label for="release_year"> Release year </label> <br>
