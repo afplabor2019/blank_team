@@ -19,7 +19,7 @@
                             </li>
                             <li>
                                 <div class="search-container">
-                                <form action="<?php echo url('products'); ?>" method="POST">
+                                <form action="<?php echo url('products'); ?>" method="POST" autocomplete="off">
                                 <input class ="searchbar" type="text" placeholder ="Search..." name="search">
                                 <button type="submit"><img class="icon" src="images/search.png" alt="Search" height="17" width="17"></button>
                                 </form>
