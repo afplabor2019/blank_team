@@ -8,5 +8,6 @@ CREATE TABLE `products` (
 `platform` VARCHAR(100) NOT NULL,
 `release_year` INT(4),
 `description` TEXT NULL,
+`cover` TEXT NOT NULL,
 `del` TINYINT(1)
 );

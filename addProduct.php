@@ -3,7 +3,14 @@
 $errors = [];
 if(is_post())
 {
-
+    $allow = array("jpg", "jpeg", "png");
+    $dir = "images\""; //ezt kell normálissá csinálni
+    $cover = $_FILES['cover']['name'];
+    $extension = explode(".", $cover);
+    $extension = end($extension);
+    echo "$dir$cover.$extension";
+    echo "<img src =$dir$cover.$extension";
+    die();
     $name = $_POST['name'];
     $publisher = $_POST['publisher'];
     $type = $_POST['type'];
@@ -11,6 +18,7 @@ if(is_post())
     $platform = $_POST['platform'];
     $release_year = $_POST['release_year'];
     $description = $_POST['description'];
+    $cover = $_FILES['cover'];
 
     //VALIDATION
     //name
@@ -36,17 +44,24 @@ if(is_post())
     //description
     if(strlen($description) > 1000)  $errors['description'][]= "Description too long!";
 
+    //cover
+   
+    $dir = 'images/';
+   
+    if ((($_FILES["cover"]["type"] == "image/gif")|| ($_FILES["cover"]["type"] == "image/jpeg")|| ($_FILES["cover"]["type"] == "image/png")|| ($_FILES["cover"]["type"] == "image/pjpeg")) && in_array($extension, $allow))
+        move_uploaded_file( $_FILES['cover']['name'], $dir . basename($_FILES['cover']['name']));
+
 
     //INSERT INTO DATABASE
     if(count($errors) == 0){
     $sql = new SQL();
-    $sql->execute("INSERT INTO `products`(`name`, `publisher`, `type`, `price`, `platform`, `release_year`, `description`,`del` ) VALUES (?,?,?,?,?,?,?,?)",$name,$publisher,$type,$price,$platform,$release_year,$description,0);
+    $sql->execute("INSERT INTO `products`(`name`, `publisher`, `type`, `price`, `platform`, `release_year`, `description`,`cover`,`del` ) VALUES (?,?,?,?,?,?,?,?,?)",$name,$publisher,$type,$price,$platform,$release_year,$description,$_FILES["cover"],0);
     }
 }
 ?>
 
 <!-- HTML -->
-<form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" >
+<form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" enctype="multipart/form-data" >
     <label for="name"> Name </label> <br>
     <input type ="text" name ="name" value = "<?php echo isset($name) ? $name : ""; ?>"> <br>
     <?php if(isset($errors['name'])) foreach ($errors['name'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
@@ -91,6 +106,11 @@ if(is_post())
     <label for="release_year"> Release year </label> <br>
     <input type ="number" name ="release_year" value = "<?php echo isset($release_year) ? $release_year : ""; ?>"> <br>
     <?php if(isset($errors['release_year'])) foreach ($errors['release_year'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+
+    <label for="cover"> cover </label> <br>
+    <input type ="file" name ="cover" id ="cover"  accept="image/png, image/jpeg, image/jpg"/> <br>
+    <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <input type = "submit" value = "Upload">
 
     <label for="description"> Description </label> <br>
     <textarea name = "description"> </textarea>
