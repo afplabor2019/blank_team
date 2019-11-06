@@ -1,7 +1,7 @@
 DROP TABLE `products`;
 CREATE TABLE `products` (
 `id` INT AUTO_INCREMENT PRIMARY KEY,
-`name` VARCHAR(255) NOT NULL,
+`title` VARCHAR(255) NOT NULL,
 `publisher` VARCHAR(255) NOT NULL,
 `type` VARCHAR(255),
 `price` FLOAT NOT NULL,
