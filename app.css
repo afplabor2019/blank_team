@@ -46,6 +46,7 @@ body {
 
 .home-ad-image:hover .home-image {
     opacity: 0.3;
+    display: block;
 }
 
 .home-img-button {
@@ -97,6 +98,7 @@ input[type=text]:focus {
     left: 0;
     width: 100%;
     flex-direction: row;
+    z-index:1;
     
 }
 
