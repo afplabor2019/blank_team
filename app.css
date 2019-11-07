@@ -304,6 +304,67 @@ input[type=submit]:hover {
  .login-form {
      border-right: #000000;
  } 
+
+.product-filters {
+    width: 25%;
+    background: lightcoral;
+    float: left;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+    float: right;
+}
+
+.product-item {
+    width: 25%;
+    border: 1px solid black;
+    margin-left: 7%;
+    margin-bottom: 10%;
+}
+
+.product-image {
+    height: 85%;
+    width: 100%;
+    max-width: 100%;
+    transition: transform 200ms ease-in-out;
+    padding-bottom: 20%;
+    background-color: dodgerblue;
+}
+
+.product-title {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.product-item p {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+/*.product-color {
+    background-color: dodgerblue;
+    height: 15%;
+    width: 100%;
+}*/
+
+.product-list .product-image:hover{
+    transform: scale(.975);
+    transition: transform 200ms ease-in-out;
+}
+
+.product-list .product-item{
+    font-size: 10px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .footer {
     margin-top: 0px;
     width: 100%;
