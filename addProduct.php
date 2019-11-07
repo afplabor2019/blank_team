@@ -61,6 +61,9 @@ if(is_post())
 
 <!-- HTML -->
 <form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" enctype="multipart/form-data" >
+
+    <img id="img" src="images\\user.jpg" alt="your image" width =350 height = 350 style="float: right;padding-top:2%"/> <br>
+
     <label for="name"> Name </label> <br>
     <input type ="text" name ="name" value = "<?php echo isset($name) ? $name : ""; ?>"> <br>
     <?php if(isset($errors['name'])) foreach ($errors['name'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
@@ -107,9 +110,15 @@ if(is_post())
     <?php if(isset($errors['release_year'])) foreach ($errors['release_year'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
     <label for="cover"> cover </label> <br>
-    <input type ="file" name ="cover" id ="cover"  accept="image/png, image/jpeg, image/jpg"/> <br>
-    <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
+    <input type ="file" name ="cover" id ="cover" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> 
+    <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+    
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('img');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
     <label for="description"> Description </label> <br>
     <textarea name = "description"> </textarea>
     <?php if(isset($errors['description'])) foreach ($errors['description'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>

@@ -1,20 +1,20 @@
 <?php require_once "pages/head.php"; ?>
 <?php
     $sql = new SQL();
-    $product = $sql->execute("SELECT * FROM products WHERE id = 1");
+    $product = $sql->execute("SELECT * FROM products");
 ?>
-<img src = "<?php echo $product[0]['cover'] ?>">
-<p><?php echo $product[0]['title'] ?></p>
-<p><?php echo $product[0]['publisher'] ?></p>
-<p><?php echo $product[0]['price'] ?></p>
-<p><?php echo $product[0]['platform'] ?></p>
-<p><?php echo $product[0]['type'] ?></p>
-<p><?php echo $product[0]['description'] ?></p>
-<p><?php echo $product[0]['release_year'] ?></p>
-
-
-
-
+<?php foreach ($product as $key => $value)
+{
+?> <img src ="<?php echo $value['cover'] ?>">; <?php
+echo "<p>".$value['title'];"</p>";
+echo "<p>".$value['price'];"</p>";
+echo "<p>".$value['platform'];"</p>";
+echo "<p>".$value['publisher'];"</p>";
+echo "<p>".$value['type'];"</p>";
+echo "<p>".$value['release_year'];"</p>";
+echo "<p>".$value['description'];"</p>";
+}
+?>
 
 
 
