@@ -13,6 +13,7 @@ echo "<p>".$value['publisher'];"</p>";
 echo "<p>".$value['type'];"</p>";
 echo "<p>".$value['release_year'];"</p>";
 echo "<p>".$value['description'];"</p>";
+echo "<br>";
 }
 ?>
 
