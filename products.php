@@ -25,7 +25,7 @@
     $maxvalue;
 ?>
 <div class="product-filters">
-    Szűrők
+    <div class="products-filter-title"><p>FILTERS</p></div>
     <form action="<?php echo url('products')?>" method="POST">
         <div class="filter-price">
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -54,7 +54,7 @@
             </p>
             <div id="slider-range"></div>
         </div>
-        
+        <div class="filter-platform">
         <p>Platforms</p>
         <input type="checkbox" name="platform-pc" value="PC">PC<br>
         <input type="checkbox" name="platform-xbox360" value="XBOX 360">XBOX 360<br>
@@ -64,9 +64,10 @@
         <input type="checkbox" name="platform-ps4" value="PS4">PS4<br>
         <input type="checkbox" name="platform-switch" value="Nintendo Switch">Nintendo Switch<br>
         <input type="checkbox" name="platform-others" value="Others">Others<br>
-    
+        </div>
         
-        <label for="type"> Type </label> <br>
+        <div class="filter-type">
+        <p><label for="type"> Type </label></p> <br>
         <select name ="type">
             <option value="Select Type" selected>Select Type</option>
             <option value="Strategy">Strategy</option>
@@ -76,11 +77,16 @@
             <option value="Sport">Sport</option>
             <option value="Open world">Open world</option>
         </select> <br>
-        <label>Release year</label><br>
+        </div>
+        <div class="filter-release">
+        <p><label>Release year</label></p><br>
         <input name="release-year" type="number" min="1990" max="<?php echo date('Y') ?>">
-        <label>Publisher</label>
-        <input name="publisher" type="text">
-        <button type="submit" class="products-btn">Search</button>
+        </div>
+        <div class="filter-publisher">
+        <p><label>Publisher</label></p>
+        <input name="publisher" type="text-p">
+        </div>
+        <div class="filter-btn-div"><button class="filter-btn" type="submit-btn"><span>Search</span></button></div>
     </form>
     </div>
 <div class="product-list">
@@ -125,12 +131,15 @@ echo "<br>";
 echo "</div>";
 }
 ?>
+<div class="slide-buttons">
+    <br>
 <form action = <?php echo url('products') ?> method = "POST">
 <button type ="submit" name ="decrease" style="<?php echo $minID ==1 ? "display:none" : " " ?>">  Previous </button>
 <button type ="submit" name="increase" style ="<?php echo ($maxPossibleID[0]['id']) <= $maxID ? "display:none" : " " ?>"> Next </button>
 <input type="text" name ="minidtext" value="<?php echo $minID ?>" style="display:none">
 <input type="text" name ="maxidtext" value="<?php echo $maxID ?>" style="display:none">
 </form>
+</div>
 </div>
 
 <?php require_once "pages/footer.php"; ?>

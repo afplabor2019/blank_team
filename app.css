@@ -30,6 +30,10 @@ body {
     padding-right: 2.5%;
 }
 
+button {
+    cursor: pointer;
+}
+
 .home-title a {
     text-transform: uppercase;
     font-size: 25px;
@@ -224,7 +228,6 @@ input[type=text],input[type=password],input[type=date] {
 
 input[type=submit] {
     width: 50%;
-    background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -307,9 +310,117 @@ input[type=submit]:hover {
 
 .product-filters {
     width: 25%;
-    background: lightcoral;
+    background-color: #f2f2f2;
     float: left;
+    color: black;
 }
+
+.products-filter-title p {
+    padding: 5%;
+    text-align: center;
+    font-size: 30px;
+    background-color: #999999;
+    text-shadow: 2px 2px 4px  #737373;
+    border-bottom: 4px solid white;
+}
+
+.filter-price
+{
+    font-size: 20px;
+    padding: 5%;
+    border-bottom: 2px solid white;
+}
+
+.filter-platform  {
+    padding: 5%;
+    border-bottom: 2px solid white;
+}
+
+.filter-platform p {
+    text-align: center;
+    font-size: 22px;
+}
+
+.filter-type {
+    padding: 5%;
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+
+.filter-type p {
+    text-align: center;
+    font-size: 22px;
+}  
+
+.filter-release {
+    padding: 5%;
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+
+.filter-release p {
+    text-align: center;
+    font-size: 22px;
+}
+
+.filter-publisher {
+    border-bottom: 2px solid white;
+    text-align: center;
+}
+
+.filter-publisher p {
+    font-size: 22px;
+    text-align: center;
+}
+
+input[type=text-p] {
+    width: 90%;
+    padding: 5%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.filter-btn-div {
+    padding: 5%;
+}
+
+.filter-btn {
+    border: none;
+    padding: 2% 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: auto;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    font-size: 28px;
+    margin-left: 25%; 
+    width: 50%;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    background-color: black;
+    color: white;
+    border: 2px solid #555555;
+}
+
+.filter-btn span {
+    text-align: center;
+}
+  
+.filter-btn:hover {
+    background-color: white;
+    color: black;
+  }
 
 .product-list {
     display: flex;
@@ -328,9 +439,9 @@ input[type=submit]:hover {
 
 .product-item {
     width: 25%;
-    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 7%;
-    margin-bottom: 10%;
+    margin-bottom: 7%;
 }
 
 .product-image {
@@ -343,21 +454,15 @@ input[type=submit]:hover {
 }
 
 .product-title {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
 }
 
 .product-item p {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: lighter;
 }
-
-/*.product-color {
-    background-color: dodgerblue;
-    height: 15%;
-    width: 100%;
-}*/
 
 .product-list .product-image:hover{
     transform: scale(.975);
@@ -370,6 +475,11 @@ input[type=submit]:hover {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.slide-buttons {
+    padding-left: 80%;
+    margin-bottom: 10%;
 }
 
 .footer {

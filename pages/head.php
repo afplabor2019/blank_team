@@ -15,7 +15,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a class="mainlogo" href ="<?php echo url('home') ?>">Nagyon kreatív webshop</a>
+                                <a class="mainlogo" href ="<?php echo url('home') ?>">GamerZ</a>
                             </li>
                             <li>
                                 <div class="search-container">
