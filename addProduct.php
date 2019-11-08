@@ -79,6 +79,9 @@ if(is_post())
         <option value="Shooter">Shooter</option>
         <option value="Moba">Moba</option>
         <option value="Open world">Open world</option>
+        <option value="Battle Royale">Battle Royale</option>
+        <option value="MMO">MMO</option>
+        <option value="RPG">RPG</option>
     </select> <br>
     <?php if(isset($errors['type'])) foreach ($errors['type'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 

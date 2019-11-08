@@ -318,6 +318,13 @@ input[type=submit]:hover {
     width: 75%;
     float: right;
 }
+.product-list .btn-left{
+    float: left;
+}
+
+.product-list .btn-right{
+    float: right;
+}
 
 .product-item {
     width: 25%;

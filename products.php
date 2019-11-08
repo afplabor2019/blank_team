@@ -1,7 +1,26 @@
 <?php require_once "pages/head.php"; ?>
 <?php
+
+    $minID = 1;
+    $maxID = 12;
+    if(isset($_POST['minidtext'])){
+        $minID = $_POST['minidtext'];
+    }
+
+    if(isset($_POST['maxidtext'])){
+        $maxID = $_POST['maxidtext'];
+    }  
+    if(isset($_POST['increase'])){
+        $maxID += 12;
+        $minID += 12;
+    } else if(isset($_POST['decrease']) && $minID >1){
+        $maxID -= 12;
+        $minID -= 12;
+    }
+
     $sql = new SQL();
-    $product = $sql->execute("SELECT * FROM products");
+    $product = $sql->execute("SELECT * FROM `products` WHERE `id` BETWEEN ? AND ?",$minID,$maxID);
+    $maxPossibleID = $sql->execute("SELECT `id` FROM `products` WHERE `id` = (SELECT MAX(`id`) FROM `products`)");
     $minvalue;
     $maxvalue;
 ?>
@@ -22,7 +41,6 @@
                 values: [ 75, 300 ],
                 slide: function( event, ui ) {
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                //   window.location.href="<?php echo url('products')?>?minvalue = ".ui.values[0];
                 }
                 });
                 
@@ -76,5 +94,12 @@ echo "<br>";
 echo "</div>";
 }
 ?>
+<form action = <?php echo url('products') ?> method = "POST">
+<button type ="submit" name ="decrease" style="<?php echo $minID ==1 ? "display:none" : " " ?>">  Previous </button>
+<button type ="submit" name="increase" style ="<?php echo ($maxPossibleID[0]['id']) <= $maxID ? "display:none" : " " ?>"> Next </button>
+<input type="text" name ="minidtext" value="<?php echo $minID ?>" style="display:none">
+<input type="text" name ="maxidtext" value="<?php echo $maxID ?>" style="display:none">
+</form>
 </div>
+
 <?php require_once "pages/footer.php"; ?>
