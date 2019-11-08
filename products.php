@@ -37,8 +37,8 @@
                 $( "#slider-range" ).slider({
                 range: true,
                 min: 0,
-                max: 500,
-                values: [ 75, 300 ],
+                max: 200,
+                values: [ 0, 200 ],
                 slide: function( event, ui ) {
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                 }
@@ -56,8 +56,11 @@
         </div>
         
         <p>Platforms</p>
-        <input type="checkbox" name="platform-pc" value="PC" checked>PC<br>
+        <input type="checkbox" name="platform-pc" value="PC">PC<br>
+        <input type="checkbox" name="platform-xbox360" value="XBOX 360">XBOX 360<br>
         <input type="checkbox" name="platform-xbox" value="XBOX One">XBOX One<br>
+        <input type="checkbox" name="platform-ps2" value="PS2">PS2<br>
+        <input type="checkbox" name="platform-ps3" value="PS3">PS3<br>
         <input type="checkbox" name="platform-ps4" value="PS4">PS4<br>
         <input type="checkbox" name="platform-switch" value="Nintendo Switch">Nintendo Switch<br>
         <input type="checkbox" name="platform-others" value="Others">Others<br>
