@@ -57,7 +57,7 @@
         
         <p>Platforms</p>
         <input type="checkbox" name="platform-pc" value="PC" checked>PC<br>
-        <input type="checkbox" name="platform-xbox" value="XBOX ONE">XBOX ONE<br>
+        <input type="checkbox" name="platform-xbox" value="XBOX One">XBOX One<br>
         <input type="checkbox" name="platform-ps4" value="PS4">PS4<br>
         <input type="checkbox" name="platform-switch" value="Nintendo Switch">Nintendo Switch<br>
         <input type="checkbox" name="platform-others" value="Others">Others<br>
@@ -69,6 +69,8 @@
             <option value="Strategy">Strategy</option>
             <option value="Shooter">Shooter</option>
             <option value="Moba">Moba</option>
+            <option value="Fighter">Fighter</option>
+            <option value="Sport">Sport</option>
             <option value="Open world">Open world</option>
         </select> <br>
         <label>Release year</label><br>
@@ -84,8 +86,34 @@
 ?>
 <?php
 echo "<div class =product-item>";
-?><a href ="<?php echo url('product') ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>"></a>
-<div class="product-color"></div>
+?><a href ="<?php echo url('product') ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" style="<?php switch ($value['platform']) {
+    case 'XBOX 360':
+        echo "background-color: #00ac26";
+    break;
+    case 'XBOX One':
+        echo "background-color: #00ac26";
+    break;
+    case 'PS2':
+        echo "background-color: #006FCD";
+    break;
+    case 'PS3':
+        echo "background-color: #006FCD";
+    break;
+    case 'PS4':
+        echo "background-color: #006FCD";
+    break;
+    case 'Nintendo Switch':
+        echo "background-color: #E30214";
+    break;
+    case 'PC':
+        echo "background-color: #383838";
+    break;
+    
+    default:
+        # code...
+        break;
+} ?>" ></a>
+
 <?php
 echo "<p class=product-title>".$value['title'];"</p>";
 echo "<p class=product-title>".$value['price']. " €";"</p><br>";
