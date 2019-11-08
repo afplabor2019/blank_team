@@ -82,6 +82,8 @@ if(is_post())
         <option value="Battle Royale">Battle Royale</option>
         <option value="MMO">MMO</option>
         <option value="RPG">RPG</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Sport">Sport</option>
     </select> <br>
     <?php if(isset($errors['type'])) foreach ($errors['type'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
