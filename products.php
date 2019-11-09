@@ -5,7 +5,7 @@
     $maxID = 12;
     $done = false;
     $sql = new SQL();
-    $starterString = "SELECT * FROM `products` WHERE `del` = 0";;
+    $starterString = "SELECT * FROM `products` WHERE `del` = 0";
     if(is_post())
     { 
  
@@ -31,12 +31,12 @@
         if(isset($_POST['publisher']))
         $publisher = $_POST['publisher'];
         } 
-        //ha a gombokkal léptettünk.
+        
         if(!(isset($_POST['minidtext']) ||isset($_POST['maxidtext'])))
         { 
            
 
-
+                //ha szűrőre keresünk
             
                 $sql_string = isset($_POST['title']) && $_POST['title'] != null ? " AND `title` LIKE '%$title%'" : ""; //title
                 $sql_string .= isset($_POST['type']) && $_POST['type'] != "Select Type" ? " AND `type` ='$type'" : "";  //type
@@ -48,14 +48,12 @@
                 $sql_string .= " AND `platform` NOT IN ('PC','XBOX 360','XBOX One','PS2','PS3','PS4','Nintendo Switch')";
                 }
                
-                $_SESSION['sql_query'] = $starterString.$sql_string;
-                $sql_string .=(" LIMIT $minID,$maxID");
-                echo $starterString.$sql_string;
-                $product = $sql->execute($starterString.$sql_string); 
+                $_SESSION['sql_query'] = $sql_string;
+                $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID"); 
 
 
         }
-        else{     
+        else{     //ha a gombokkal léptettünk.
             if(isset($_POST['minidtext'])){
                 $minID = $_POST['minidtext'];
             }
@@ -67,21 +65,22 @@
             } else if(isset($_POST['decrease']) && $minID >1){
                 $minID -= 12;
             }
-            $sql_string = $_SESSION['sql_query'];
-            $sql_string .=(" LIMIT $minID,$maxID");
-                $product = $sql->execute($sql_string);
+                $sql_string = $_SESSION['sql_query'];
+                $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID");
                 echo $sql_string;
            
-           
+                
     }
+
+    $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0"; //minid, maxid
+    
+                $recordCount = $sql->execute($sql_string2.$sql_string);
+                echo "   ".$recordCount[0]['records']; 
    
     
 
 
-    $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0"; //minid, maxid
-    
-    $recordCount = $sql->execute($sql_string2);
-    echo "   ".$recordCount[0]['records'];
+   
 ?>
 <div class="product-filters">
     <div class="products-filter-title"><p>FILTERS</p></div>
