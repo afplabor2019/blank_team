@@ -1,14 +1,12 @@
 <?php require_once "pages/head.php"; ?>
 <?php
-
-    $minID = 0;
-    $maxID = 12;
-    $done = false;
-    $sql = new SQL();
-    $starterString = "SELECT * FROM `products` WHERE `del` = 0";
+$minID = 0;
+$maxID = 12;
+$sql = new SQL();
+$starterString = "SELECT * FROM `products` WHERE `del` = 0";
     if(is_post())
-    { 
- 
+    {         
+        //creating platform list for query
         $platformString = "(";
         if(isset($_POST['platform-pc']) && $_POST['platform-pc'] == "PC") $platformString .="'PC',";
         if(isset($_POST['platform-xbox360']) && $_POST['platform-xbox360'] == "XBOX 360") $platformString .="'XBOX 360',";
@@ -18,70 +16,56 @@
         if(isset($_POST['platform-ps4']) && $_POST['platform-ps4'] == "PS4") $platformString .="'PS4',";
         if(isset($_POST['platform-switch']) && $_POST['platform-switch'] == "Nintendo Switch") $platformString .="'Nintendo Switch',";
         $platformString = rtrim(trim($platformString), ',');
-        $platformString .=")";
+        $platformString .=")";   
 
+        //setting values for filters
         $minprice;
         $maxprice;
-        if(isset($_POST['title']))
-        $title = $_POST['title'];
-        if(isset($_POST['type']) && $_POST['type'] != "Select Type")
-        $type = $_POST['type'];
-        if(isset($_POST['release-year']))
-        $releaseyear = $_POST['release-year'];
-        if(isset($_POST['publisher']))
-        $publisher = $_POST['publisher'];
-        } 
+
+       
+        if(isset($_POST['title']))$title = $_POST['title'];
+        if(isset($_POST['type']) && $_POST['type'] != "Select Type") $type = $_POST['type'];
+        if(isset($_POST['release-year']))$releaseyear = $_POST['release-year'];
+        if(isset($_POST['publisher']))$publisher = $_POST['publisher'];
+    } 
         
-        if(!(isset($_POST['minidtext']) ||isset($_POST['maxidtext'])))
+        //Filter search
+        if(!(isset($_POST['minidtext']) || isset($_POST['maxidtext'])))
         { 
-           
-
-                //ha szűrőre keresünk
-            
-                $sql_string = isset($_POST['title']) && $_POST['title'] != null ? " AND `title` LIKE '%$title%'" : ""; //title
-                $sql_string .= isset($_POST['type']) && $_POST['type'] != "Select Type" ? " AND `type` ='$type'" : "";  //type
-                $sql_string .= isset($_POST['release-year']) && $_POST['release-year'] != null ? " AND `release_year` =$releaseyear" : "";// release year
-                $sql_string .= isset($_POST['publisher']) && $_POST['publisher'] != null? " AND `publisher` LIKE '%$publisher%'" : ""; //publisher
-                if((isset($_POST['platform-pc']) && $_POST['platform-pc'] == "PC") || (isset($_POST['platform-xbox360']) && $_POST['platform-xbox360'] == "XBOX 360") || (isset($_POST['platform-xboxone']) && $_POST['platform-xboxone'] == "XBOX One") || (isset($_POST['platform-ps2']) && $_POST['platform-ps2'] == "PS2") || (isset($_POST['platform-ps3']) && $_POST['platform-ps3'] == "PS3")|| (isset($_POST['platform-ps4']) && $_POST['platform-ps4'] == "PS4") || (isset($_POST['platform-switch']) && $_POST['platform-switch'] == "Nintendo Switch")){   
+            $sql_string = isset($_POST['title']) && $_POST['title'] != null ? " AND `title` LIKE '%$title%'" : ""; 
+            $sql_string .= isset($_POST['type']) && $_POST['type'] != "Select Type" ? " AND `type` ='$type'" : "";  
+            $sql_string .= isset($_POST['release-year']) && $_POST['release-year'] != null ? " AND `release_year` =$releaseyear" : "";
+            $sql_string .= isset($_POST['publisher']) && $_POST['publisher'] != null? " AND `publisher` LIKE '%$publisher%'" : "";
+            if((isset($_POST['platform-pc']) && $_POST['platform-pc'] == "PC") 
+            || (isset($_POST['platform-xbox360']) && $_POST['platform-xbox360'] == "XBOX 360") 
+            || (isset($_POST['platform-xboxone']) && $_POST['platform-xboxone'] == "XBOX One") 
+            || (isset($_POST['platform-ps2']) && $_POST['platform-ps2'] == "PS2") 
+            || (isset($_POST['platform-ps3']) && $_POST['platform-ps3'] == "PS3") 
+            || (isset($_POST['platform-ps4']) && $_POST['platform-ps4'] == "PS4") 
+            || (isset($_POST['platform-switch']) && $_POST['platform-switch'] == "Nintendo Switch")) 
+            {
                 $sql_string .= " AND `platform` IN $platformString";
-                } else if(isset($_POST['platform-others']) && $_POST['platform-others'] == "Others"){
+            }
+            else if(isset($_POST['platform-others']) && $_POST['platform-others'] == "Others")
                 $sql_string .= " AND `platform` NOT IN ('PC','XBOX 360','XBOX One','PS2','PS3','PS4','Nintendo Switch')";
-                }
                
-                $_SESSION['sql_query'] = $sql_string;
-                $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID"); 
+            $_SESSION['sql_query'] = $sql_string;
+            $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID"); 
 
+        //changing pages via buttons  
+        } else {  
+            if(isset($_POST['minidtext'])) $minID = $_POST['minidtext'];
+            if(isset($_POST['increase']))$minID += 12;
+            else if(isset($_POST['decrease']) && $minID >1) $minID -= 12;
 
+            $sql_string = $_SESSION['sql_query'];
+            $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID");
         }
-        else{     //ha a gombokkal léptettünk.
-            if(isset($_POST['minidtext'])){
-                $minID = $_POST['minidtext'];
-            }
-            if(isset($_POST['maxidtext'])){
-                $maxID = $_POST['maxidtext'];
-            }  
-            if(isset($_POST['increase'])){
-                $minID += 12;
-            } else if(isset($_POST['decrease']) && $minID >1){
-                $minID -= 12;
-            }
-                $sql_string = $_SESSION['sql_query'];
-                $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID");
-                echo $sql_string;
-           
-                
-    }
 
-    $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0"; //minid, maxid
-    
-                $recordCount = $sql->execute($sql_string2.$sql_string);
-                echo "   ".$recordCount[0]['records']; 
-   
-    
-
-
-   
+    $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0";
+    $recordCount = $sql->execute($sql_string2.$sql_string); 
 ?>
+
 <div class="product-filters">
     <div class="products-filter-title"><p>FILTERS</p></div>
     <form action="<?php echo url('products')?>" method="POST" autocomplete="off">
@@ -98,10 +82,10 @@
                 max: 200,
                 values: [ 0, 200 ],
                 slide: function( event, ui ) {
+
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                 }
                 });
-                
                 $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
                 " - $" + $( "#slider-range" ).slider( "values", 1 ) );
             } );
