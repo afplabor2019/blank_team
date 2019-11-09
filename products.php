@@ -65,7 +65,8 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
     $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0";
     $recordCount = $sql->execute($sql_string2.$sql_string); 
 ?>
-
+<!--HTML-->
+<!--FILTERS -->
 <div class="product-filters">
     <div class="products-filter-title"><p>FILTERS</p></div>
     <form action="<?php echo url('products')?>" method="POST" autocomplete="off">
@@ -97,36 +98,36 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
             <div id="slider-range"></div>
         </div>
         <div class ="filter-title">
-        <label for="title">Title</label>
-        <input type="text" name ="title">
+            <label for="title">Title</label>
+            <input type="text" name ="title">
         </div>
         <div class="filter-platform">
-        <p>Platforms</p>
-        <input type="checkbox" name="platform-pc" value="PC">PC<br>
-        <input type="checkbox" name="platform-xbox360" value="XBOX 360">XBOX 360<br>
-        <input type="checkbox" name="platform-xboxone" value="XBOX One">XBOX One<br>
-        <input type="checkbox" name="platform-ps2" value="PS2">PS2<br>
-        <input type="checkbox" name="platform-ps3" value="PS3">PS3<br>
-        <input type="checkbox" name="platform-ps4" value="PS4">PS4<br>
-        <input type="checkbox" name="platform-switch" value="Nintendo Switch">Nintendo Switch<br>
-        <input type="checkbox" name="platform-others" value="Others">Others<br>
+            <p>Platforms</p>
+            <input type="checkbox" name="platform-pc" value="PC">PC<br>
+            <input type="checkbox" name="platform-xbox360" value="XBOX 360">XBOX 360<br>
+            <input type="checkbox" name="platform-xboxone" value="XBOX One">XBOX One<br>
+            <input type="checkbox" name="platform-ps2" value="PS2">PS2<br>
+            <input type="checkbox" name="platform-ps3" value="PS3">PS3<br>
+            <input type="checkbox" name="platform-ps4" value="PS4">PS4<br>
+            <input type="checkbox" name="platform-switch" value="Nintendo Switch">Nintendo Switch<br>
+            <input type="checkbox" name="platform-others" value="Others">Others<br>
         </div>
         
         <div class="filter-type">
-        <p><label for="type"> Type </label></p> <br>
-        <select name ="type">
-            <option value="Select Type" selected>Select Type</option>
-            <option value="Strategy">Strategy</option>
-            <option value="Shooter">Shooter</option>
-            <option value="Moba">Moba</option>
-            <option value="Fighter">Fighter</option>
-            <option value="Sport">Sport</option>
-            <option value="Open world">Open world</option>
-        </select> <br>
+            <p><label for="type"> Type </label></p> <br>
+            <select name ="type">
+                <option value="Select Type" selected>Select Type</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Shooter">Shooter</option>
+                <option value="Moba">Moba</option>
+                <option value="Fighter">Fighter</option>
+                <option value="Sport">Sport</option>
+                <option value="Open world">Open world</option>
+            </select> <br>
         </div>
         <div class="filter-release">
-        <p><label>Release year</label></p><br>
-        <input name="release-year" type="number" min="1990" max="<?php echo date('Y') ?>">
+            <p><label>Release year</label></p><br>
+            <input name="release-year" type="number" min="1990" max="<?php echo date('Y') ?>">
         </div>
         <div class="filter-publisher">
             <p><label>Publisher</label></p>
@@ -134,58 +135,57 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
         </div>
         <div class="filter-btn-div"><button class="filter-btn" type="submit-btn"><span>Search</span></button></div>
     </form>
-    </div>
-<div class="product-list">
-<?php foreach ($product as $key => $value)
-{
-?>
-<?php
-echo "<div class =product-item>";
-?><a href ="<?php echo url('product') ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" style="<?php switch ($value['platform']) {
-    case 'XBOX 360':
-        echo "background-color: #00ac26";
-    break;
-    case 'XBOX One':
-        echo "background-color: #00ac26";
-    break;
-    case 'PS2':
-        echo "background-color: #006FCD";
-    break;
-    case 'PS3':
-        echo "background-color: #006FCD";
-    break;
-    case 'PS4':
-        echo "background-color: #006FCD";
-    break;
-    case 'Nintendo Switch':
-        echo "background-color: #E30214";
-    break;
-    case 'PC':
-        echo "background-color: #FACA04";
-    break;
-    
-    default:
-        echo "background-color: #383838";
-        break;
-} ?>" ></a>
-
-<?php
-echo "<p class=product-title>".$value['title'];"</p>";
-echo "<p class=product-title>".$value['price']. " €";"</p><br>";
-echo "<p>".$value['platform'];"</p>";
-echo "<br>";
-echo "</div>";
-}
-?>
-<div class="slide-buttons">
-    <br>
-<form action = <?php echo url('products') ?> method = "POST">
-<button type ="submit" name ="decrease" style="<?php echo $minID ==0 ? "display:none" : " " ?>">  Previous </button>
-<button type ="submit" name="increase" style ="<?php echo $recordCount[0]['records']-$minID <= $maxID ? "display:none" : " " ?>"> Next </button>
-<input type="text" name ="minidtext" value="<?php echo $minID ?>" style="display:none">
-<input type="text" name ="maxidtext" value="<?php echo $maxID ?>" style="display:none">
-</form>
 </div>
+
+<!--PRODUCT LIST-->
+<div class="product-list">
+<?php foreach ($product as $key => $value) { 
+    echo "<div class =product-item>"; ?>
+        <a href ="<?php echo url('product') ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" 
+            style="<?php switch ($value['platform']) {
+            case 'XBOX 360':
+                echo "background-color: #00ac26";
+            break;
+            case 'XBOX One':
+                echo "background-color: #00ac26";
+            break;
+            case 'PS2':
+                echo "background-color: #006FCD";
+            break;
+            case 'PS3':
+                echo "background-color: #006FCD";
+            break;
+            case 'PS4':
+                echo "background-color: #006FCD";
+            break;
+            case 'Nintendo Switch':
+                echo "background-color: #E30214";
+            break;
+            case 'PC':
+                echo "background-color: #FACA04";
+            break;
+            
+            default:
+                echo "background-color: #383838";
+                break;} ?>">
+        </a>
+    <?php
+        echo "<p class=product-title>".$value['title'];"</p>";
+        echo "<p class=product-title>".$value['price']. " €";"</p><br>";
+        echo "<p>".$value['platform'];"</p>";
+        echo "<br>";
+        echo "</div>";
+    } ?>
+</div>
+
+<!--SLIDE BUTTONS -->
+<div class="slide-buttons"><br>
+    <form action = <?php echo url('products') ?> method = "POST">
+        <button type ="submit" name ="decrease" style="<?php echo $minID ==0 ? "display:none" : " " ?>">  Previous </button>
+        <button type ="submit" name="increase" style ="<?php echo $recordCount[0]['records']-$minID <= $maxID ? "display:none" : " " ?>"> Next </button>
+        <input type="text" name ="minidtext" value="<?php echo $minID ?>" style="display:none">
+        <input type="text" name ="maxidtext" value="<?php echo $maxID ?>" style="display:none">
+    </form>
 </div>
 
 <?php require_once "pages/footer.php"; ?>

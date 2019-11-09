@@ -451,7 +451,7 @@ input[type=text-p] {
     height: 85%;
     width: 100%;
     max-width: 100%;
-    transition: transform 200ms ease-in-out;
+    
     padding-bottom: 20%;
     background-color: dodgerblue;
 }
@@ -467,7 +467,7 @@ input[type=text-p] {
     font-weight: lighter;
 }
 
-.product-list .product-image:hover{
+.product-item:hover{
     transform: scale(.975);
     transition: transform 200ms ease-in-out;
 }
