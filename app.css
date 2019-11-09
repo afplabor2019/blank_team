@@ -330,6 +330,9 @@ input[type=submit]:hover {
     padding: 5%;
     border-bottom: 2px solid white;
 }
+.filter-title{
+    border-bottom: 2px solid white;
+}
 
 .filter-platform  {
     padding: 5%;
