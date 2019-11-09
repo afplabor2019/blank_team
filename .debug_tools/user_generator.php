@@ -1,4 +1,5 @@
 <?php
+/// Use this to generate test users
 require_once('lib/config.php');
 
 //id, user_name, email, fullname, birth_date, age, role, registration_date, shipping_id, password, del
