@@ -19,8 +19,8 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
         $platformString .=")";   
 
         //setting values for filters
-        $minprice;
-        $maxprice;
+        if(isset($_POST['slidermin']))$minprice = $_POST['slidermin'];
+        if(isset($_POST['slidermax']))$maxprice = $_POST['slidermax'];
 
        
         if(isset($_POST['title']))$title = $_POST['title'];
@@ -32,7 +32,8 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
         //Filter search
         if(!(isset($_POST['minidtext']) || isset($_POST['maxidtext'])))
         { 
-            $sql_string = isset($_POST['title']) && $_POST['title'] != null ? " AND `title` LIKE '%$title%'" : ""; 
+            $sql_string = isset($_POST['slidermin']) || isset($_POST['slidermax']) ? " AND `price` BETWEEN $minprice AND $maxprice" : ""; 
+            $sql_string .= isset($_POST['title']) && $_POST['title'] != null ? " AND `title` LIKE '%$title%'" : ""; 
             $sql_string .= isset($_POST['type']) && $_POST['type'] != "Select Type" ? " AND `type` ='$type'" : "";  
             $sql_string .= isset($_POST['release-year']) && $_POST['release-year'] != null ? " AND `release_year` =$releaseyear" : "";
             $sql_string .= isset($_POST['publisher']) && $_POST['publisher'] != null? " AND `publisher` LIKE '%$publisher%'" : "";
@@ -51,6 +52,7 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
                
             $_SESSION['sql_query'] = $sql_string;
             $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID"); 
+            echo $starterString.$sql_string." LIMIT $minID,$maxID";
 
         //changing pages via buttons  
         } else {  
@@ -83,7 +85,8 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
                 max: 200,
                 values: [ 0, 200 ],
                 slide: function( event, ui ) {
-
+                        document.getElementById('slidermin').value = ui.values[0];
+                        document.getElementById('slidermax').value = ui.values[1];
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                 }
                 });
@@ -134,6 +137,8 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
             <input name="publisher" type="text-p">
         </div>
         <div class="filter-btn-div"><button class="filter-btn" type="submit-btn"><span>Search</span></button></div>
+        <input type="text" name ="slidermin" id="slidermin" value = 0 style = "display: none">
+        <input type="text" name ="slidermax" id="slidermax" value = 200 style = "display: none">
     </form>
 </div>
 
@@ -185,6 +190,7 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
         <button type ="submit" name="increase" style ="<?php echo $recordCount[0]['records']-$minID <= $maxID ? "display:none" : " " ?>"> Next </button>
         <input type="text" name ="minidtext" value="<?php echo $minID ?>" style="display:none">
         <input type="text" name ="maxidtext" value="<?php echo $maxID ?>" style="display:none">
+
     </form>
 </div>
 
