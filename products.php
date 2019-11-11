@@ -142,7 +142,7 @@ if(!is_post()){
                 <label for="amount">Price range:</label>
                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
-            <div id="slider-range"></div>
+            <div id="slider-range" name="slider-range"></div>
         </div>
         <div class ="filter-title">
             <label for="title">Title</label>
@@ -207,7 +207,7 @@ if(!is_post()){
 <div class="product-list">
 <?php foreach ($product as $key => $value) { 
     echo "<div class =product-item>"; ?>
-        <a href ="<?php echo url('product') ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" 
+        <a href ="<?php echo url('product&id='.$value['id']) ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" 
             style="<?php switch ($value['platform']) {
             case 'XBOX 360':
                 echo "background-color: #00ac26";
