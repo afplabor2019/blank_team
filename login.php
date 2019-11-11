@@ -57,22 +57,37 @@ if(is_post())
 
 
 <div class="login-div">
-<h1 class="login-h"> Log In </h1><br>
-    <form class="login-form" action ="<?php echo url('login'); ?>" method ="POST" autocomplete="off">
-        <label class="login-label" for="userName"> User Name </label><br>
-        <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : '' ?>"> <br>
-        <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <div class="login-left-side">
+        <h1 class="login-h"> Log In </h1><br>
+            <form class="login-form" action ="<?php echo url('login'); ?>" method ="POST" autocomplete="off">
+                <label class="login-label" for="userName"> User Name </label><br>
+                <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : '' ?>"> <br>
+                <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-        <label class="login-label" for="password"> Password </label><br>
-        <input type ="password" name ="password"> <br>
-        <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-        
-        <button class ="login-button" style="vertical-align:middle" type="submit" ><Span>Log In</span></button>
-    </form>
-
-
-<a href="<?php echo url('register')?>"> Register </a> <br>
-<a href = "<?php echo url('forgottenPassword') ?>"> Forgot your password? </a>
+                <label class="login-label" for="password"> Password </label><br>
+                <input type ="password" name ="password"> <br>
+                <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+                
+                <button class ="login-button" style="vertical-align:middle" type="submit" ><Span>Log In</span></button>
+            </form>
+        <a href = "<?php echo url('forgottenPassword') ?>"> Forgot your password? </a>
+    </div>
+    <div class="login-right-side">
+            <h1 class="login-h">Nem vagy még tagunk?</h1>
+            <p class="login-text">Akkor itt az ideje megtudnod miért éri meg nálunk regisztrálnod...</p>
+            <p>
+                <ul class="login-ul">
+                    <li>Nálunk garantált kedvezmények várnak.</li>
+                    <li>20 ezer forint felett elengedjük a szállitási költséget.</li>
+                    <li>BlablablaBlablablaBlablabla</li>
+                    <li>Blablabla...</li>
+                </ul>
+            </p>
+            <br>
+            <a href="<?php echo url('register')?>"><button class="register-button" type="submit"><span>Register</span></button></a><br>
+            <hr/>      
+    </div>
 </div>
+
 </div>
 <?php require_once "pages/footer.php"; ?>

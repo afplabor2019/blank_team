@@ -1,3 +1,4 @@
+<?php require_once "pages/head.php";?>
 <?php 
 $errors = [];
 if(is_post()) {
@@ -32,3 +33,4 @@ $cnpassword = $_POST['cnpassword'];
     <?php if(isset($errors['cnpassword'])) foreach ($errors['cnpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
     <button type ="submit" class ="button">Change Password</button>
 </form>
+<?php require_once "pages/footer.php";?>

@@ -1,3 +1,4 @@
+<?php require_once "pages/head.php";?>
 <?php 
 $errors = [];
  if(is_post())
@@ -36,6 +37,6 @@ $errors = [];
 <label for="email"> Email </label>
     <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
     <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-    <button type ="submit"> Send email </button>
+    <button type ="submit"> Send email </button> 
 
-   <?php 
+<?php require_once "pages/footer.php";?>

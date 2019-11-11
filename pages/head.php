@@ -29,7 +29,7 @@
                                 <a href ="<?php echo url('login') ?>">Login</a>
                             </li>
                             <li>
-                                <a href ="<?php echo url('cart') ?>">Shopping cart</a>
+                                <a href ="<?php echo url('shoppingcart') ?>">Shopping cart</a>
                             </li>
                         </ul>
                     </nav>
