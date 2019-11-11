@@ -562,6 +562,49 @@ input[type=text-p] {
     margin-bottom: 10%;
 }
 
+.product-container {
+    width: 100%;
+    padding: 5%;
+    padding-bottom: 40%;
+}
+
+.product-left-side {
+    width: 40%;
+    float: left;
+}
+
+.product-right-side {
+    width: 60%;
+    float: right;
+}
+
+.p-image {
+    width: 80%;
+    height: 100%;
+    padding: 1%;
+}
+
+.p-title {
+    font-size: 30px;
+}
+
+.p-desc {
+    padding: 20% 0;
+}
+
+.p-send-review {
+    width: 100%;
+    margin: 5%;
+}
+
+.p-review {
+    border: 1px solid black;
+    padding: 5%;
+    width: 90%;
+}
+
+
+
 .footer {
     margin-top: 0px;
     width: 100%;
