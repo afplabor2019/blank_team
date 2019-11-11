@@ -50,11 +50,28 @@ if(is_post())
         move_uploaded_file($_FILES['cover']['tmp_name'], $fullpath);
     }
 
+    //adimg
+
+    if(isset($_FILES['adimg']['name'])){
+        $dir2 = "images\\adimages\\";
+    $adimg = $_FILES['adimg']['name'];
+    $extension = explode(".", $adimg);
+    $extension = end($extension);
+    $fullpath2 = $dir2.$adimg;
+    if(in_array($extension, $allow) && !file_exists($fullpath2))
+        move_uploaded_file($_FILES['adimg']['tmp_name'], $fullpath2);
+    else if(in_array($extension, $allow) && file_exists($fullpath2)){
+        $fullpath2 = $dir2.GenerateID().$adimg;
+        move_uploaded_file($_FILES['adimg']['tmp_name'], $fullpath2);
+    }
+    }
+    
+
 
     //INSERT INTO DATABASE
     if(count($errors) == 0){
     $sql = new SQL();
-    $sql->execute("INSERT INTO `products`(`title`, `publisher`, `type`, `price`, `platform`, `release_year`, `description`,`cover`,`del` ) VALUES (?,?,?,?,?,?,?,?,?)",$name,$publisher,$type,$price,$platform,$release_year,$description,$fullpath,0);
+    $sql->execute("INSERT INTO `products`(`title`, `publisher`, `type`, `price`, `platform`, `release_year`, `description`,`cover`,`del`,`adpic` ) VALUES (?,?,?,?,?,?,?,?,?,?)",$name,$publisher,$type,$price,$platform,$release_year,$description,$fullpath,0,$fullpath2 != "images\\adimages\\" ? $fullpath2 : "none");
     }
 }
 ?>
@@ -63,6 +80,7 @@ if(is_post())
 <form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" enctype="multipart/form-data" >
 
     <img id="img" src="images\\user.jpg" alt="your image" width =350 height = 350 style="float: right;padding-top:2%"/> <br>
+    
 
     <label for="name"> Name </label> <br>
     <input type ="text" name ="name" value = "<?php echo isset($name) ? $name : ""; ?>"> <br>
@@ -117,10 +135,19 @@ if(is_post())
     <label for="cover"> cover </label> <br>
     <input type ="file" name ="cover" id ="cover" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> 
     <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+
+    <label for="adimg"> Ad Image (not required) </label> <br>
+    <input type ="file" name ="adimg"  onchange="loadFile2(event)" accept="image/png, image/jpeg, image/jpg" /> 
+    <img id="img2" src="images\\user.jpg" alt="your image" width =500 height = 350 style="float: right;padding-top:2%"/> <br>
     
 <script>
 var loadFile = function(event) {
 	var image = document.getElementById('img');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+var loadFile2 = function(event) {
+	var image = document.getElementById('img2');
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
 </script>

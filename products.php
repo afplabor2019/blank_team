@@ -150,16 +150,30 @@ if(!is_post()){
         </div>
         <div class="filter-platform">
             <p>Platforms</p>
-            <input type="checkbox" name="platform-pc" value="PC" <?php if(isset($_SESSION['platform-pc'])) echo "checked"; ?>>PC<br>
-            <input type="checkbox" name="platform-xbox360" value="XBOX 360" <?php if(isset($_SESSION['platform-xbox360'])) echo "checked"; ?>>XBOX 360<br>
-            <input type="checkbox" name="platform-xboxone" value="XBOX One" <?php if(isset($_SESSION['platform-xboxone'])) echo "checked"; ?>>XBOX One<br>
-            <input type="checkbox" name="platform-ps2" value="PS2" <?php if(isset($_SESSION['platform-ps2'])) echo "checked"; ?>>PS2<br>
-            <input type="checkbox" name="platform-ps3" value="PS3" <?php if(isset($_SESSION['platform-ps3'])) echo "checked"; ?>>PS3<br>
-            <input type="checkbox" name="platform-ps4" value="PS4" <?php if(isset($_SESSION['platform-ps4'])) echo "checked"; ?>>PS4<br>
-            <input type="checkbox" name="platform-switch" value="Nintendo Switch" <?php if(isset($_SESSION['platform-switch'])) echo "checked"; ?>>Nintendo Switch<br>
-            <input type="checkbox" name="platform-others" value="Others" <?php if(isset($_SESSION['platform-others'])) echo "checked"; ?>>Others<br>
+            <input type="checkbox" id="p-pc" name="platform-pc" onclick="OthersOff()" value="PC" <?php if(isset($_SESSION['platform-pc'])) echo "checked"; ?>>PC<br>
+            <input type="checkbox" id="p-360" name="platform-xbox360" onclick="OthersOff()" value="XBOX 360" <?php if(isset($_SESSION['platform-xbox360'])) echo "checked"; ?>>XBOX 360<br>
+            <input type="checkbox" id="p-one" name="platform-xboxone" onclick="OthersOff()" value="XBOX One" <?php if(isset($_SESSION['platform-xboxone'])) echo "checked"; ?>>XBOX One<br>
+            <input type="checkbox" id="p-ps2" name="platform-ps2" onclick="OthersOff()" value="PS2" <?php if(isset($_SESSION['platform-ps2'])) echo "checked"; ?>>PS2<br>
+            <input type="checkbox" id="p-ps3" name="platform-ps3" onclick="OthersOff()" value="PS3" <?php if(isset($_SESSION['platform-ps3'])) echo "checked"; ?>>PS3<br>
+            <input type="checkbox" id="p-ps4" name="platform-ps4" onclick="OthersOff()" value="PS4" <?php if(isset($_SESSION['platform-ps4'])) echo "checked"; ?>>PS4<br>
+            <input type="checkbox" id="p-switch" name="platform-switch" onclick="OthersOff()" value="Nintendo Switch" <?php if(isset($_SESSION['platform-switch'])) echo "checked"; ?>>Nintendo Switch<br>
+            <input type="checkbox" id="p-others" name="platform-others" onclick="OthersChecked()" value="Others" <?php if(isset($_SESSION['platform-others'])) echo "checked"; ?>>Others<br>
         </div>
-        
+        <script>
+            function OthersChecked(){
+                document.getElementById("p-pc").checked = false;
+                document.getElementById("p-360").checked = false;
+                document.getElementById("p-one").checked = false;
+                document.getElementById("p-ps2").checked = false;
+                document.getElementById("p-ps3").checked = false;
+                document.getElementById("p-ps4").checked = false;
+                document.getElementById("p-switch").checked = false;
+            }
+
+            function OthersOff(){
+                document.getElementById("p-others").checked = false;
+            }
+        </script>
         <div class="filter-type">
             <p><label for="type"> Type </label></p> <br>
             <select name ="type">
