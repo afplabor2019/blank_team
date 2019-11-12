@@ -51,5 +51,16 @@ function db_close()
     $db->close();
 }
 
+function unsetPlatformFilters(){
+    unset ($_SESSION["platform-pc"]);
+    unset ($_SESSION["platform-xbox360"]);
+    unset ($_SESSION["platform-xboxone"]);
+    unset ($_SESSION["platform-ps2"]);
+    unset ($_SESSION["platform-ps3"]);
+    unset ($_SESSION["platform-ps4"]);
+    unset ($_SESSION["platform-switch"]);
+    unset ($_SESSION["platform-others"]);
+}
+
 ?>
 

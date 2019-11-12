@@ -7,7 +7,9 @@ CREATE TABLE `products` (
 `price` FLOAT NOT NULL,
 `platform` VARCHAR(100) NOT NULL,
 `release_year` INT(4),
+`score` FLOAT,
 `description` TEXT NULL,
 `cover` TEXT NOT NULL,
-`del` TINYINT(1)
+`del` TINYINT(1),
+`adpic` TEXT 
 );

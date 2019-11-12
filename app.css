@@ -634,6 +634,7 @@ input[type=text-p] {
   .active {
     background-color: #4CAF50;
     color: white;
+    border-radius: 0;
   }
   
   .topnav .icon {
@@ -677,6 +678,7 @@ input[type=text-p] {
   .topnav a:hover, .dropdown:hover .dropbtn {
     background-color: #555;
     color: white;
+    border-radius: 0;
   }
   
   .dropdown-content a:hover {
