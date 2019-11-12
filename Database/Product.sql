@@ -12,5 +12,5 @@ CREATE TABLE `products` (
 `description` TEXT NULL,
 `cover` TEXT NOT NULL,
 `del` TINYINT(1),
-`adpic` TEXT 
+`adpic` TEXT
 );
