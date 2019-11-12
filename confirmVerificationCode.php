@@ -1,4 +1,5 @@
 <?php 
+include_once "pages/head.php";
 $errors = [];
 if(is_post())
 {
@@ -16,3 +17,8 @@ if(is_post())
     <input type ="text" name ="code"> <br>
     <?php if(isset($errors['code'])) foreach ($errors['code'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
     <button type ="submit"> Verify </button>
+</form>
+<?php
+
+include_once "pages/footer.php";
+?>

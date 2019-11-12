@@ -18,8 +18,11 @@ $cnpassword = $_POST['cnpassword'];
     }
     if($cnpassword != $npassword) {$errors['cnpassword'][] = 'Passwords does not match!'; $errors['npassword'][] = 'Passwords does not match!';}
     //Change password
-    if(count($errors) == 0)
+    if(count($errors) == 0){
         $sql->execute("UPDATE `users` SET `password` = ? WHERE `email` = ?",password_hash($npassword,PASSWORD_DEFAULT),$_SESSION['email']);
+        header("Location: ".url('login'));
+    }
+       
 }
 ?>
 
