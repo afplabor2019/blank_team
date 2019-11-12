@@ -1,5 +1,25 @@
-<?php require_once "pages/head.php";
-?> 
+<?php require_once "pages/head.php";?>
+<?php 
+$sql = new SQL();
+
+//newest products
+$newest = $sql->execute("SELECT * FROM `products` WHERE `adpic` <> ? ORDER BY `id` LIMIT 6","none");
+foreach ($newest as $key => $value) {
+    /*echo $value['id']." ";
+    echo $value['title']." ";
+    echo $value['price']." ";
+    echo $value['platform']." "; */
+}
+
+//best products
+$best_scored = $sql->execute("SELECT * FROM `products` ORDER BY `score` DESC LIMIT 6 ");
+foreach ($best_scored as $key => $value) {
+   /* echo $value['id']." ";
+    echo $value['title']." ";
+    echo $value['score']." "; */
+}
+
+?>
 <div class="page-home">
     <div class="main-column">
         <!--<img src="menogif.gif" alt="So 2004">-->
