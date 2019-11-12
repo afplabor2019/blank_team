@@ -24,7 +24,12 @@
 
 <div class="p-send-review">
 <h1>Leave a review of this game!</h1>
+<form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
 <textarea name="review" class="p-review"></textarea>
+<input type="submit" value ="SUBMIT">
+</form>
+
+<!-- eddigi review-k listázása -->
 </div>
 
 <?php

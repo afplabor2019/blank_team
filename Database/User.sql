@@ -10,5 +10,6 @@ CREATE TABLE `users` (
 `registration_date` DATE,
 `shipping_id` CHAR(5),
 `password` TEXT NOT NULL,
+`profile_pic` TEXT,
 `del` TINYINT(1)
 );
