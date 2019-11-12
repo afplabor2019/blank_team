@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>WSNAME</title>
-    <link rel="stylesheet" href="<?php echo asset("app.css"); ?>">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -34,27 +35,34 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="lower-row">
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href ="<?php echo url('home') ?>">Home</a>
-                            </li>
-                            <li>
-                                <a href ="<?php echo url('products') ?>">Products</a>
-                            </li>
-                            <li>
-                                <a href ="<?php echo url('products') ?>">Platforms</a>
-                            </li>
-                            <?php 
-                            if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) : ?>
-                            <li>
-                                <a href ="<?php echo url('addProduct') ?>">Add Product</a>
-                            </li>   
-                            <?php endif;?>
-                        </ul>
-                    </nav>
-                </div>
+                <div class="topnav" id="myTopnav">
+  <a href="<?php echo url('home') ?>" class="active">Home</a>
+  <a href="<?php echo url('products') ?>">Products</a>
+  <div class="dropdown">
+    <button class="dropbtn">Platform 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div> 
+  <?php  if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) : ?>
+  <a href="<?php echo url('addProduct') ?>">Add Product</a>
+    <?php endif; ?>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
         </div>
     </header>
 <main class="container">
