@@ -1,6 +1,5 @@
 <?php require_once "pages/head.php"; ?> 
 <div class="register">
-<h1>Register</h1>
 <?php 
 $errors =[];
 if(is_post())
@@ -66,40 +65,43 @@ if(is_post())
 ?>
 
 <!--HTML-->
-<form action ="<?php echo url('register'); ?>" method ="POST" autocomplete="off">
-    <label for="email"> Email </label>
-    <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
-    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
-    <label for="userName"> User Name </label>
-    <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> <br>
-    <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
-    <label for="fullName"> Full Name </label>
-    <input type ="text" name ="fullName" value = "<?php echo isset($fullName) ? $fullName : ""; ?>"> <br>
-    <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
-    <label for="password"> Password </label>
-    <input type ="password" name ="password"> <br>
-    <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
-    <label for="cpassword"> Confirm Password </label>
-    <input type ="password" name ="cpassword"> <br>
-    <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
-    <label for="bday"> Birth Date </label>
-    <input type="date" name="bday" min ="1900-01-01" max=<?php echo date("Y-m-d") ?> value = "<?php echo isset($birthDate) ? $birthDate : ''; ?>">
-    <?php if(isset($errors['bdate'])) foreach ($errors['bdate'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
-
-<script type="text/javascript">
-    var onloadCallback = function() { grecaptcha.render('html_element',{'sitekey' : '6LeAgcAUAAAAALIya8oqHrmjIajlp46W3l_ejOuH'});};
-</script>
- <!-- EZ a div a captcha -->
-<div id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
-<button class ="button" type="submit">Register</button>
-</form>
-<a href ="<?php echo url('login')?>">Log In</a>
+    <div class="register-form">
+        <h1 class="reg-h">Register</h1>
+        <div class="register-data">
+            <form action ="<?php echo url('register'); ?>" method ="POST" autocomplete="off">
+                <div class="r-left-side">
+                    <label for="email"> Email </label><br>
+                    <label for="userName"> User Name </label><br>
+                    <label for="fullName"> Full Name </label><br>
+                    <label for="password"> Password </label><br>
+                    <label for="cpassword"> Confirm Password </label><br>
+                    <label for="bday"> Birth Date </label><br>
+                </div>
+                <div class="r.right-side">
+                    <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
+                    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?>                     
+                    <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> <br>
+                    <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+                    <input type ="text" name ="fullName" value = "<?php echo isset($fullName) ? $fullName : ""; ?>"> <br>
+                    <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+                    <input type ="password" name ="password"> <br>
+                    <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+                    <input type ="password" name ="cpassword"> <br>
+                    <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+                    <input type="date" name="bday" min ="1900-01-01" max=<?php echo date("Y-m-d") ?> value = "<?php echo isset($birthDate) ? $birthDate : ''; ?>">
+                    <?php if(isset($errors['bdate'])) foreach ($errors['bdate'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+                </div>
+            <script type="text/javascript">
+                var onloadCallback = function() { grecaptcha.render('html_element',{'sitekey' : '6LeAgcAUAAAAALIya8oqHrmjIajlp46W3l_ejOuH'});};
+            </script>
+            <!-- EZ a div a captcha -->
+            <div id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+            <button class ="button" type="submit">Register</button>
+            </form>
+            <a href ="<?php echo url('login')?>">Log In</a>
+        </div>
+    </div>
 </div>
 <?php require_once "pages/footer.php"; ?>
 
