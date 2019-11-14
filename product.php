@@ -54,6 +54,36 @@
 
 
 <!-- eddigi review-k listázása -->
+<?php 
+$reviews = $sql->execute("SELECT * FROM `reviews` WHERE `product_id` = ?",$productid);
+foreach ($reviews as $key => $value) {
+    $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$value['user_id']);
+    $message = $value['msg'];
+    $score = $value['score'];
+    $generatedid=GenerateID(4);
+    echo $score;
+    echo "<span class=rating>";
+    if($score == 5) echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5 checked>";
+    else  echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5>";
+    echo "<label for=rating-input-1-5 class=rating-star></label>";
+    if($score ==4) echo "<input type=radio class=rating-input id=rating-input-1-4 name=rating-input$generatedid value =4 checked>";
+    else  echo "<input type=radio class=rating-input id=rating-input-1-4 name=rating-input$generatedid value =4>";
+    echo "<label for=rating-input-1-4 class=rating-star></label>";
+    if($score == 3)echo "<input type=radio class=rating-input id=rating-input-1-3 name=rating-input$generatedid value =3 checked>";
+    else echo "<input type=radio class=rating-input id=rating-input-1-3 name=rating-input$generatedid value =3>";
+    echo "<label for=rating-input-1-3 class=rating-star></label>";
+    if($score ==2)echo "<input type=radio class=rating-input id=rating-input-1-2 name=rating-input$generatedid value =2 checked>";
+    else"<input type=radio class=rating-input id=rating-input-1-2 name=rating-input$generatedid value =2>";
+    echo "<label for=rating-input-1-2 class=rating-star></label>";
+    if($score == 1) echo "<input type=radio class=rating-input id=rating-input-1-1 name=rating-input$generatedid value =1 checked>";
+    else echo "<input type=radio class=rating-input id=rating-input-1-1 name=rating-input$generatedid value =1>";
+    echo "<label for=rating-input-1-1 class=rating-star></label>";
+    echo "</span><br>";
+    echo "<textarea name=review class=p-review>$message</textarea>";
+    echo "<img src=images/user.jpg class=p-review-profile-pic>";
+
+}
+?>
 </div>
 
 <?php
