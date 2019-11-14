@@ -3,17 +3,42 @@
     $errors = [];
     $productid = $_GET['id'];
     $product = $sql->execute("SELECT * FROM `products` WHERE `id` = ?",$productid);
+    $avarageScore = 0;
+    $average_data = $sql->execute("SELECT score,review_count FROM `products` WHERE id = ?",$productid);
+    if($average_data[0]['review_count'] == 0){
+            $avarageScore = $average_data[0]['score'];
+    } else
+        $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];
+
     if(is_post()){
-        //insert into order database?
-        $reviewDescription = $_POST['review'];
-  
-        if(count($errors) == 0)
-        $sql->execute("INSERT INTO `reviews`(`id`, `user_id`, `product_id`, `msg`, `score`) VALUES (?,?,?,?,?)",GenerateID(),$_SESSION['user_id'],$productid,$reviewDescription,$_POST['rating-input']);
+
+        if(isset($_POST['Next']) || isset($_POST['Prev'])){
+            if(isset($_POST['Next'])) $offset = $offset+8;
+            else if(isset($_POST['Prev'])) $offset = $offset-8;
+
+        }
+        else{
+            if(isset($_POST['review']))
+            $reviewDescription = $_POST['review'];
+            if($reviewDescription == null) $errors['err'][] = "Message is required!";
+            if(!isset($_SESSION['user_id'])) $errors['err'][] = "You have to log in to leave a review!";
+            if(!isset($_POST['rating-input'])) $errors['err'][] = "You have to give a rating!";
+
+            if(count($errors) == 0){
+                $sql->execute("INSERT INTO `reviews`(`id`, `user_id`, `product_id`, `msg`, `score`) VALUES (?,?,?,?,?)",GenerateID(),$_SESSION['user_id'],$productid,$reviewDescription,$_POST['rating-input']);
+                $sql->execute("UPDATE `products` SET `score` = ? WHERE `id` = ?",$average_data[0]['score']+$_POST['rating-input'],$productid);
+                $sql->execute("UPDATE `products` SET `review_count` = ? WHERE `id` = ?" ,$average_data[0]['review_count']+1,$productid);
+                $average_data[0]['score'] += $_POST['rating-input'];
+                $average_data[0]['review_count'] += 1;
+                $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];
+        }      
+        }       
     }
 ?>
 <div class="product-container">
     <div class = "product-left-side">
         <img class="p-image" src="<?php echo $product[0]['cover'] ?>" alt="cover"><br>
+        <span><?php echo round($avarageScore, 2)?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p></span> 
         <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST"><button type="submit">TO CART</button></form>
     </div>
     <div class ="product-right-side">
@@ -31,37 +56,35 @@
 
 <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
 <span class="rating">
-    <input type="radio" class="rating-input"
-        id="rating-input-1-5" name="rating-input" value =5>
+    <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input" value =5>
     <label for="rating-input-1-5" class="rating-star"></label>
-    <input type="radio" class="rating-input"
-        id="rating-input-1-4" name="rating-input" value =4>
+    <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input" value =4>
     <label for="rating-input-1-4" class="rating-star"></label>
-    <input type="radio" class="rating-input"
-        id="rating-input-1-3" name="rating-input" value =3>
+    <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input" value =3>
     <label for="rating-input-1-3" class="rating-star"></label>
-    <input type="radio" class="rating-input"
-        id="rating-input-1-2" name="rating-input"value =2>
+    <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input"value =2>
     <label for="rating-input-1-2" class="rating-star"></label>
-    <input type="radio" class="rating-input"
-        id="rating-input-1-1" name="rating-input" value =1>
+    <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input" value =1>
     <label for="rating-input-1-1" class="rating-star"></label>
 </span><br>
 <textarea name="review" class="p-review"></textarea>
 <img src="images/user.jpg" alt="" class="p-review-profile-pic">
+<?php if(isset($errors['err'])) foreach ($errors['err'] as $key => $value) echo "<p> $value </p>"; ?>
 <input type="submit" value ="SUBMIT">
 </form>
 
 
 <!-- eddigi review-k listázása -->
 <?php 
-$reviews = $sql->execute("SELECT * FROM `reviews` WHERE `product_id` = ?",$productid);
+
+$reviews = $sql->execute("SELECT * FROM `reviews` WHERE `product_id` = ? ",$productid);
+$count = $sql->execute("SELECT Count(*) as `count` FROM `reviews` WHERE `product_id` = ? ",$productid);
 foreach ($reviews as $key => $value) {
     $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$value['user_id']);
+    $username = $sql->execute("SELECT `user_name` FROM `users` WHERE id = ?",$value['user_id']);
     $message = $value['msg'];
     $score = $value['score'];
     $generatedid=GenerateID(4);
-    echo $score;
     echo "<span class=rating>";
     if($score == 5) echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5 checked>";
     else  echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5>";
@@ -79,12 +102,14 @@ foreach ($reviews as $key => $value) {
     else echo "<input type=radio class=rating-input id=rating-input-1-1 name=rating-input$generatedid value =1>";
     echo "<label for=rating-input-1-1 class=rating-star></label>";
     echo "</span><br>";
-    echo "<textarea name=review class=p-review>$message</textarea>";
-    echo "<img src=images/user.jpg class=p-review-profile-pic>";
-
+    echo "<textarea name=review class=p-review readonly>$message</textarea>";
+    echo "<img src=".$profilepic[0]['profile_pic']." class=p-review-profile-pic>";
+    echo "<p>".$username[0]['user_name']."</p>";
 }
 ?>
 </div>
+
+
 
 <?php
 include_once "pages/footer.php";

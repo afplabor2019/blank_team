@@ -1,10 +1,20 @@
 <?php include_once "pages/head.php";?>
+<?php
 
+if(is_post()){
+
+    
+
+}
+
+
+?>
 <div class="profile-container">
     <div class = "profile-pic">
         <img src = "images/user.jpg" alt = "profile picture">
         <form action="<?php echo url('profile') ?>" method = "POST">
         <input type="file" name="change-profile-pic">
+        <input type="submit" value="Save">
         </form>
     </div>
 

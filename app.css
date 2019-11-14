@@ -806,9 +806,9 @@ input[type=text-p] {
 
  .rating-star,
 .rating:hover .rating-star {
-  position: relative;
+    position: relative;
     display: block;
-  float: right;
+    float: right;
     width: 16px;
     height: 16px;
     
