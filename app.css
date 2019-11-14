@@ -643,7 +643,11 @@ input[type=text-p] {
 .p-review {
     border: 1px solid black;
     padding: 5%;
-    width: 90%;
+    width: 80%;   
+}
+.p-review-profile-pic{
+    width : 16.5%;
+    height: 16.5%;
 }
 
 
@@ -763,3 +767,51 @@ input[type=text-p] {
       text-align: left;
     }
   }
+
+.profile-pic img{
+    width: 70%;
+    float: left;
+    height: 70%;
+    margin-bottom: 2%;
+}
+
+.profile-pic form input{
+    float:left;
+}
+
+.profile-pic{
+    width : 40%;
+    height: 100%;
+    float: left;
+}
+
+.rating {
+    overflow: hidden;
+    float:left;
+    
+}
+.rating-input {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    opacity: 0;
+    
+}
+
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+
+ .rating-star,
+.rating:hover .rating-star {
+  position: relative;
+    display: block;
+  float: right;
+    width: 16px;
+    height: 16px;
+    
+    background: url('https://www.everythingfrontend.com/samples/star-rating/star.png') 0 -16px;
+}
+  

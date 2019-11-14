@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
+<?php
+
+?>
     <header>
-        <div class="header">
+    <div class="header">
                 <div class="upper-row">
                     <nav>
                         <ul>
@@ -20,7 +24,7 @@
                             </li>
                             <li>
                                 <div class="search-container">
-                                <form action="<?php echo url('products'); ?>" method="POST" autocomplete="off">
+                                <form action="<?php echo url('home') ?>" method="POST" autocomplete="off">
                                 <input class ="searchbar" type="text" placeholder ="Search..." name="search">
                                 <button type="submit"><img class="icon" src="images/search.png" alt="Search" height="17" width="17"></button>
                                 </form>
