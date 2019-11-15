@@ -1,11 +1,16 @@
 <?php require_once "pages/head.php";?>
 <?php 
 $errors = [];
+$value="";
+
  if(is_post())
  {
     $sql = new SQL();
+    if(isset($_POST['email']))
     $email = $_POST['email'];
     $_SESSION['email'] = $email; 
+
+    
 
     //email Verification
     if ($email == null) $errors['email'][] = 'Email is required!';
@@ -32,11 +37,15 @@ $errors = [];
     }
  }
 
+ //Write back
+ if(loggedIn()) $value = $_SESSION['user_email'];
+ if(isset($email)) $value = $email;
+
  ?> 
 <form action ="<?php echo url('forgottenPassword') ?>" method ="POST">
 <label for="email"> Email </label>
-    <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
-    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+    <input type ="text" name ="email" value = "<?php echo $value?>"><br>
+<?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
     <button type ="submit"> Send email </button> 
 
 <?php require_once "pages/footer.php";?>

@@ -1,21 +1,18 @@
 <?php include_once "pages/head.php";?>
 <?php
+$sql = new SQL();
+  if(isset($_SESSION['user_id']))
+  $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$_SESSION['user_id']);
+  else
+  $profilepic = "images\\profilepic\\user.jpg";
+    if(is_post())  header("Location: ".url('editProfile'));
 
-if(is_post()){
-
-    
-
-}
 
 
 ?>
 <div class="profile-container">
     <div class = "profile-pic">
-        <img src = "images/user.jpg" alt = "profile picture">
-        <form action="<?php echo url('profile') ?>" method = "POST">
-        <input type="file" name="change-profile-pic">
-        <input type="submit" value="Save">
-        </form>
+        <img src = "<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" alt = "profile picture">
     </div>
 
     <div class ="profile-data"> 
@@ -28,7 +25,9 @@ if(is_post()){
             <p>Birth Date</p>
             <?php echo $_SESSION['user_birth_date'] ?><br>
             <a href="<?php echo url('forgottenPassword') ?>">Change Password</a>
-            <input type="submit" value = "edit">
+            <form action="<?php echo url('profile') ?>" method ="POST">
+            <input type="submit" value = "edit" name="letsedit">
+            </form>
     </div>
 </div>
 <?php include_once "pages/footer.php"?>

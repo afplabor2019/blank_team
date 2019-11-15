@@ -42,8 +42,8 @@
                                     </span>
                                   <?php else : ?>
                                   <span class="popuptext" id="myPopup">
-                                    <a href="<?php echo isset($_GET['p']) ? $_SERVER['REQUEST_URI']."&e=1": $_SERVER['REQUEST_URI']."?p=home&e=1" ;?>"> Log out</a><br>
-                                    <a href="<?php echo url('profile') ?>"> Profile</a>
+                                  <a href="<?php echo url('profile') ?>"> Profile</a><br>
+                                    <a href="<?php echo isset($_GET['p']) ? $_SERVER['REQUEST_URI']."&e=1": $_SERVER['REQUEST_URI']."?p=home&e=1" ;?>"> Log out</a>
                                     </span>
                                   <?php endif; ?>
                                   <img src="<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" class ="login-img" alt="Profile">

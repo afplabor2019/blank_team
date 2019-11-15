@@ -112,7 +112,7 @@ input[type=text]:focus {
     cursor: pointer;
 }
 .upper-row {
-    overflow: hidden;
+   
     background-color: #000000;
     padding: 40px 10px;
     font-size: 20px;
@@ -129,7 +129,7 @@ input[type=text]:focus {
     padding: 1% 0.5%;
     margin-left: 19%;
     width: 62%;
-    
+    position: fixed;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border: solid black 1px;
@@ -139,6 +139,7 @@ input[type=text]:focus {
 .lower-row a{
     font-size: 20px;
     line-height: 25px;
+    position: relative;
 }
 
 .upper-row input[type=text] {
@@ -830,7 +831,7 @@ input[type=text-p] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    z-index: 9999999;
+    z-index: 10001;
   }
   
   /* The actual popup */

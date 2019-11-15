@@ -10,14 +10,8 @@
     } else
         $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];
 
-    if(is_post()){
-
-        if(isset($_POST['Next']) || isset($_POST['Prev'])){
-            if(isset($_POST['Next'])) $offset = $offset+8;
-            else if(isset($_POST['Prev'])) $offset = $offset-8;
-
-        }
-        else{
+    if(is_post())
+    {
             if(isset($_POST['review']))
             $reviewDescription = $_POST['review'];
             if($reviewDescription == null) $errors['err'][] = "Message is required!";
@@ -30,9 +24,8 @@
                 $sql->execute("UPDATE `products` SET `review_count` = ? WHERE `id` = ?" ,$average_data[0]['review_count']+1,$productid);
                 $average_data[0]['score'] += $_POST['rating-input'];
                 $average_data[0]['review_count'] += 1;
-                $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];
-        }      
-        }       
+                $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];    
+            }       
     }
 ?>
 <div class="product-container">

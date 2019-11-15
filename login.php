@@ -46,7 +46,8 @@ if(is_post())
             $_SESSION['user_shippingID'] = $user[0]['shipping_id'];
             $_SESSION['user_del'] = $user[0]['del'];
 
-            header("Location: ".url('home'));
+             header("Location: ".url('home'));
+           
         }  
 
         else  
