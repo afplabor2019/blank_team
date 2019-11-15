@@ -62,5 +62,22 @@ function unsetPlatformFilters(){
     unset ($_SESSION["platform-others"]);
 }
 
+function loggedIn(){
+    return isset($_SESSION['user_id']);
+}
+
+function logOut(){
+    unset($_SESSION['user_id']);
+    unset($_SESSION['user_user_name']);
+    unset($_SESSION['user_email']);
+    unset($_SESSION['user_fullname']);
+    unset($_SESSION['user_birth_date']);
+    unset($_SESSION['user_age']);
+    unset($_SESSION['user_role']);
+    unset($_SESSION['user_registration_date']);
+    unset($_SESSION['user_shippingID']);
+    unset($_SESSION['user_del']);
+}
+
 ?>
 

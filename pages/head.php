@@ -12,7 +12,11 @@
 <body>
 
 <?php
-
+  $sql = new SQL();
+  if(isset($_SESSION['user_id']))
+  $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$_SESSION['user_id']);
+  else
+  $profilepic = "images\\profilepic\\user.jpg";
 ?>
     <header>
     <div class="header">
@@ -30,9 +34,20 @@
                                 </form>
                                 </div>
                             </li>
-                            <li>
-                                <a href ="<?php echo url('login') ?>">Login</a>
-                            </li>
+                              <div class="popup" onclick="myFunction2()" style="display:inline;margin:0;padding:0;">
+                                  <?php if(!loggedIn()) : ?>
+                                    <span class="popuptext" id="myPopup">
+                                    <a href="<?php echo url('login') ?>"> Login</a><br>
+                                    <a href="<?php echo url('register') ?>"> Register</a>
+                                    </span>
+                                  <?php else : ?>
+                                  <span class="popuptext" id="myPopup">
+                                    <a href="<?php echo isset($_GET['p']) ? $_SERVER['REQUEST_URI']."&e=1": $_SERVER['REQUEST_URI']."?p=home&e=1" ;?>"> Log out</a><br>
+                                    <a href="<?php echo url('profile') ?>"> Profile</a>
+                                    </span>
+                                  <?php endif; ?>
+                                  <img src="<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" class ="login-img" alt="Profile">
+                              </div>
                             <li>
                                 <a href ="<?php echo url('shoppingcart') ?>">Shopping cart</a>
                             </li>
@@ -58,16 +73,24 @@
                 <?php endif; ?>
               <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
-            <script>
-              function myFunction() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                  x.className += " responsive";
-                } else {
-                  x.className = "topnav";
-                }
-              }
-            </script>
+            <input type="hidden" id="logout" value=0>
+<script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+
+  function myFunction2() {
+    var popup = document.getElementById("myPopup");
+   popup.classList.toggle("show");
+  }
+
+</script>
+
 </div>
     </header>
 <main class="container">
