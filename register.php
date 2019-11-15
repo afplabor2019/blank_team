@@ -61,8 +61,8 @@ if(is_post())
     {
         $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `birth_date`,`age`,`registration_date`,`profile_pic`) 
         VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)),?,?)",GenerateID(),$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,GenerateID(),0,$birthDate,$birthDate,date('y-m-d-h-m-s'),"images\\profilepic\\user.jpg");  
-          
-        header("Location: ".url('login'));      
+        $_SESSION['succesregister'] = 1;
+       header("Location: ".url('login'));      
     }
 }
 ?>
@@ -100,11 +100,12 @@ if(is_post())
             <!-- EZ a div a captcha -->
             <div id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
             <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
-            <button class ="button" type="submit">Register</button>
+            <button class ="button" id = "myBtn" type="submit">Register</button>
             </form>
             <a href ="<?php echo url('login')?>">Log In</a>
         </div>
     </div>
 </div>
+
 <?php require_once "pages/footer.php"; ?>
 

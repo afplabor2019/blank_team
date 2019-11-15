@@ -68,12 +68,14 @@
                   <a href="<?php echo url('products')."&platform=Nintendo Switch" ?>">Nintendo Switch</a>
                 </div>
               </div>
+              <a href="<?php echo url('contact') ?>" <?php echo $page == 'contact' ? 'class="active"' : ''; ?>>Contact</a>
               <?php  if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) : ?>
               <a href="<?php echo url('addProduct') ?>" <?php echo $page == 'addProduct' ? 'class="active"' : ''; ?>>Add Product</a>
                 <?php endif; ?>
               <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+              
             </div>
-            <input type="hidden" id="logout" value=0>
+           
 <script>
   function myFunction() {
     var x = document.getElementById("myTopnav");
