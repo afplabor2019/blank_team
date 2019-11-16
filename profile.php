@@ -24,7 +24,6 @@ $sql = new SQL();
             <p><?php echo $_SESSION['user_fullname'] ?></p>
             <p>Birth Date</p>
             <?php echo $_SESSION['user_birth_date'] ?><br>
-            <a href="<?php echo url('forgottenPassword') ?>">Change Password</a>
             <form action="<?php echo url('profile') ?>" method ="POST">
             <input type="submit" value = "edit" name="letsedit">
             </form>
