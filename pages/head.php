@@ -49,9 +49,7 @@
                                   <?php endif; ?>
                                   <img src="<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" class ="login-img" alt="Profile">
                               </div>
-                            <li>
-                                <a href ="<?php echo url('shoppingcart') ?>">Shopping cart</a>
-                            </li>
+                              <a href ="<?php echo url('shoppingcart') ?>"><img src="images/cart2.png" alt="Shopping cart" class="shoppingcart-img"></a>
                         </ul>
                     </nav>
                 </div>

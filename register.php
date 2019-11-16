@@ -69,7 +69,7 @@ if(is_post())
 
 <!--HTML-->
     <div class="register-form">
-        <h1 class="reg-h">Register</h1>
+        <h1 class="reg-h">REGISTER</h1>
         <div class="register-data">
             <form action ="<?php echo url('register'); ?>" method ="POST" autocomplete="off">
                 <div class="r-left-side">
@@ -80,7 +80,7 @@ if(is_post())
                     <label for="cpassword"> Confirm Password </label><br>
                     <label for="bday"> Birth Date </label><br>
                 </div>
-                <div class="r.right-side">
+                <div class="r-right-side">
                     <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
                     <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?>                     
                     <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> <br>
@@ -98,11 +98,12 @@ if(is_post())
                 var onloadCallback = function() { grecaptcha.render('html_element',{'sitekey' : '6LeAgcAUAAAAALIya8oqHrmjIajlp46W3l_ejOuH'});};
             </script>
             <!-- EZ a div a captcha -->
-            <div id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
+            <div class="r-captcha" id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
             <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
-            <button class ="button" id = "myBtn" type="submit">Register</button>
+            <div class="r-bottom">
+            <button class ="register-button" id = "myBtn" type="submit"><span>Register</span></button>
             </form>
-            <a href ="<?php echo url('login')?>">Log In</a>
+            </div>
         </div>
     </div>
 </div>
