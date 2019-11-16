@@ -7,11 +7,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>WSNAME</title>
     <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 </head>
 <body>
-
 <?php
+  include_once "lib/config.php";
+  include_once "lib/functions.php";
   $sql = new SQL();
   if(isset($_SESSION['user_id']))
   $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$_SESSION['user_id']);
@@ -69,9 +70,9 @@
                 </div>
               </div>
               <a href="<?php echo url('contact') ?>" <?php echo $page == 'contact' ? 'class="active"' : ''; ?>>Contact</a>
-              <?php  if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) : ?>
-              <a href="<?php echo url('addProduct') ?>" <?php echo $page == 'addProduct' ? 'class="active"' : ''; ?>>Add Product</a>
-                <?php endif; ?>
+              <?php if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) :?>
+              <a href="<?php echo url('addProduct') ?>" <?php echo $page == 'addProduct' ? 'class="active"' : '';?>>Add Product</a>
+                <?php endif;?>
               <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
               
             </div>

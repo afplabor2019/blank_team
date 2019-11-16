@@ -1,17 +1,652 @@
 <?php require_once "pages/head.php"; ?>
-<?php
-$minID = 0;
-$maxID = 12;
-$type;
-$minprice;
-$maxprice;
-$title;
-$publisher;
-$releaseyear;
-$sql = new SQL();
-$starterString = "SELECT * FROM `products` WHERE `del` = 0";
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(document).ready(function(){
+        $.post("products_ajax.php",{
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
 
-    //if(isset($_GET['platform'])) echo $_GET['platform'];
+    var aminprice = 0;
+    var amaxprice = 200;
+    //price
+    $( function() {
+        $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 200,
+        values: [0, 200],
+        slide: function( event, ui ) {  
+            aminprice = ui.values[0];
+            amaxprice = ui.values[1];  
+            var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();        
+            $.post("products_ajax.php", {
+                minprice: ui.values[0],
+                maxprice: ui.values[1],
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+               
+            }, function(data,status){
+                $("#product-list").html(data);
+            });
+            $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
+        }
+        });
+        $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - €" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
+
+    //title
+    $(document).ready(function() {
+      $("#title").keyup(function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //publisher
+    $(document).ready(function() {
+      $("#publisher").keyup(function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //type
+    $(document).ready(function() {
+      $("#type").on('change' ,function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //release year
+    $(document).ready(function() {
+      $("#year").keyup(function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //platform-pc
+    $(document).ready(function() {
+      $("#p-pc").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //platform-xbox360
+    $(document).ready(function() {
+      $("#p-360").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //platform-xboxone
+    $(document).ready(function() {
+      $("#p-one").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //platform-ps2
+    $(document).ready(function() {
+      $("#p-ps2").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+     //platform-ps3
+     $(document).ready(function() {
+      $("#p-ps3").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //platform-ps4
+    $(document).ready(function() {
+      $("#p-ps4").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });      
+
+    //platform-switch
+    $(document).ready(function() {
+      $("#p-switch").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //platform-others
+    $(document).ready(function() {
+      $("#p-others").on('change',function() {
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //next button
+    $(document).ready(function() {
+      $("#nextbtn").click(function() {         
+        $.post("products_ajax.php",{
+
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+
+    //prev button
+    $(document).ready(function() {
+      $("#prevbtn").click(function() {         
+        $.post("products_ajax.php",{
+
+        }, function(data,status){
+            $("#product-list").html(data);
+        });
+    });
+    });    
+</script>
+<?php
+
+
+    /*
     if(!is_post()) 
         unsetPlatformFilters();
     else{   
@@ -78,156 +713,33 @@ $starterString = "SELECT * FROM `products` WHERE `del` = 0";
             if(isset($_SESSION['type']))$type = $_SESSION['type'];
             if(isset($_SESSION['releaseyear']))$releaseyear = $_SESSION['releaseyear'];
             if(isset($_SESSION['publisher']))$publisher = $_SESSION['publisher']; 
-            if(isset($_POST['minidtext'])) $minID = $_POST['minidtext'];
-            if(isset($_POST['increase']))$minID += 12;
-            else if(isset($_POST['decrease']) && $minID >1) $minID -= 12;
+            if(is_post()){
+                if(isset($_POST['minidtext'])) $minID = $_POST['minidtext'];
+                if(isset($_POST['increase']))$minID += 12;
+                else if(isset($_POST['decrease']) && $minID >1) $minID -= 12;
+            }
 
             $sql_string = $_SESSION['sql_query'];
             $product = $sql->execute($starterString.$sql_string." LIMIT $minID,$maxID");  
         }
 
     $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0";
-    $recordCount = $sql->execute($sql_string2.$sql_string); 
+    $recordCount = $sql->execute($sql_string2.$sql_string); */
+
+
 ?>
+
 <!--HTML-->
 <!--FILTERS -->
-<div class="product-filters">
-    <div class="products-filter-title"><p>FILTERS</p></div>
-    <form action="<?php echo url('products')?>" method="POST" autocomplete="off">
-        <div class="filter-price">
-            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-            <link rel="stylesheet" href="/resources/demos/style.css">
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-            <script>
-            $( function() {
-                $( "#slider-range" ).slider({
-                range: true,
-                min: 0,
-                max: 200,
-                values: [0, 200],
-                slide: function( event, ui ) {
-                        document.getElementById('slidermin').value = ui.values[0];
-                        document.getElementById('slidermax').value = ui.values[1];
-                    $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
-                }
-                });
-                $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
-                " - €" + $( "#slider-range" ).slider( "values", 1 ) );
-            } );
-            </script> 
-            <p>
-                <label for="amount">Price range:</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            </p>
-            <div id="slider-range" name="slider-range"></div>
-        </div>
-        <div class ="filter-title">
-            <label for="title">Title</label>
-            <input type="text" name ="title" <?php if(isset($title) && $title != null) echo "value=$title"; ?>>
-        </div>
-        <div class="filter-platform">
-            <p>Platforms</p>
-            <input type="checkbox" id="p-pc" name="platform-pc" onclick="OthersOff()" value="PC" <?php if(isset($_SESSION['platform-pc'])) echo "checked"; ?>>PC<br>
-            <input type="checkbox" id="p-360" name="platform-xbox360" onclick="OthersOff()" value="XBOX 360" <?php if(isset($_SESSION['platform-xbox360'])) echo "checked"; ?>>XBOX 360<br>
-            <input type="checkbox" id="p-one" name="platform-xboxone" onclick="OthersOff()" value="XBOX One" <?php if(isset($_SESSION['platform-xboxone'])) echo "checked"; ?>>XBOX One<br>
-            <input type="checkbox" id="p-ps2" name="platform-ps2" onclick="OthersOff()" value="PS2" <?php if(isset($_SESSION['platform-ps2'])) echo "checked"; ?>>PS2<br>
-            <input type="checkbox" id="p-ps3" name="platform-ps3" onclick="OthersOff()" value="PS3" <?php if(isset($_SESSION['platform-ps3'])) echo "checked"; ?>>PS3<br>
-            <input type="checkbox" id="p-ps4" name="platform-ps4" onclick="OthersOff()" value="PS4" <?php if(isset($_SESSION['platform-ps4'])) echo "checked"; ?>>PS4<br>
-            <input type="checkbox" id="p-switch" name="platform-switch" onclick="OthersOff()" value="Nintendo Switch" <?php if(isset($_SESSION['platform-switch'])) echo "checked"; ?>>Nintendo Switch<br>
-            <input type="checkbox" id="p-others" name="platform-others" onclick="OthersChecked()" value="Others" <?php if(isset($_SESSION['platform-others'])) echo "checked"; ?>>Others<br>
-        </div>
-        <script>
-            function OthersChecked(){
-                document.getElementById("p-pc").checked = false;
-                document.getElementById("p-360").checked = false;
-                document.getElementById("p-one").checked = false;
-                document.getElementById("p-ps2").checked = false;
-                document.getElementById("p-ps3").checked = false;
-                document.getElementById("p-ps4").checked = false;
-                document.getElementById("p-switch").checked = false;
-            }
-            function OthersOff(){document.getElementById("p-others").checked = false;}
-        </script>
-        <div class="filter-type">
-            <p><label for="type"> Type </label></p> <br>
-            <select name ="type">
-                <option value="Select Type" selected>Select Type</option>
-                <option value="Strategy"  <?php if(isset($_POST['type']) && $_POST['type'] == "Strategy") echo "selected"; ?>>Strategy</option>
-                <option value="Shooter" <?php if(isset($_POST['type']) && $_POST['type'] == "Shooter") echo "selected"; ?>>Shooter</option>
-                <option value="Moba" <?php if(isset($_POST['type']) && $_POST['type'] == "Moba") echo "selected"; ?>>Moba</option>
-                <option value="Fighter" <?php if(isset($_POST['type']) && $_POST['type'] == "Fighter") echo "selected"; ?>>Fighter</option>
-                <option value="Sport" <?php if(isset($_POST['type']) && $_POST['type'] == "Sport") echo "selected"; ?>>Sport</option>
-                <option value="Open world" <?php if(isset($_POST['type']) && $_POST['type'] == "Open world") echo "selected"; ?>>Open world</option>
-                <option value="Battle Royale" <?php if(isset($_POST['type']) && $_POST['type'] == "Battle Royale") echo "selected"; ?>>Battle Royale</option>
-                <option value="MMO" <?php if(isset($_POST['type']) && $_POST['type'] == "MMO") echo "selected"; ?>>MMO</option>
-                <option value="RPG" <?php if(isset($_POST['type']) && $_POST['type'] == "RPG") echo "selected"; ?>>RPG</option>
-            </select> <br>
-        </div>
-        <div class="filter-release">
-            <p><label>Release year</label></p><br>
-            <input name="release-year" type="number" min="1990" max="<?php echo date('Y') ?>" <?php if(isset($releaseyear) && $releaseyear != null) echo "value=$releaseyear"; ?>>
-        </div>
-        <div class="filter-publisher">
-            <p><label>Publisher</label></p>
-            <input name="publisher" type="text-p" <?php if(isset($publisher) && $publisher != null) echo "value=$publisher"; ?>>
-        </div>
-        <div class="filter-btn-div"><button class="filter-btn" type="submit-btn"><span>Search</span></button></div>
-        <input type="text" name ="slidermin" id="slidermin" value = 0 style = "display: none">
-        <input type="text" name ="slidermax" id="slidermax" value = 200 style = "display: none">
-    </form>
-</div>
+<?php include_once "filters.php"; ?>
 
 <!--PRODUCT LIST-->
-<div class="product-list">
-<?php foreach ($product as $key => $value) { 
-    echo "<div class =product-item>"; ?>
-        <a href ="<?php echo url('product&id='.$value['id']) ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" 
-            style="<?php switch ($value['platform']) {
-            case 'XBOX 360':
-                echo "background-color: #00ac26";
-            break;
-            case 'XBOX One':
-                echo "background-color: #00ac26";
-            break;
-            case 'PS2':
-                echo "background-color: #006FCD";
-            break;
-            case 'PS3':
-                echo "background-color: #006FCD";
-            break;
-            case 'PS4':
-                echo "background-color: #006FCD";
-            break;
-            case 'Nintendo Switch':
-                echo "background-color: #E30214";
-            break;
-            case 'PC':
-                echo "background-color: #FACA04";
-            break;
-            
-            default:
-                echo "background-color: #383838";
-                break;} ?>">
-        </a>
-    <?php
-        echo "<p class=product-title>".$value['title'];"</p>";
-        echo "<p class=product-title>".$value['price']. " €";"</p><br>";
-        echo "<p>".$value['platform'];"</p>";
-        echo "<br>";
-        echo "</div>";
-    } ?>
+<div class="product-list" id="product-list">
+
 </div>
 
-<!--SLIDE BUTTONS -->
-<div class="slide-buttons"><br>
-    <form action = <?php echo url('products') ?> method = "POST">
-        <button type ="submit" name ="decrease" style="<?php echo $minID ==0 ? "display:none" : " " ?>">  Previous </button>
-        <button type ="submit" name="increase" style ="<?php echo $recordCount[0]['records']-$minID <= $maxID ? "display:none" : " " ?>"> Next </button>
-        <input type="text" name ="minidtext" value="<?php echo $minID ?>" style="display:none">
-        <input type="text" name ="maxidtext" value="<?php echo $maxID ?>" style="display:none">
 
-    </form>
-</div>
+
+
 
 <?php require_once "pages/footer.php"; ?>
