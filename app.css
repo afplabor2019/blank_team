@@ -106,14 +106,14 @@ input[type=text]:focus {
 }
 
 .upper-row .login-img{
-    width : 15%;
+    width : 5%;
     height: auto;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .upper-row .shoppingcart-img{
-  width : 15%;
+  width : 5%;
   height: auto;
   cursor: pointer;
 }
@@ -176,14 +176,6 @@ input[type=text]:focus {
 
 .upper-row .search-container button:hover {
     background: #ccc;
-}
-
-.upper-header-right {
-  float: right;
-}
-
-.upper-header-right img {
-  margin: 0 5%;
 }
 
 .header a {
