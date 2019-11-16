@@ -12,7 +12,6 @@ $sql = new SQL();
 $starterString = "SELECT * FROM `products` WHERE `del` = 0";
 $sql_string =" ";
 
-//var_dump($_POST);
 //ha gombokkal léptetünk
 if(isset($_POST['next']) || isset($_POST['prev'])){
     if(isset($_POST['next'])){
@@ -27,7 +26,7 @@ if(isset($_POST['next']) || isset($_POST['prev'])){
     }
     $sql_string = $_SESSION['ajax_query'];
 }
-else //ha nem
+else
 {   
     $offset = 0;
     $_SESSION['offset'] = $offset;
@@ -66,12 +65,9 @@ else //ha nem
     else if(isset($_POST['platformothers']) && $_POST['platformothers'] == "Others")
         $sql_string .= " AND `platform` NOT IN ('PC','XBOX 360','XBOX One','PS2','PS3','PS4','Nintendo Switch')";
     
-    $_SESSION['ajax_query'] = $sql_string;
-   
+    $_SESSION['ajax_query'] = $sql_string;   
 }
 $product = $sql->execute($starterString.$sql_string." LIMIT $offset,12");
-
-
  foreach ($product as $key => $value) { 
     echo "<div class =product-item>"; ?>
         <a href ="<?php echo url('product&id='.$value['id']) ?>"><img class="product-image" src ="<?php echo $value['cover'] ?>" 
@@ -115,13 +111,12 @@ $product = $sql->execute($starterString.$sql_string." LIMIT $offset,12");
 <?php 
 $sql_string2 = "SELECT COUNT(*) AS `records` FROM `products` WHERE `del` = 0";
 $recordCount = $sql->execute($sql_string2.$sql_string); 
-
 ?>
 
 <!--SLIDE BUTTONS -->
 <div class="slide-buttons"><br>
-        <input type ="submit" name ="prevbtn" id="prevbtn" value="Previous" style="<?php echo $offset ==0 ? "display:none" : " " ?>"> 
-        <input type ="submit" name="nextbtn" id="nextbtn" value="Next" style ="<?php echo $recordCount[0]['records']-$offset <= 12 ? "display:none" : " " ?>"> 
+    <input type ="submit" name ="prevbtn" id="prevbtn" value="Previous" style="<?php echo $offset ==0 ? "display:none" : " " ?>"> 
+    <input type ="submit" name="nextbtn" id="nextbtn" value="Next" style ="<?php echo $recordCount[0]['records']-$offset <= 12 ? "display:none" : " " ?>"> 
 </div>
 
 <a href="#" id ="top"></a>

@@ -31,7 +31,7 @@
 <div class="product-container">
     <div class = "product-left-side">
         <img class="p-image" src="<?php echo $product[0]['cover'] ?>" alt="cover"><br>
-        <span><?php echo round($avarageScore, 2)?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p></span> 
+<span><?php echo round($avarageScore, 2) ==0 ? "No reviews yet!" : round($avarageScore, 2)?><?php if(round($avarageScore, 2) !=0) : ?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p> <?php endif;?></span> 
         <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST"><button type="submit">TO CART</button></form>
     </div>
     <div class ="product-right-side">
