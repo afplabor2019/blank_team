@@ -4,12 +4,48 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $(document).ready(function(){
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
+
         $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others
         }, function(data,status){
             $("#product-list").html(data);
         });
-    });
-
+    }); 
+    var offset = 0;
     var aminprice = 0;
     var amaxprice = 200;
     //price
@@ -624,10 +660,47 @@
     //next button
     $(document).ready(function() {
       $("#nextbtn").click(function() {         
-        $.post("products_ajax.php",{
+        var publisher = $("#publisher").val();
+        var title = $("#title").val();   
+        var releaseyear = $("#year").val();
+        var gametype;
+        if(document.getElementById("type").value != "Select Type") gametype =document.getElementById("type").value;
+        var pc;
+        if(document.getElementById("p-pc").checked) pc= $("#p-pc").val(); 
+        var x360;
+        if(document.getElementById("p-360").checked) x360= $("#p-360").val();
+        var xone;
+        if(document.getElementById("p-one").checked) xone= $("#p-one").val();
+        var ps2;
+        if(document.getElementById("p-ps2").checked) ps2= $("#p-ps2").val();
+        var ps3;
+        if(document.getElementById("p-ps3").checked) ps3= $("#p-ps3").val();
+        var ps4;
+        if(document.getElementById("p-ps4").checked) ps4= $("#p-ps4").val();
+        var nswitch;
+        if(document.getElementById("p-switch").checked) nswitch= $("#p-switch").val();
+        var others;
+        if(document.getElementById("p-others").checked) others= $("#p-others").val();
 
+        $.post("products_ajax.php",{
+                minprice: aminprice,
+                maxprice: amaxprice,
+                name: title,
+                publish: publisher,
+                year: releaseyear,
+                type: gametype,
+                platformpc: pc,
+                platformxbox360: x360,
+                platformxboxone: xone,
+                platformps2: ps2,
+                platformps3: ps3,
+                platformps4: ps4,
+                platformswitch: nswitch,
+                platformothers: others,
+                next: "12"
         }, function(data,status){
             $("#product-list").html(data);
+            alert(status);
         });
     });
     });    
@@ -636,7 +709,7 @@
     $(document).ready(function() {
       $("#prevbtn").click(function() {         
         $.post("products_ajax.php",{
-
+            prev: '12'
         }, function(data,status){
             $("#product-list").html(data);
         });
