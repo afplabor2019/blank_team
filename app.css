@@ -106,14 +106,14 @@ input[type=text]:focus {
 }
 
 .upper-row .login-img{
-    width : 20%;
+    width : 15%;
     height: auto;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .upper-row .shoppingcart-img{
-  width : 20%;
+  width : 15%;
   height: auto;
   cursor: pointer;
 }
