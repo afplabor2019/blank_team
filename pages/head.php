@@ -35,7 +35,9 @@
                                 </form>
                                 </div>
                             </li>
-                              <div class="popup" onclick="myFunction2()" style="display:inline;margin:0;padding:0;">
+                                                 
+                              <div class="upper-header-right">
+                                  <div class="popup" onclick="myFunction2()" style="display:inline;margin:0;padding:0;">
                                   <?php if(!loggedIn()) : ?>
                                     <span class="popuptext" id="myPopup">
                                     <a href="<?php echo url('login') ?>"> Login</a><br>
@@ -50,7 +52,8 @@
                                   <img src="<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" class ="login-img" alt="Profile">
                               </div>
                               <a href ="<?php echo url('shoppingcart') ?>"><img src="images/cart2.png" alt="Shopping cart" class="shoppingcart-img"></a>
-                        </ul>
+                              </div>
+                        </ul> 
                     </nav>
                 </div>
             <div class="topnav" id="myTopnav">

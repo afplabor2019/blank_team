@@ -102,23 +102,21 @@ input[type=text]:focus {
     left: 0;
     width: 100%;
     flex-direction: row;
-    z-index:10000;
-    
+    z-index:10000;    
 }
+
 .upper-row .login-img{
-    width : 5%;
+    width : 20%;
     height: auto;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .upper-row .shoppingcart-img{
-  width : 5%;
+  width : 20%;
   height: auto;
   cursor: pointer;
 }
-
-
 
 .upper-row {
    
@@ -128,9 +126,7 @@ input[type=text]:focus {
     line-height: 25px;
     padding-left: 20%;
     padding-right: 20%;
-    
 }
-
 
 .lower-row {
     overflow: hidden;
@@ -182,6 +178,13 @@ input[type=text]:focus {
     background: #ccc;
 }
 
+.upper-header-right {
+  float: right;
+}
+
+.upper-header-right img {
+  margin: 0 5%;
+}
 
 .header a {
     color: white;
@@ -191,7 +194,7 @@ input[type=text]:focus {
 }
 
 .header a.mainlogo {
-    font-size: 50px;
+    font-size: 70px;
     font-weight: bold;
 }
 
