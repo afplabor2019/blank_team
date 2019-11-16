@@ -77,6 +77,8 @@ function logOut(){
     unset($_SESSION['user_registration_date']);
     unset($_SESSION['user_shippingID']);
     unset($_SESSION['user_del']);
+
+    header("Location: ".url('home'));
 }
 
 ?>
