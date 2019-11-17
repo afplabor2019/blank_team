@@ -696,7 +696,7 @@ input[type=text-p] {
   }
   
   .active {
-    background-color: #ff3333;
+    background-color: red;
     color: white;
   }
   

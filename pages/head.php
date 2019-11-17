@@ -18,6 +18,12 @@
   $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$_SESSION['user_id']);
   else
   $profilepic = "images\\profilepic\\user.jpg";
+
+  if(is_post()){
+    $name = $_POST['search'];
+    header("Location: ".url('products')."&n=$name");
+  }
+
 ?>
     <header>
     <div class="header">
@@ -29,10 +35,10 @@
                             </li>
                             <li>
                                 <div class="search-container">
-                                <form action="<?php echo url('home') ?>" method="POST" autocomplete="off">
-                                <input class ="searchbar" type="text" placeholder ="Search..." name="search">
-                                <button type="submit"><img class="icon" src="images/search.png" alt="Search" height="17" width="17"></button>
-                                </form>
+                                  <form action="" method="POST">
+                                  <input class ="searchbar" id="searchtext" type="text" placeholder ="Search..." name="search">
+                                  <button type="submit" id="search" ><img class="icon" src="images/search.png" alt="Search" height="17" width="17"></button>
+                                  </form>
                                 </div>
                             </li>
                                               
@@ -76,7 +82,6 @@
               <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
               
             </div>
-           
 <script>
   function myFunction() {
     var x = document.getElementById("myTopnav");
@@ -91,7 +96,6 @@
     var popup = document.getElementById("myPopup");
    popup.classList.toggle("show");
   }
-
 </script>
 
 </div>

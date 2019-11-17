@@ -1,4 +1,14 @@
 <?php require_once "pages/head.php"; ?>
+<?php 
+if(isset($_GET['platform'])){
+    $platform = $_GET['platform'];
+}
+if(isset($_GET['n'])){
+    $title = $_GET['n'];
+}
+
+
+?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -24,6 +34,7 @@
                 platformswitch: nswitch,platformothers: others
         }, function(data,status){$("#product-list").html(data);});
     }
+    //load everything
     $(document).ready(post); 
     var offset = 0;
     var aminprice = 0;
