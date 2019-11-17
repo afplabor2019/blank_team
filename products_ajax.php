@@ -26,6 +26,8 @@ if(isset($_POST['next']) || isset($_POST['prev'])){
     }
     $sql_string = $_SESSION['ajax_query'];
 }
+
+
 else
 {   
     $offset = 0;
