@@ -45,7 +45,7 @@
                     <a href ="<?php echo url('shoppingcart') ?>"><img src="images/cart2.png" alt="Shopping cart" class="shoppingcart-img"></a> 
                   </div>
         </div>
-      </div>            
+      </div>         
     </div>
   <div class="topnav" id="myTopnav">
                       <a href="<?php echo url('home') ?>" <?php echo $page == 'home' ? 'class="active"' : ''; ?>>Home</a>

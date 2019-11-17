@@ -106,7 +106,7 @@ input[type=text]:focus {
 }
 
 .upper-row-right-side {
-  float: right;
+  margin-left:30%;
   display: inline-block;
   padding-right: 6%;
 }
@@ -216,9 +216,11 @@ input[type=text]:focus {
 }
 
 .upper-row-left-side a.mainlogo {
-    padding-left:20%;
+    margin:0;
+    margin-left:20%;
     font-size: 70px;
     font-weight: bold;
+    padding:0;
 }
 
 
