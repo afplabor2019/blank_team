@@ -19,26 +19,22 @@
   else
   $profilepic = "images\\profilepic\\user.jpg";
 
-  if(is_post()){
-    $name = $_POST['search'];
-    header("Location: ".url('products')."&n=$name");
-  }
-
 ?>   
 <header class="header">
   <div class="upper-row">
-    <div class="upper-row-content">
-      <a class="mainlogo" href ="<?php echo url('home') ?>">GamerZ</a>
-      <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-          </button>
+
+      <div class="upper-row-left-side">
+        <a class="mainlogo" href ="<?php echo url('home') ?>">GamerZ</a>
+        <div class="wrap">
+          <div class="search">
+              <input type="text" style="border: 3px solid #00B4CC; border-right: none" class="searchTerm" placeholder="What are you looking for?">
+              <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+          </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
   <div class="topnav" id="myTopnav">
                       <a href="<?php echo url('home') ?>" <?php echo $page == 'home' ? 'class="active"' : ''; ?>>Home</a>
                       <a href="<?php echo url('products') ?>" <?php echo $page == 'products' ? 'class="active"' : ''; ?>>Products</a>
