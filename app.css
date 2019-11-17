@@ -118,14 +118,19 @@ input[type=text]:focus {
   cursor: pointer;
 }
 
-.upper-row {
-   
+.upper-row {  
     background-color: #000000;
-    padding: 40px 10px;
+    padding: 40px 0;
     font-size: 20px;
     line-height: 25px;
-    padding-left: 20%;
-    padding-right: 20%;
+    
+}
+
+.upper-row-content {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: inline-block;
 }
 
 .lower-row {
@@ -147,7 +152,48 @@ input[type=text]:focus {
     position: relative;
 }
 
-.upper-row input[type=text] {
+.search {
+  display: inline;
+  margin: 10% 0;
+}
+
+.searchTerm {
+  width: 40%;
+  height: 33px;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus {
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 10%;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*.upper-row input[type=text] {
     margin: 8px 0 8px 8px;
     padding: 6px 0 6px 6px;
     padding-right: 0;
@@ -177,7 +223,7 @@ input[type=text]:focus {
 .upper-row .search-container button:hover {
     background: #ccc;
 }
-
+*/
 .header a {
     color: white;
     padding: 2% 0%;
@@ -222,7 +268,7 @@ p {
     text-justify: inter-word;
 }
 
-input[type=text],input[type=password],input[type=date] {
+ input[type=text],input[type=password],input[type=date] {
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -959,3 +1005,13 @@ input[type=text-p] {
   }
 
   
+  textarea{
+    resize: none;
+    width: 90%;
+    padding:2%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
