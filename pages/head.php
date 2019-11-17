@@ -25,14 +25,27 @@
       <div class="upper-row-left-side">
         <a class="mainlogo" href ="<?php echo url('home') ?>">GamerZ</a>
         <div class="wrap">
-          <div class="search">
-              <input type="text" style="border: 3px solid #00B4CC; border-right: none" class="searchTerm" placeholder="What are you looking for?">
-              <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
-          </div>
+          
         </div>
+      <div class="upper-row-right-side">
+      <div class="popup" onclick="myFunction2()" style="display:inline;margin:0;padding:0;">
+                      <?php if(!loggedIn()) : ?>
+                        <span class="popuptext" id="myPopup">
+                          <a href="<?php echo url('login') ?>"> Login</a><br>
+                          <a href="<?php echo url('register') ?>"> Register</a>
+                        </span>
+                      <?php else : ?>
+                        <span class="popuptext" id="myPopup">
+                          <a href="<?php echo url('profile') ?>"> Profile</a><br>
+                          <a href="<?php echo isset($_GET['p']) ? $_SERVER['REQUEST_URI']."&e=1": $_SERVER['REQUEST_URI']."?p=home&e=1" ;?>"> Log out</a>
+                        </span>
+                      <?php endif; ?>
+                        <img src="<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" class ="login-img" alt="Profile">
+                    </div>
+                    <a href ="<?php echo url('shoppingcart') ?>"><img src="images/cart2.png" alt="Shopping cart" class="shoppingcart-img"></a> 
+                  </div>
         </div>
+      </div>            
     </div>
   <div class="topnav" id="myTopnav">
                       <a href="<?php echo url('home') ?>" <?php echo $page == 'home' ? 'class="active"' : ''; ?>>Home</a>

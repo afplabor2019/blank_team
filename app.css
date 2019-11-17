@@ -105,15 +105,22 @@ input[type=text]:focus {
     z-index:10000;    
 }
 
+.upper-row-right-side {
+  float: right;
+  display: inline-block;
+  padding-right: 6%;
+}
+
 .upper-row .login-img{
-    width : 5%;
+    width : 15%;
     height: auto;
     border-radius: 50%;
     cursor: pointer;
+    margin-right: 5%;
 }
 
 .upper-row .shoppingcart-img{
-  width : 5%;
+  width : 15%;
   height: auto;
   cursor: pointer;
 }
