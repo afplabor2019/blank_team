@@ -92,16 +92,10 @@ button {
     font-size: 15px;
 }
 
-textarea{
-    resize: none;
-    width: 90%;
-    padding:2%;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}  
+input[type=text]:focus {
+    border: 3px solid #555;
+  }
+  
 .header {
     position: fixed;
     top: 0;
