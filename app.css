@@ -209,6 +209,7 @@ input[type=text]:focus {
 }
 
 .upper-row-left-side a.mainlogo {
+    padding-left:20%;
     font-size: 70px;
     font-weight: bold;
 }

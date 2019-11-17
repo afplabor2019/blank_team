@@ -22,7 +22,6 @@
 ?>   
 <header class="header">
   <div class="upper-row">
-
       <div class="upper-row-left-side">
         <a class="mainlogo" href ="<?php echo url('home') ?>">GamerZ</a>
         <div class="wrap">
