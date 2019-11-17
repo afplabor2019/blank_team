@@ -19,10 +19,7 @@
   else
   $profilepic = "images\\profilepic\\user.jpg";
 
-  if(is_post()){
-    $name = $_POST['search'];
-    header("Location: ".url('products')."&n=$name");
-  }
+  
 
 ?>
     <header>

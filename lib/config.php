@@ -1,6 +1,6 @@
 <?php
 //Webshop email: coolestwebshop@gmail.com 
-//        pw:CoolestPasswordEver
+//        elkezdtem ezt használni zhkat beküldeni szval kiszedem a jelszót lol
 // email küldés local-hoston: https://www.youtube.com/watch?v=qqm64zHlFUg
 define('WSNAME','GamerZ');
 define('DOMAIN', 'http://localhost:8080/blank_team/');
