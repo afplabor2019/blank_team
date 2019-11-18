@@ -60,7 +60,6 @@
             <p><label>Publisher</label></p>
             <input name="publisher" type="text-p" id="publisher" <?php if(isset($publisher) && $publisher != null) echo "value=$publisher"; ?>>
         </div>
-        <div class="filter-btn-div"><button class="filter-btn" type="submit-btn"><span>Search</span></button></div>
         <input type="text" name ="slidermin" id="slidermin" value = 0 style = "display: none">
         <input type="text" name ="slidermax" id="slidermax" value = 200 style = "display: none">
 </div>

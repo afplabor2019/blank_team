@@ -3,7 +3,6 @@
 $errors = [];
 if(is_post())
 {
-    
     $name = $_POST['name'];
     $publisher = $_POST['publisher'];
     $type = $_POST['type'];
@@ -11,6 +10,7 @@ if(is_post())
     $platform = $_POST['platform'];
     $release_year = $_POST['release_year'];
     $description = $_POST['description'];
+    $stored = $_POST['stored'];
 
     //VALIDATION
     //name
@@ -36,10 +36,14 @@ if(is_post())
     //description
     if(strlen($description) > 1000)  $errors['description'][]= "Description too long!";
 
+    //stored
+    if($stored==null) $errors['stored'][]= "Quantity is required!";
+
     //cover 
     $allow = array("jpg", "jpeg", "png");
     $dir = "images\\covers\\";
     $cover = $_FILES['cover']['name'];
+    if($cover == null) $errors['cover'][]= "Cover is required!";
     $extension = explode(".", $cover);
     $extension = end($extension);
     $fullpath = $dir.$cover;
@@ -71,7 +75,8 @@ if(is_post())
     //INSERT INTO DATABASE
     if(count($errors) == 0){
     $sql = new SQL();
-    $sql->execute("INSERT INTO `products`(`title`, `publisher`, `type`, `price`, `platform`, `release_year`, `description`,`cover`,`del`,`adpic` ) VALUES (?,?,?,?,?,?,?,?,?,?)",$name,$publisher,$type,$price,$platform,$release_year,$description,$fullpath,0,$fullpath2 != "images\\adimages\\" ? $fullpath2 : "none");
+    $sql->execute("INSERT INTO `products`(`title`, `publisher`, `type`, `price`, `platform`, `release_year`,`score`, `description`,`cover`,`del`,`adpic`,`review_count`,`stored` )
+     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",$name,$publisher,$type,$price,$platform,$release_year,0,$description,$fullpath,0,$fullpath2 != "images\\adimages\\" ? $fullpath2 : "none",0,$stored);
     }
 }
 ?>
@@ -79,10 +84,9 @@ if(is_post())
 <!-- HTML -->
 <form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" enctype="multipart/form-data" >
 
-    <img id="img" src="images\\user.jpg" alt="your image" width =350 height = 350 style="float: right;padding-top:2%"/> <br>
-    
+<img id="img" src="images\\user.jpg" alt="your image" width =350 height = 350 style="float: right;padding-top:2%"/> <br>
 
-    <label for="name"> Name </label> <br>
+    <label for="name"> Title </label> <br>
     <input type ="text" name ="name" value = "<?php echo isset($name) ? $name : ""; ?>"> <br>
     <?php if(isset($errors['name'])) foreach ($errors['name'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
@@ -138,8 +142,20 @@ if(is_post())
 
     <label for="adimg"> Ad Image (not required) </label> <br>
     <input type ="file" name ="adimg"  onchange="loadFile2(event)" accept="image/png, image/jpeg, image/jpg" /> 
-    <img id="img2" src="images\\user.jpg" alt="your image" width =500 height = 350 style="float: right;padding-top:2%"/> <br>
+
+    <label for="stored"> Quantity </label> <br>
+    <input type ="number" name ="stored" value = "<?php echo isset($release_year) ? $release_year : ""; ?>"> <br>
+    <?php if(isset($errors['stored'])) foreach ($errors['stored'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+
+    <label for="description"> Description </label> <br>
+    <textarea name = "description"> </textarea>
+    <?php if(isset($errors['description'])) foreach ($errors['description'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+
     
+    <img id="img2" src="images\\user.jpg" alt="your image" width =500 height = 350 style="float: right;padding-top:2%"/> <br>
+    <button class ="button" type="submit">Register</button>
+
+</form>
 <script>
 var loadFile = function(event) {
 	var image = document.getElementById('img');
@@ -151,10 +167,6 @@ var loadFile2 = function(event) {
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
 </script>
-    <label for="description"> Description </label> <br>
-    <textarea name = "description"> </textarea>
-    <?php if(isset($errors['description'])) foreach ($errors['description'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+   
 
-    <button class ="button" type="submit">Register</button>
-</form>
 <?php require_once 'pages/footer.php';

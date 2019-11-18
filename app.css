@@ -248,8 +248,18 @@ p {
     text-justify: inter-word;
 }
 
- input[type=text],input[type=password],input[type=date] {
+ input[type=text],input[type=password],input[type=date],input[type=number] {
     width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select{
+  width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -692,6 +702,16 @@ input[type=text-p] {
     height: 16.5%;
 }
 
+.input-error{
+  font-weight: bold;
+  font-size: 20px;
+  color: red;
+}
+
+label{
+  font-size:20px;
+  font-weight: bold;
+}
 
 
 .footer {

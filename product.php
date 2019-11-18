@@ -14,7 +14,7 @@
     {
             if(isset($_POST['review']))
             $reviewDescription = $_POST['review'];
-            if($reviewDescription == null) $errors['err'][] = "Message is required!";
+            if(isset($_POST['review']) && $reviewDescription  == null) $errors['err'][] = "Message is required!";
             if(!isset($_SESSION['user_id'])) $errors['err'][] = "You have to log in to leave a review!";
             if(!isset($_POST['rating-input'])) $errors['err'][] = "You have to give a rating!";
 
