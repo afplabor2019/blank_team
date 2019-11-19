@@ -1,5 +1,6 @@
 <?php 
 
+
 function is_post() //újraküldték e az oldalt
 {
     return $_SERVER['REQUEST_METHOD'] == 'POST';

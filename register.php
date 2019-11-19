@@ -59,9 +59,13 @@ if(is_post())
     //Insert into database
     if(count($errors) == 0 )
     {
+        $id = GenerateID();
+        $shippingid = GenerateID();
         $sql->execute("INSERT INTO `users`(`id`,`user_name`, `fullname`, `email`, `password`, `role`, `shipping_id`, `del`, `birth_date`,`age`,`registration_date`,`profile_pic`) 
-        VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)),?,?)",GenerateID(),$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,GenerateID(),0,$birthDate,$birthDate,date('y-m-d-h-m-s'),"images\\profilepic\\user.jpg");  
-        $_SESSION['succesregister'] = 1;
+        VALUES(?,?,?,?,?,?,?,?,?,(SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, ?)/365,0)),?,?)",$id,$userName,$fullName,$email,password_hash($password,PASSWORD_DEFAULT),0,$shippingid,0,$birthDate,$birthDate,date('y-m-d-h-m-s'),"images\\profilepic\\user.jpg");  
+
+        $sql->execute("INSERT INTO `shippings`(`id`, `country`, `client_name`, `city`, `address`, `tel`, `email`) 
+        VALUES (?,?,?,?,?,?,?)",$shippingid,"none","none","none","none","none",$email);
        header("Location: ".url('login'));      
     }
 }

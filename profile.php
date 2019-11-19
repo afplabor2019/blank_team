@@ -13,7 +13,7 @@ $sql = new SQL();
 <div class="profile-container">
     <div class = "profile-pic">
         <img src = "<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" alt = "profile picture">
-    </div>
+    </div>                  
 
     <div class ="profile-data"> 
             <p>User Name</p>

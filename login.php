@@ -47,7 +47,7 @@ if(is_post())
             $_SESSION['user_registration_date'] = $user[0]['registration_date'];
             $_SESSION['user_shippingID'] = $user[0]['shipping_id'];
             $_SESSION['user_del'] = $user[0]['del'];
-
+            unset($_SESSION['guest_user_id']);
             header("Location: ".url('home'));
            
         }  
