@@ -5,14 +5,17 @@
             <link rel="stylesheet" href="/resources/demos/style.css">
             
             <p>
-                <label for="amount">Price range:</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <div class = "filter-type"><label for="amount">Price</label> <br>
+                <input type="text" id="amount" readonly style="border:0; width:100%;text-align:center;color:#f6931f; font-weight:bold;">
             </p>
             <div id="slider-range" name="slider-range"></div>
         </div>
+        </div>
         <div class ="filter-title">
-            <label for="title">Title</label>
-            <input type="text" name ="title" id="title" <?php if(isset($title) && $title != null) echo "value=$title"; ?>>
+        <div class = "filter-type">
+            <label for="title">Title</label><br>
+            <input type="text" name ="title" id="title" <?php if(isset($title) && $title != null) echo "value=$title"; ?> style="width:80%;">
+        </div>
         </div>
         <div class="filter-platform">
             <p>Platforms</p>
@@ -38,8 +41,8 @@
             function OthersOff(){document.getElementById("p-others").checked = false;}
         </script>
         <div class="filter-type">
-            <p><label for="type"> Type </label></p> <br>
-            <select name ="type" id ="type">
+            <p><label for="type" > Type </label></p> 
+            <select name ="type" id ="type" style="width:80%">
                 <option value="Select Type" selected>Select Type</option>
                 <option value="Strategy"  <?php if(isset($_POST['type']) && $_POST['type'] == "Strategy") echo "selected"; ?>>Strategy</option>
                 <option value="Shooter" <?php if(isset($_POST['type']) && $_POST['type'] == "Shooter") echo "selected"; ?>>Shooter</option>
@@ -53,12 +56,12 @@
             </select> <br>
         </div>
         <div class="filter-release">
-            <p><label>Release year</label></p><br>
-            <input name="release-year" type="number" id="year" min="1990" max="<?php echo date('Y') ?>" <?php if(isset($releaseyear) && $releaseyear != null) echo "value=$releaseyear"; ?>>
+            <p><label>Release year</label></p>
+            <input name="release-year" type="number" id="year" min="1990" style="width:80%" max="<?php echo date('Y') ?>" <?php if(isset($releaseyear) && $releaseyear != null) echo "value=$releaseyear"; ?>>
         </div>
         <div class="filter-publisher">
             <p><label>Publisher</label></p>
-            <input name="publisher" type="text-p" id="publisher" <?php if(isset($publisher) && $publisher != null) echo "value=$publisher"; ?>>
+            <input name="publisher" type="text-p" id="publisher" style="width:80%;margin-bottom:10%"<?php if(isset($publisher) && $publisher != null) echo "value=$publisher"; ?>>
         </div>
         <input type="text" name ="slidermin" id="slidermin" value = 0 style = "display: none">
         <input type="text" name ="slidermax" id="slidermax" value = 200 style = "display: none">
