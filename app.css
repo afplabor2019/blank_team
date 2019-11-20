@@ -601,6 +601,7 @@ input[type=text-p] {
     flex-direction: row;
     flex-wrap: wrap;
     width: 75%;
+    height: 100%;
     float: right;
 }
 .product-list .btn-left{
@@ -613,6 +614,7 @@ input[type=text-p] {
 
 .product-item {
     width: 25%;
+    height: 20%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 7%;
     margin-bottom: 7%;

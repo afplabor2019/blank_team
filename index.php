@@ -15,7 +15,6 @@ $page = isset($_GET['p']) ? $_GET['p'] : 'home'; //ha a p-nek van értéke akkor
 if(file_exists("{$page}.php")){
     if(isset($_GET['e']) && $_GET['e'] == 1) logOut();
     include_once "{$page}.php"; //adott oldal betöltésse
-    var_dump($_SESSION);
 }
 else{
     include_once "404.php"; // nincs ilyen oldal
