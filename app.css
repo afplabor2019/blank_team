@@ -91,10 +91,6 @@ button {
     padding: 16px 32px;
     font-size: 15px;
 }
-
-input[type=text]:focus {
-    border: 3px solid #555;
-  }
   
 .header {
     position: fixed;
@@ -153,9 +149,6 @@ input[type=text]:focus {
   color: #9DBFAF;
 }
 
-.searchTerm:focus {
-  color: #00B4CC;
-}
 
 .searchButton {
   width: 10%;
@@ -282,9 +275,6 @@ input[type=submit]:hover {
     background-color: #45a049;
   }
 
-  input[type=password]:focus {
-    border: 3px solid #555;
-  }
 
 .login {
     float: center;
@@ -338,6 +328,7 @@ input[type=submit]:hover {
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
+    text-align: left;
 }
 
 .login-button {
@@ -618,6 +609,9 @@ input[type=text-p] {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 7%;
     margin-bottom: 7%;
+    min-height: 20%;
+    min-width: 25%;
+    resize: initial;
 }
 
 .product-image {
@@ -832,7 +826,18 @@ label{
     }
   }
 
-.profile-pic img{
+.profile-container {
+  width: 80%;
+  height: auto;
+  border-radius: 5px;
+  background: #f2f2f2;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
+  .profile-pic img{
     width: 70%;
     float: left;
     height: 70%;
@@ -984,13 +989,7 @@ label{
     font-size: 28px;
     font-weight: bold;
   }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+
   
   .modal-header {
     padding: 2px 16px;

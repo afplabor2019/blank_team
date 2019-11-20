@@ -108,10 +108,10 @@ if(is_post())
             $_SESSION['user_fullname'] = $fullName;
         }
 
-            $sql->execute("UPDATE `shippings` SET `country`=?,`client_name`=?,`city`=?,`address`=?,`tel`=?,`email`=? WHERE `id` = ?",$country,$recipient,$city,$adress,$tel,$cemail,$_SESSION['user_id']);
+            $sql->execute("UPDATE `shippings` SET `country`=?,`client_name`=?,`city`=?,`address`=?,`tel`=?,`email`=? WHERE `id` = ?",$country,$recipient,$city,$adress,$tel,$cemail,$_SESSION['user_shippingID']);
        
 
-        //header("Location: ".url('profile'));
+        header("Location: ".url('profile'));
     }
 }
 $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_id']);
