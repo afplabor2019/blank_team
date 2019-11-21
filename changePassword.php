@@ -25,15 +25,17 @@ $cnpassword = $_POST['cnpassword'];
        
 }
 ?>
+<div class="change-pw-container">
+    <h1 class="login-h">CHANGE PASSWORD</h1>  
+    <form action ="<?php url('changePassword')?>" method ="POST">
+    <label for="npassword"> New Password </label>
+        <input type ="password" name ="npassword" style="margin-left:3.45%; margin-top:2%"> <br>
+        <?php if(isset($errors['npassword'])) foreach ($errors['npassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-<form action ="<?php url('changePassword')?>" method ="POST">
-<label for="npassword"> New Password </label>
-    <input type ="password" name ="npassword"> <br>
-    <?php if(isset($errors['npassword'])) foreach ($errors['npassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
-    <label for="cnpassword"> Confirm Password </label>
-    <input type ="password" name ="cnpassword"> <br>
-    <?php if(isset($errors['cnpassword'])) foreach ($errors['cnpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-    <button type ="submit" class ="button">Change Password</button>
-</form>
+        <label for="cnpassword"> Confirm Password </label>
+        <input type ="password" name ="cnpassword"> <br>
+        <?php if(isset($errors['cnpassword'])) foreach ($errors['cnpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+        <button class ="change-pw-btn" type="submit"><Span>Save</span></button>
+    </form>
+</div>
 <?php require_once "pages/footer.php";?>
