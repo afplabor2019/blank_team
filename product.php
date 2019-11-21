@@ -43,19 +43,21 @@
     }
 ?>
 <div class="product-container">
-    <div class = "product-imageplace">
+    <div class = "product-left-side">
         <img class="p-image" src="<?php echo $product[0]['cover'] ?>" alt="cover"><br>
-        <span class="p-starsfor-p">Reviews: <?php echo round($avarageScore, 2) ==0 ? "No reviews yet!" : round($avarageScore, 2)?><?php if(round($avarageScore, 2) !=0) : ?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p> <?php endif;?></span> 
+<span><?php echo round($avarageScore, 2) ==0 ? "No reviews yet!" : round($avarageScore, 2)?><?php if(round($avarageScore, 2) !=0) : ?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p> <?php endif;?></span> 
         <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
-        <button type="submit" class="tc" name ="tc">TO CART</button>
+        <button type="submit" name ="tc">TO CART</button>
         <input type="hidden" name="hidden">
         </form>
     </div>
+    <div class ="product-right-side">
         <h1 class ="p-title"><?php echo $product[0]['title']?></h1>
-        <p class ="p-price" >Price: <?php echo $product[0]['price']." €"  ?></p>
-        <p class ="p-publisher" >Publisher: <?php echo $product[0]['publisher'] ?></p>
-        <p class ="p-platform" >Platform: <?php echo $product[0]['platform'] ?></p>
-        <p class ="p-desc" >Descpription: <br><?php echo $product[0]['description'] ?></p>
+        <p class ="p-price" ><?php echo $product[0]['price']." €"  ?></p>
+        <p class ="p-publisher" ><?php echo $product[0]['publisher'] ?></p>
+        <p class ="p-platform" ><?php echo $product[0]['platform'] ?></p>
+        <p class ="p-desc" ><?php echo $product[0]['description'] ?></p>
+
     </div>
 </div>
 
@@ -63,9 +65,7 @@
 <h1>Leave a review of this game!</h1>
 
 <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
-</div>
-<div class="review">
-<span>
+<span class="rating">
     <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input" value =5>
     <label for="rating-input-1-5" class="rating-star"></label>
     <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input" value =4>
@@ -82,11 +82,9 @@
 <?php if(isset($errors['err'])) foreach ($errors['err'] as $key => $value) echo "<p> $value </p>"; ?>
 <input type="submit" value ="SUBMIT">
 </form>
-</div>
 
 
 <!-- eddigi review-k listázása -->
-<div class="recent-reviews">
 <?php 
 
 $reviews = $sql->execute("SELECT * FROM `reviews` WHERE `product_id` = ? ",$productid);
@@ -119,7 +117,6 @@ foreach ($reviews as $key => $value) {
     echo "<p>".$username[0]['user_name']."</p>";
 }
 ?>
-</div>
 </div>
 
 
