@@ -14,35 +14,35 @@ $sql = new SQL();
 
 ?>
 <div class="profile-container">
-    <div class = "profile-pic">
+  <h1 class="login-h">PROFILE PAGE</h1>  
+  <div class = "profile-pic">
         <img src = "<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" alt = "profile picture">
     </div>                  
-
     <div class ="profile-data">
-            <h1 class="login-h">Profile Page</h1>
-            <p>User Name</p>
-            <p><?php echo $_SESSION['user_user_name'] ?></p>
-            <p>Email</p>
-            <p><?php echo $_SESSION['user_email'] ?></p>
-            <p>Full Name</p>
-            <p><?php echo $_SESSION['user_fullname'] ?></p>
-            <p>Birth Date</p>
-            <?php echo $_SESSION['user_birth_date'] ?><br>
-            <h1>Szállítási adatok</h1>
-            <p>Recipient</p>
-            <p><?php echo $shipping_data[0]['client_name'] ?></p>
-            <p>Country</p>
-            <p><?php echo $shipping_data[0]['country'] ?></p>
-            <p>City</p>
-            <p><?php echo $shipping_data[0]['city'] ?></p>
-            <p>Address</p>
-            <p><?php echo $shipping_data[0]['address'] ?></p>
-            <p>Email</p>
-            <p><?php echo $shipping_data[0]['email'] ?></p>
-            <p>Telephone number</p>
-            <p><?php echo $shipping_data[0]['tel'] ?></p>         
+            <h1>Personal data</h1>
+            <p style="font-weight: bold">User Name</p>
+            <p class="profile-title"><?php echo $_SESSION['user_user_name'] ?></p>
+            <p style="font-weight: bold">Email</p>
+            <p class="profile-title"><?php echo $_SESSION['user_email'] ?></p>
+            <p style="font-weight: bold">Full Name</p>
+            <p class="profile-title"><?php echo $_SESSION['user_fullname'] ?></p>
+            <p style="font-weight: bold">Birth Date</p>
+            <p class="profile-title"><?php echo $_SESSION['user_birth_date'] ?></p><br>
+            <h1>Shipping data</h1>
+            <p style="font-weight: bold">Recipient</p>
+            <p class="profile-title"><?php echo $shipping_data[0]['client_name'] ?></p>
+            <p style="font-weight: bold">Country</p>
+            <p class="profile-title"><?php echo $shipping_data[0]['country'] ?></p>
+            <p style="font-weight: bold">City</p>
+            <p class="profile-title"><?php echo $shipping_data[0]['city'] ?></p>
+            <p style="font-weight: bold">Address</p>
+            <p class="profile-title"><?php echo $shipping_data[0]['address'] ?></p>
+            <p style="font-weight: bold">Email</p>
+            <p class="profile-title"><?php echo $shipping_data[0]['email'] ?></p>
+            <p style="font-weight: bold">Telephone number</p>
+            <p class="profile-title"><?php echo $shipping_data[0]['tel'] ?></p>         
             <form action="<?php echo url('profile') ?>" method ="POST">
-            <input type="submit" value = "edit" name="letsedit">
+            <button class ="edit-btn" type="submit" value = "edit" name="letsedit"><Span>Edit</span></button>
             </form>
     </div>
 </div>
