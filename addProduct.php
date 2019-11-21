@@ -34,7 +34,7 @@ if(is_post())
     if($release_year == null)  $errors['release_year'][]= "Release year is required!";
 
     //description
-    if(strlen($description) > 10000)  $errors['description'][]= "Description too long!";
+    if(strlen($description) > 1000)  $errors['description'][]= "Description too long!";
 
     //stored
     if($stored==null) $errors['stored'][]= "Quantity is required!";
