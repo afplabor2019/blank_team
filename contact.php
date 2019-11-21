@@ -22,7 +22,7 @@ if(is_post()){
 <form action="#" method="POST">
 <?php if(isset($errors['login'])) foreach ($errors['login'] as $key => $value) echo "<p> $value </p>" ?>
 <label for="email">To:</label>
-<input type="text" name="email"value="coolestwebshop@gmail.com" readonly style="width:30%;text-align:center;background-color:#BDBDBD;margin-left:3.8%"><br>
+<input type="text" name="email"value="coolestwebshop@gmail.com" readonly style="width:30%;text-align:center;background-color:#BDBDBD;margin-left:5.1%"><br>
 
 
 <label for="sj">Subject:</label>
