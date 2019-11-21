@@ -43,12 +43,11 @@ color:white;
 background-color:red;
 text-align:center;
 display: block;
-width:1.5%;
+width:6%;
 border-radius:50%;
-margin-top:-1.7%;
-margin-left:8.5%;
-position: fixed;
-z-index: 99;
+margin-top:-6%;
+margin-left:33.5%;
+position: relative;
 }
 
 
