@@ -27,7 +27,7 @@
                 $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];    
             }       
 
-        if(isset($_POST['tc'])){
+        if(isset($_POST['tc']) && $_POST['tc'] != null){
             $orderid = GenerateID();
             if(isset($_SESSION['user_id'])){
                 $result =$sql->execute("SELECT shipping_id FROM users WHERE `id` = ?",$_SESSION['user_id']);
@@ -38,7 +38,7 @@
             $sql->execute("INSERT INTO `orders`(`id`, `user_id`, `shipping_id`) VALUES (?,?,?)",$orderid,isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_SESSION['guest_user_id'],$shipping == null ? "none" : $shipping);
         
             $sql->execute("INSERT INTO `order_item`(`order_id`, `item_id`, `quantity`, `del`) VALUES (?,?,?,?)",$orderid,$productid,1,0);
-        
+            header("Location:". url('product')."&id=$productid");
         }
     }
 ?>
@@ -47,7 +47,7 @@
         <img class="p-image" src="<?php echo $product[0]['cover'] ?>" alt="cover"><br>
 <span><?php echo round($avarageScore, 2) ==0 ? "No reviews yet!" : round($avarageScore, 2)?><?php if(round($avarageScore, 2) !=0) : ?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p> <?php endif;?></span> 
         <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
-        <button type="submit" name ="tc">TO CART</button>
+        <button type="submit" name ="tc" value="asd">TO CART</button>
         <input type="hidden" name="hidden">
         </form>
     </div>
