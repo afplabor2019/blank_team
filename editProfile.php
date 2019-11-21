@@ -108,10 +108,10 @@ if(is_post())
             $_SESSION['user_fullname'] = $fullName;
         }
 
-            $sql->execute("UPDATE `shippings` SET `country`=?,`client_name`=?,`city`=?,`address`=?,`tel`=?,`email`=? WHERE `id` = ?",$country,$recipient,$city,$adress,$tel,$cemail,$_SESSION['user_id']);
+            $sql->execute("UPDATE `shippings` SET `country`=?,`client_name`=?,`city`=?,`address`=?,`tel`=?,`email`=? WHERE `id` = ?",$country,$recipient,$city,$adress,$tel,$cemail,$_SESSION['user_shippingID']);
        
 
-        //header("Location: ".url('profile'));
+        header("Location: ".url('profile'));
     }
 }
 $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_id']);
@@ -121,17 +121,19 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
   else
   $profilepic = "images\\profilepic\\user.jpg";
 ?>
-<div>
-    <div>
+<div class="edit-profile-container">
+    <h1 class="login-h">EDIT PROFILE PAGE</h1>  
+    <div class="e-p-right-side">
         <img id = "pic" src = "<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" alt = "profile picture">
         <form action="<?php echo url('editProfile')?>" method ="POST" enctype="multipart/form-data" autocomplete="off">
         <input type ="file" name ="pic" id ="pic" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> <br>
-        <input type="submit">
+        <button class ="edit-image-btn" type="submit" value = "edit" name="letsedit"><Span>Save Profile Picture</span></button>
         </form>
 
     </div>
-    <div> 
+    <div class="e-p-left-side"> 
         <form action="<?php echo url('editProfile')?>" method ="POST" enctype="multipart/form-data">
+            <h1>Personal data</h1>
             <label for="username">User Name</label><br>
             <input type="text" name = "username" value="<?php echo $_SESSION['user_user_name'] ?>"><br>
             <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
@@ -144,16 +146,16 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
             <input type="text" name = "fullname" value="<?php echo $_SESSION['user_fullname'] ?>"><br>
             <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-            <a href="<?php echo url('forgottenPassword') ?>">Change Password</a>
+            <p class="p-e-change-pw">Do you want to change your passsword?<a href="<?php echo url('forgottenPassword') ?>">...Click here!</a></p>
 
-            <h1>Shipping Information</h1>
+            <h1>Shipping data</h1>
             <label for="recipient">Name of recipient</label><br>
             <input type="text" name = "recipient" value="<?php echo isset($suggestions[0]['client_name']) && $suggestions[0]['client_name'] != "none"  ? $suggestions[0]['client_name'] : "" ?>"><br>
             <?php if(isset($errors['recipient'])) foreach ($errors['recipient'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
             <label for="country">Country</label> <br>
               <!--#region county  -->
-                    <select name="country">
+                    <select class="country" name="country">
                         <option value="<?php echo isset($suggestions[0]['country']) && $suggestions[0]['country'] != "none"  ? $suggestions[0]['country'] : "" ?>"></option>
                         <optgroup label="North America">
                             <option value="US">United States</option>
@@ -420,7 +422,7 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
             <input type="text" name = "cemail" value="<?php echo $_SESSION['user_email'] ?>"><br>
             <?php if(isset($errors['cemail'])) foreach ($errors['cemail'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-        <input type="submit" value="Save">
+            <button class ="edit-profile-btn" type="submit" value = "edit" name="letsedit"><Span>Save changes</span></button>
 
             </form>
     </div>

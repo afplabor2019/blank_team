@@ -41,11 +41,15 @@ $value="";
  if(loggedIn()) $value = $_SESSION['user_email'];
  if(isset($email)) $value = $email;
 
- ?> 
-<form action ="<?php echo url('forgottenPassword') ?>" method ="POST">
-<label for="email"> Email </label>
-    <input type ="text" name ="email" value = "<?php echo $value?>"><br>
-<?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-    <button type ="submit"> Send email </button> 
-
+ ?>
+<div class="forgotten-pw">
+    <h1 class="login-h">New password request</h1>
+    <p>If you forgot or want to change your password, first, you need to verify yourself with your email address.
+        You will receive a verification code in a few minutes, so you will be able to change your password.</p>
+    <form action ="<?php echo url('forgottenPassword') ?>" method ="POST">
+    <label for="email"> Email </label>
+        <input type ="text" name ="email" value = "<?php echo $value?>"><br>
+    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+        <button class ="send-email" type="submit"><Span>Send email</span></button>
+</div>
 <?php require_once "pages/footer.php";?>
