@@ -1,0 +1,79 @@
+.register-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .register-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .register-button:hover span {
+    padding-right: 25px;
+  }
+  
+  .register-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
+ 
+
+
+.register-form {
+    background: #f2f2f2;
+    margin-bottom: 5%;
+}
+
+.register-data {
+    padding: 3%;
+}
+
+.reg-h {
+    background: #ff4d4d;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;    
+}
+
+.register-data label {
+    line-height: 3.35;
+    width: 100%;
+}
+
+.r-left-side {
+    width: 20%;
+    float: left;
+    font-size: 18px;
+}
+
+.r-right-side {
+    width: 80%;
+    float: right;
+    padding-left: 5%;
+}
+
+.r-captcha {
+  padding-top: 40%;
+  padding-left: 25%;
+}
+
+.r-bottom {
+  margin-top: 5%;
+  padding-right: 100%;
+}
+
+.register-data input[type=text], input[type=password] input[type=data] {
+    
+    width: 50%;
+}

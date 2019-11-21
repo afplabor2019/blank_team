@@ -56,47 +56,9 @@ if(is_post())
             $errors['password'][] = 'Invalid password!';            
     }
 }
-//ha sikeres volt a regisztráció, és átirányított a loginra.
-    if(isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] == url('register') 
-        && isset($_SESSION['succesregister']) && $_SESSION['succesregister'] == 1){
-            unset($_SESSION['succesregister']);
-                $modalvalue = 1;
 
-    } 
 ?>
 
-<div id="myModal" class="modal" >
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close" id ="close">&times;</span>
-      <h2>Succesful registration!</h2>
-    </div>
-    <div class="modal-body">
-      <p>Now you can browse our store while enjoying the endless possibilites!</p>
-      <p></p>
-    </div>
-    <div class="modal-footer">
-      <h3>Have fun!</h3>
-    </div>
-  </div>
-</div>
-<script>
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
 <div class="login-div">
     <div class="login-left-side">
         <h1 class="login-h"> Log In </h1><br>

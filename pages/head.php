@@ -6,8 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>WSNAME</title>
-    <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="style/app.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="style/product.css">
+    <link rel="stylesheet" href="style/profile.css">
+    <link rel="stylesheet" href="style/filter.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/rating.css">
+    <link rel="stylesheet" href="style/pwchanging.css">
+    <link rel="stylesheet" href="style/shoppingcart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 </head>
 <body>
@@ -25,9 +35,7 @@
   <div class="upper-row">
       <div class="upper-row-left-side">
         <a class="mainlogo" href ="<?php echo url('home') ?>">GamerZ</a>
-        <div class="wrap">
-          
-        </div>
+
       <div class="upper-row-right-side">
       <div class="popup" onclick="myFunction2()" style="display:inline;margin:0;padding:0;">
                       <?php if(!loggedIn()) : ?>

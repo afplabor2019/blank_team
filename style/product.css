@@ -1,0 +1,110 @@
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+    height: 100%;
+    float: right;
+}
+.product-list .btn-left{
+    float: left;
+}
+
+.product-list .btn-right{
+    float: right;
+}
+
+.product-item {
+    width: 25%;
+    /*height: 20%; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 7%;
+    margin-bottom: 7%;
+    min-height: 20%;
+    min-width: 25%;
+    resize: initial;
+}
+
+.product-image {
+    height: 85%;
+    width: 100%;
+    max-width: 100%;
+    
+    padding-bottom: 20%;
+    background-color: dodgerblue;
+}
+
+.product-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.product-item p {
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.product-item:hover{
+    transform: scale(.975);
+    transition: transform 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.product-list .product-item{
+    font-size: 10px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.slide-buttons {
+    padding-left: 80%;
+    margin-bottom: 10%;
+}
+
+.product-container {
+    width: 100%;
+    padding: 5%;
+    padding-bottom: 40%;
+}
+
+.product-left-side {
+    width: 40%;
+    float: left;
+}
+
+.product-right-side {
+    width: 60%;
+    float: right;
+}
+
+.p-image {
+    width: 80%;
+    height: 100%;
+    padding: 1%;
+}
+
+.p-title {
+    font-size: 30px;
+}
+
+.p-desc {
+    padding: 20% 0;
+}
+
+.p-send-review {
+    width: 100%;
+    margin: 5%;
+}
+
+.p-review {
+    border: 1px solid black;
+    padding: 5%;
+    width: 80%;   
+}
+.p-review-profile-pic{
+    width : 16.5%;
+    height: 16.5%;
+}
