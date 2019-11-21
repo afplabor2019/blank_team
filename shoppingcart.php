@@ -3,6 +3,15 @@
 $total =0;
 $row = 0;
 $sql = new SQL();
+
+if(is_post()){
+    if(isset($_POST['button'])){
+        $result = $sql->execute("SELECT `order_id` FROM `order_item` WHERE `item_id` = ?",$_POST['button']);
+        $sql->execute("DELETE FROM `order_item` WHERE `item_id` = ?",$_POST['button']);
+        $sql->execute("DELETE FROM `orders` WHERE `id` = ?",$result[0]['order_id']);
+        header("Location:".url('shoppingcart'));
+    }
+}
 //Getting the order_ids of the user
 $orderid = $sql->execute("SELECT `id` FROM orders WHERE `user_id` = ?", loggedIn() ? $_SESSION['user_id'] : $_SESSION['guest_user_id']);
 $orders_array = "(";
@@ -31,7 +40,8 @@ if($orders_array != '()'){
         $row += 1;  
     ?> 
         <div class ="shopping-cart-row" style="background-color:<?php echo $row % 2 == 0 ? 'white' : '' ?>">
-            <span class ="shopping-cart-delete-cross"> &#10060</span>
+        <form action="<?php echo url('shoppingcart');?>" method="POST"><button name="button" value="<?php echo $value['item_id'] ?>">&#10060</button></form>
+            <span class ="shopping-cart-delete-cross"> </span>
             <span class ="shopping-cart-gametitle" title="<?php echo $item[0]['title'] ?>"><?php echo $item[0]['title'] ?></span>
             <span class ="shopping-cart-platform"><?php echo $item[0]['platform'] ?></span>
             <span class ="shopping-cart-unitprice" title="Unit price">U.p. : <?php echo $item[0]['price'] ?> €</span>
