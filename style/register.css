@@ -23,10 +23,6 @@
     right: 0;
   }
 
-
- 
-
-
 .register-form {
     background: #f2f2f2;
     margin-bottom: 5%;
@@ -47,7 +43,7 @@
 }
 
 .register-data label {
-    line-height: 3.35;
+    line-height: 3;
     width: 100%;
 }
 
@@ -69,7 +65,7 @@
 }
 
 .r-bottom {
-  margin-top: 5%;
+  margin: 5%;
   padding-right: 100%;
 }
 
