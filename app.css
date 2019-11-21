@@ -335,7 +335,7 @@ input[type=submit]:hover {
     text-align: left;
 }
 
-.login-button, .edit-btn {
+.login-button {
     display: inline-block;
     border-radius: 4px;
     background-color: #ff4d4d;
@@ -350,14 +350,14 @@ input[type=submit]:hover {
     margin: 5px;
 }
 
-.login-button, .edit-btn span {
+.login-button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
   }
 
-  .login-button,  .edit-btn span:after {
+  .login-button span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -366,11 +366,11 @@ input[type=submit]:hover {
     transition: 0.5s;
   }
   
-  .edit-btn, .login-button:hover span {
+ .login-button:hover span {
     padding-right: 25px;
   }
   
-  .edit-btn, .login-button:hover span:after {
+ .login-button:hover span:after {
     opacity: 1;
     right: 0;
   }
@@ -870,6 +870,21 @@ label{
   text-align: left;
   font-weight: normal;
 }
+
+.edit-btn {
+  display: inline-block;
+    border-radius: 4px;
+    background-color: #ff4d4d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
 
 .edit-btn {
   margin: 10% 35%;
