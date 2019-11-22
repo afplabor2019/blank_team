@@ -3,13 +3,13 @@
 $sql = new SQL();
 
 //newest products
-$newest = $sql->execute("SELECT * FROM `products` WHERE `adpic` <> ? ORDER BY `id` LIMIT 6","none");
-foreach ($newest as $key => $value) {
-    /*echo $value['id']." ";
+$newest = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `id` DESC LIMIT 6","none");
+/*foreach ($newest as $key => $value) {
+    echo $value['id']." ";
     echo $value['title']." ";
     echo $value['price']." ";
-    echo $value['platform']." "; */
-}
+    echo $value['platform']." ";
+}*/
 
 //best products
 $best_scored = $sql->execute("SELECT * FROM `products` ORDER BY `score` DESC LIMIT 6 ");
@@ -29,7 +29,7 @@ foreach ($best_scored as $key => $value) {
                 Legújabb megjelenések
             </a>
         </div>
-        <div class="home-ad-image">
+        <!--div class="home-ad-image">
             <img src="images/ds-home2.jpg" alt="Death Stranding" class="home-image">
                 <div class="home-img-button">
                     <div class="home-btn-text">Vásárlás</div>
@@ -42,6 +42,31 @@ foreach ($best_scored as $key => $value) {
                     </div>
                 </div>
                 
+        </div-->
+        <div class="slideshow-container">
+
+            <?php
+            for ($i=0; $i < sizeof($newest); $i++):
+            ?>
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / <?=sizeof($newest)?></div>
+                    <img src="<?=$newest[$i]['adpic']?>" style="width:100%">
+                    <div class="text"><?=$newest[$i]['title']?></div>
+                </div>
+            <?php
+            endfor;
+            ?>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <?php for ($i=0; $i < sizeof($newest); $i++):?>
+                <span class="dot" onclick="currentSlide(<?=($i+1)?>)"></span> 
+            <?php endfor; ?>
         </div>
         </section>
         <div></div>
@@ -94,3 +119,35 @@ foreach ($best_scored as $key => $value) {
     </div>
 </div> 
 <?php require_once "pages/footer.php"; ?>
+<script>
+    var slideIndex = 1;
+        showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }    
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+</script>
