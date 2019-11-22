@@ -1,3 +1,9 @@
+.products-container {
+    width: 100%;
+    position: static;
+    overflow: hidden;
+}
+
 .product-list {
     display: flex;
     flex-direction: row;
@@ -16,11 +22,13 @@
 
 .product-item {
     width: 25%;
-    /*height: 20%; */
+    height: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 7%;
     margin-bottom: 7%;
     min-height: 20%;
+    min-width: 25%;
+    max-height: 20%;
     min-width: 25%;
     resize: initial;
 }
@@ -53,7 +61,6 @@
 
 .product-list .product-item{
     font-size: 10px;
-
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -66,8 +73,11 @@
 
 .product-container {
     width: 100%;
-    padding: 5%;
-    padding-bottom: 40%;
+    border-radius: 5px;
+    background: #f2f2f2;
+    padding: 2%;
+    position: static;
+    overflow: hidden;
 }
 
 .product-left-side {
@@ -84,19 +94,78 @@
     width: 80%;
     height: 100%;
     padding: 1%;
+    margin: 0 10%;
 }
 
 .p-title {
+    background: #ff4d4d;
+    width: 100%;
+    padding: 1%;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: left;
     font-size: 30px;
 }
 
-.p-desc {
-    padding: 20% 0;
+.p-price, .p-publisher, .p-platform span, p {
+    padding: 1% 0;
+    font-size: 20px;
 }
+
+.span-desc {
+    margin-top: 4%;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.p-desc {
+    padding: 2%;
+    text-align: justify;
+    background-color: #FFFFFF;
+}
+
 
 .p-send-review {
     width: 100%;
     margin: 5%;
+}
+
+.product-left-side span {
+    margin: 5% 12%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.p-box {
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+
+.product-tc {
+    display: inline-block;
+      border-radius: 4px;
+      background-color: #ff4d4d;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 22px;
+      padding: 5%;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin-top: 5%;
+      margin-left: 25%;
+}
+
+.p-send-review {
+    width: 90%;
+    padding: 5%;
+    position: static;
+    overflow: hidden;
+    background-color: beige;
 }
 
 .p-review {
@@ -107,4 +176,12 @@
 .p-review-profile-pic{
     width : 16.5%;
     height: 16.5%;
+}
+
+.leave-review {
+    background-color: lightsalmon;
+}
+
+.recent-reviews{
+    background-color: lightblue;
 }

@@ -12,8 +12,10 @@ if(isset($_GET['n'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<div class="products-container">
 <?php include_once "filters.php"; ?>
 <div class="product-list" id="product-list"></div> <!--PRODUCT LIST-->
+</div>
 <?php require_once "pages/footer.php"; ?>
 <script>
     function post(){

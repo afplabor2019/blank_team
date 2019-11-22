@@ -4,9 +4,10 @@
     padding-top: 4%;
     padding-right: 20%;
     padding-left: 20%;
-    padding-bottom: 9%;
+    padding-bottom: 2%;
     background:  #404040;
     color: #d9d9d9; 
+    position: absolute;
 }
 
 .footer p{
