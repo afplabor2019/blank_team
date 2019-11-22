@@ -49,14 +49,21 @@ foreach ($best_scored as $key => $value) {
             for ($i=0; $i < sizeof($newest); $i++):
             ?>
                 <div class="mySlides fade">
-                    <div class="box-hover">
-                        <div class="product-item" style="float: left;">
-                            <img src="<?=$newest[$i]['cover']?>" style="width: 100%;">
+                    <a href="<?=url('product')?>&id=<?=$newest[$i]['id']?>">
+                        <div class="box-hover">
+                            <div class="product-item" style="float: left;">
+                                <img src="<?=$newest[$i]['cover']?>" style="width: 100%;">
+                            </div>
+                            <div>
+                                <div style="font-size: 26pt">
+                                    <?=$newest[$i]['title']?>
+                                </div>
+                                <div style="max-height: 275px; padding: 5px; line-height:22px !important; text-align: justify;">
+                                    <?=$newest[$i]['description']?>
+                                </div>
+                            </div>
                         </div>
-                        <div style="float: right;">
-
-                        </div>
-                    </div>
+                    </a>
                     <div class="numbertext">1 / <?=sizeof($newest)?></div>
                     <img src="<?=$newest[$i]['adpic']?>" style="width:100%">
                     <div class="text"></div>

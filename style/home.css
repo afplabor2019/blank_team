@@ -172,13 +172,4 @@ img {vertical-align: middle;}
      color:white;
      opacity:1;
  } 
- .product-item {
-    width: 25%;
-    /* height: 20%; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-left: 7%;
-    margin-bottom: 7%;
-    min-height: 20%;
-    min-width: 25%;
-    resize: initial;
-}
+ 
