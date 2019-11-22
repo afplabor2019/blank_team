@@ -50,8 +50,11 @@ foreach ($best_scored as $key => $value) {
             ?>
                 <div class="mySlides fade">
                     <div class="box-hover">
-                        <div class="product-item">
-                            <img src="<?=$newest[$i]['cover']?>">
+                        <div class="product-item" style="float: left;">
+                            <img src="<?=$newest[$i]['cover']?>" style="width: 100%;">
+                        </div>
+                        <div style="float: right;">
+
                         </div>
                     </div>
                     <div class="numbertext">1 / <?=sizeof($newest)?></div>
