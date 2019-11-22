@@ -47,7 +47,7 @@
         <img class="p-image" src="<?php echo $product[0]['cover'] ?>" alt="cover"><br>
         <span>Reviews: <?php echo round($avarageScore, 2) ==0 ? "No reviews yet!" : round($avarageScore, 2)?><?php if(round($avarageScore, 2) !=0) : ?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p> <?php endif;?></span> 
         <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
-        <button class ="product-tc" type="submit" value="asd"><Span>To Cart</span></button>
+        <button class ="product-tc" type="submit" name="tc" value="asd"><Span>To Cart</span></button>
         <input type="hidden" name="hidden">
         </form>
     </div>
