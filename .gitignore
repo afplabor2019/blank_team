@@ -1,0 +1,5 @@
+
+# Excel and word temp files:
+.documents/~$*.*
+# PHPStorm temp files and settings:
+.idea/*
