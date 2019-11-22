@@ -1,4 +1,4 @@
-DROP TABLE `products`;
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
 `id` INT AUTO_INCREMENT PRIMARY KEY,
 `title` VARCHAR(255) NOT NULL,
