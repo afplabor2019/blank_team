@@ -4,19 +4,11 @@ $sql = new SQL();
 
 //newest products
 $newest = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `id` DESC LIMIT 6","none");
-/*foreach ($newest as $key => $value) {
-    echo $value['id']." ";
-    echo $value['title']." ";
-    echo $value['price']." ";
-    echo $value['platform']." ";
-}*/
 
 //best products
 $best_scored = $sql->execute("SELECT * FROM `products` ORDER BY `score` DESC LIMIT 6 ");
 foreach ($best_scored as $key => $value) {
-   /* echo $value['id']." ";
-    echo $value['title']." ";
-    echo $value['score']." "; */
+
 }
 
 ?>
@@ -29,20 +21,7 @@ foreach ($best_scored as $key => $value) {
                 Legújabb megjelenések
             </a>
         </div>
-        <!--div class="home-ad-image">
-            <img src="images/ds-home2.jpg" alt="Death Stranding" class="home-image">
-                <div class="home-img-button">
-                    <div class="home-btn-text">Vásárlás</div>
-                    <div class="home-text-button">
-                    <div class="home-img-textarea">
-                            Éld át Hideo Kojima (a Metal Gear Solid sorozat alkotója) legújabb akciójátékát,
-                            amely a közeli jövőben játszódik, és amelyben a szétszakadt társadalmat kell újra
-                            egyesítened. Ez egy új, filmszerű kaland, amely megreformálja a műfajt!
-                    </div>
-                    </div>
-                </div>
-                
-        </div-->
+       
         <div class="slideshow-container">
 
             <?php

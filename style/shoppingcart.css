@@ -34,22 +34,27 @@
   
   .shopping-cart-platform {
     width: 10%;
+    text-align: center;
   }
   
   .shopping-cart-unitprice {
     width: 25%;
+    text-align: center;
   }
   
   .shopping-cart-quantity-text {
     width: 7%;
+    text-align: center;
   }
   
   .shopping-cart-quantity {
     width: 10%;
+    text-align: center;
   }
   
-  .hopping-cart-total {
+  .shopping-cart-total {
     width: 20%;
+    text-align: center;
   }
   
   .shopping-cart-container input[type="number"] {
@@ -64,11 +69,11 @@
   
   .sp-total {
     float: right;
-    text-align: left;
+    text-align: center;
     margin-right: 2%;
     margin-bottom: 2%;
     padding: 2%;
-    padding-right: 19%;
+    padding-right: 7%;
     border: 5px solid white;
     font-weight: bold;
   }
