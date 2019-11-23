@@ -78,6 +78,7 @@
     padding: 2%;
     position: static;
     overflow: hidden;
+    padding-bottom: 5%;
 }
 
 .product-left-side {
@@ -125,6 +126,10 @@
     background-color: #FFFFFF;
 }
 
+.rating {
+    margin-top: 2%;
+    margin-left: -5%;
+}
 
 .p-send-review {
     width: 100%;
@@ -160,28 +165,111 @@
       margin-left: 25%;
 }
 
+.product-h {
+    background: #ff4d4d;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: left;
+}
+
 .p-send-review {
-    width: 90%;
-    padding: 5%;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
     position: static;
     overflow: hidden;
-    background-color: beige;
+    margin-bottom: 2%;
 }
 
 .p-review {
     border: 1px solid black;
     padding: 5%;
-    width: 80%;   
+    width: 80%; 
 }
-.p-review-profile-pic{
-    width : 16.5%;
-    height: 16.5%;
+
+.review-right textarea {
+    width: 90%;
+    margin: 2%;
+    padding: 7%;
+}
+
+.recent-r-left textarea {
+    width: 90%;
+    margin: 2%;
+    padding: 7%;
 }
 
 .leave-review {
-    background-color: lightsalmon;
+    position: static;
+    overflow: hidden;
+}
+
+.product-profile-img {
+    width: 20%;
+    float: left;
+}
+
+.review-right {
+    width: 80%;
+    float: right;
+    padding-left: 2%;
+}
+
+.product-profile-img img {
+    width : 80%;
+    height: 80%;
+    margin: 25% 10%;
+}
+
+.review-submit {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff4d4d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 67.55%;
+    margin-bottom: 2%;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
 }
 
 .recent-reviews{
-    background-color: lightblue;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    border-bottom: 20px solid white;
+}
+
+.recent-r-right {
+    width: 20%;
+    float: right;
+}
+
+.recent-r-left {
+    width: 80%;
+    float: left;
+    padding-left: 2%;
+}
+
+.recent-r-right img {
+    width : 80%;
+    height: 80%;
+    margin-top: 15%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.recent-r-right p {
+    text-align: center;
+    margin: 2% 0;
 }
