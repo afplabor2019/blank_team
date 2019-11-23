@@ -74,7 +74,7 @@
     </div>
     <div class ="product-right-side">
         <h1 class ="p-title"><?php echo $product[0]['title']?></h1>
-        <p class ="p-price" > <?php echo $product[0]['price']." €"  ?></p>
+        <p class ="p-price" style="color:green; font-weight: bolder; font-size: 30px"> <?php echo $product[0]['price']." €"  ?></p>
         <p class ="p-publisher" ><span style="font-weight: bold">Publisher:</span><?php echo $product[0]['publisher'] ?></p>
         <p class ="p-platform" ><span style="font-weight: bold">Platform:</span><?php echo $product[0]['platform'] ?></p>
         <p class="span-desc">Description: </p><br>
@@ -82,12 +82,13 @@
 
     </div>
 </div>
-
+<h1 class="product-h">Leave a review of this game!</h1>
 <div class="p-send-review">
 <div class="leave-review">
-    <h1>Leave a review of this game!</h1>
     
     <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
+    <div class="product-profile-img"><img src="images/user.jpg" alt="" class="p-review-profile-pic"></div>
+    <div class="review-right">
     <span class="rating">
         <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input" value =5>
         <label for="rating-input-1-5" class="rating-star"></label>
@@ -101,24 +102,28 @@
         <label for="rating-input-1-1" class="rating-star"></label>
     </span><br>
     <textarea name="review" class="p-review"></textarea>
-    <img src="images/user.jpg" alt="" class="p-review-profile-pic">
     <?php if(isset($errors['err'])) foreach ($errors['err'] as $key => $value) echo "<p> $value </p>"; ?>
-    <input type="submit" value ="SUBMIT">
+    <button class ="review-submit" type="submit" value ="SUBMIT"><Span>Send review</span></button>
+    </div>
     </form>
 </div>
-<div class="recent-reviews">
+
     <!-- eddigi review-k listázása -->
     <?php 
 
     $reviews = $sql->execute("SELECT * FROM `reviews` WHERE `product_id` = ? ",$productid);
     $count = $sql->execute("SELECT Count(*) as `count` FROM `reviews` WHERE `product_id` = ? ",$productid);
     foreach ($reviews as $key => $value) {
+        echo "<div class='recent-reviews'>";
         $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$value['user_id']);
         $username = $sql->execute("SELECT `user_name` FROM `users` WHERE id = ?",$value['user_id']);
         $message = $value['msg'];
         $score = $value['score'];
         $generatedid=GenerateID(4);
-        echo "<span class=rating>";
+        echo "<div class='recent-r-right'>";     
+        echo "<img src=".$profilepic[0]['profile_pic']." class=p-review-profile-pic>";
+        echo "<p>".$username[0]['user_name']."</p></div>";
+        echo "<div class='recent-r-left'><span class=rating>";
         if($score == 5) echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5 checked>";
         else  echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5>";
         echo "<label for=rating-input-1-5 class=rating-star></label>";
@@ -135,12 +140,11 @@
         else echo "<input type=radio class=rating-input id=rating-input-1-1 name=rating-input$generatedid value =1>";
         echo "<label for=rating-input-1-1 class=rating-star></label>";
         echo "</span><br>";
-        echo "<textarea name=review class=p-review readonly>$message</textarea>";
-        echo "<img src=".$profilepic[0]['profile_pic']." class=p-review-profile-pic>";
-        echo "<p>".$username[0]['user_name']."</p>";
+        echo "<textarea name=review class=p-review readonly>$message</textarea></div>";  
+        echo "</div>";
     }
     ?>
-</div>
+
 </div>
 
 
