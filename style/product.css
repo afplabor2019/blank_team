@@ -71,6 +71,20 @@
     margin-bottom: 10%;
 }
 
+.slide-buttons input[type="submit"] {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff4d4d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 22px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
 .product-container {
     width: 100%;
     border-radius: 5px;

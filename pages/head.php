@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="style/rating.css">
     <link rel="stylesheet" href="style/pwchanging.css">
     <link rel="stylesheet" href="style/shoppingcart.css">
+    <link rel="stylesheet" href="style/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 </head>
 <body>
