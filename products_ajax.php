@@ -116,11 +116,12 @@ $recordCount = $sql->execute($sql_string2.$sql_string);
 ?>
 
 <!--SLIDE BUTTONS -->
-<div class="slide-buttons"><br>
-    <input type ="submit" name ="prevbtn" id="prevbtn" value="Previous" style="<?php echo $offset ==0 ? "display:none" : " " ?>"> 
-    <input type ="submit" name="nextbtn" id="nextbtn" value="Next" style ="<?php echo $recordCount[0]['records']-$offset <= 12 ? "display:none" : " " ?>"> 
+<div class="button">
+<div class="slide-buttons">
+    <div class="prevbtn"><input type ="submit" name ="prevbtn" id="prevbtn" value="Previous" style="<?php echo $offset ==0 ? "display:none" : " " ?>"></div>
+    <div class="nextbtn"><input type ="submit" name="nextbtn" id="nextbtn" value="Next" style ="<?php echo $recordCount[0]['records']-$offset <= 12 ? "display:none" : " " ?>"></div> 
 </div>
-
+</div>
 <a href="#" id ="top"></a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

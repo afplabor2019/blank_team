@@ -71,7 +71,7 @@
     margin-bottom: 10%;
 }
 
-.slide-buttons input[type="submit"] {
+.button input[type="submit"] {
     display: inline-block;
     border-radius: 4px;
     background-color: #ff4d4d;
@@ -103,6 +103,28 @@
 .product-right-side {
     width: 60%;
     float: right;
+}
+
+.button {
+    width: 100%;
+    overflow: hidden;
+    position: static;
+    margin: 0;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.prevbtn {
+    margin-left: -300%;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.nextbtn {
+    margin-left: -40%;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .p-image {
