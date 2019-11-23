@@ -16,6 +16,7 @@
 .home-ad-image:hover .home-image {
     opacity: 0.3;
     display: block;
+    height:100%;
 }
 
 .home-img-button {

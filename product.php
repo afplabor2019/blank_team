@@ -4,6 +4,7 @@
     $productid = $_GET['id'];
     $product = $sql->execute("SELECT * FROM `products` WHERE `id` = ?",$productid);
     $avarageScore = 0;
+    $abortToCart = false;
     $average_data = $sql->execute("SELECT score,review_count FROM `products` WHERE id = ?",$productid);
     if($average_data[0]['review_count'] == 0){
             $avarageScore = $average_data[0]['score'];
@@ -27,8 +28,25 @@
                 $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];    
             }       
 
+        //tocart
         if(isset($_POST['tc']) && $_POST['tc'] != null){
-            $orderid = GenerateID();
+            
+            $getorderids = $sql->execute("SELECT `id` FROM orders WHERE `user_id` = ?",isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_SESSION['guest_user_id']);
+           
+            foreach ($getorderids as $key => $value) 
+            {
+               $getitemid = $sql->execute("SELECT `item_id` FROM `order_item` where `order_id` = ?",$value['id']);
+                
+               if($getitemid[0]['item_id'] != null && $productid == $getitemid[0]['item_id'])
+               {
+                    $abortToCart = true;
+                    $errors['tc'][] = "Item is already in the shopping cart! You can change the quantity right there.";
+                    break;
+                }               
+            } 
+
+            if($abortToCart == false){
+                $orderid = GenerateID();
             if(isset($_SESSION['user_id'])){
                 $result =$sql->execute("SELECT shipping_id FROM users WHERE `id` = ?",$_SESSION['user_id']);
                 $shipping = $result[0]['shipping_id'];
@@ -39,6 +57,8 @@
         
             $sql->execute("INSERT INTO `order_item`(`order_id`, `item_id`, `quantity`, `del`) VALUES (?,?,?,?)",$orderid,$productid,1,0);
             header("Location:". url('product')."&id=$productid");
+            }
+            
         }
     }
 ?>
@@ -48,6 +68,7 @@
         <span>Reviews: <?php echo round($avarageScore, 2) ==0 ? "No reviews yet!" : round($avarageScore, 2)?><?php if(round($avarageScore, 2) !=0) : ?><p class ="fa fa-star" style="color:orange;padding-left:1%;"></p> <?php endif;?></span> 
         <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
         <button class ="product-tc" type="submit" name="tc" value="asd"><Span>To Cart</span></button>
+        <?php if(isset($errors['tc'])) foreach ($errors['tc'] as $key => $value) echo "<p class =input-error> $value </p>"; ?>
         <input type="hidden" name="hidden">
         </form>
     </div>

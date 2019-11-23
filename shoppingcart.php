@@ -29,6 +29,7 @@ $order_item = $sql->execute("SELECT * FROM `order_item` WHERE `order_id` IN $ord
 ?>
 
 <?php
+
 //if there are items in the shopping cart
 if($orders_array != '()'){
     ?><div class ="shopping-cart-container">
@@ -58,7 +59,7 @@ if($orders_array != '()'){
 </div>
 <?php }
 //if there are no items in the shopping cart.
-else{
-
-} ?>
+else {
+    echo "<h1> Your shopping cart is empty! </h1>";
+}  ?>
 <?php require_once "pages/footer.php"; ?>

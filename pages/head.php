@@ -30,7 +30,6 @@
   else
   $profilepic = "images\\profilepic\\user.jpg";
 
-  //lehet a productra kell majd! jqueryvel
   if(loggedIn()){
     $id= $_SESSION['user_id'];
   }else{
@@ -42,7 +41,7 @@
   }else{
     $cartCount = $cartCounttemp[0]['count'];
   }
-  //eddig
+
 ?>   
 <header class="header">
   <div class="upper-row">
@@ -65,7 +64,7 @@
                         <img src="<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" class ="login-img" alt="Profile">
                     </div>
                     <a href ="<?php echo url('shoppingcart') ?>"><img src="images/cart2.png" alt="Shopping cart" class="shoppingcart-img">
-                    <span ><?php echo $cartCount ?></span></a> 
+                    <span style="<?php echo $cartCount ==0 ? "display:none" : "" ?>"><?php echo $cartCount ?></span></a> 
                   </div>
         </div>
       </div>         
