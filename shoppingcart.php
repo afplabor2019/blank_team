@@ -27,7 +27,8 @@ if(is_post()){
         $result = $sql->execute("SELECT `order_id` FROM `order_item` WHERE `item_id` = ?",$_POST['button']);
         $sql->execute("DELETE FROM `order_item` WHERE `item_id` = ?",$_POST['button']);
         $sql->execute("DELETE FROM `orders` WHERE `id` = ?",$result[0]['order_id']);
-        header("Location:".url('shoppingcart'));
+       
+        header("Location:".url('shoppingcart')."#loaded");
     }
     else if(isset($_POST['buy'])){
         //header("Location:".url('buy'));
@@ -57,7 +58,7 @@ if($orders_array != '()'){
     ?> 
          
         <div class ="shopping-cart-row" style="background-color:<?php echo $row % 2 == 0 ? 'white' : '' ?>">
-            <button name="button" value="<?php echo $value['item_id'] ?>">&#10060</button>
+            <button name="button" type="submit" value="<?php echo $value['item_id'] ?>">&#10060</button>
             <span class ="shopping-cart-delete-cross"> </span>
             <span class ="shopping-cart-gametitle" title="<?php echo $item[0]['title'] ?>"><?php echo $item[0]['title'] ?></span>
             <span class ="shopping-cart-platform"><?php echo $item[0]['platform'] ?></span>
@@ -103,6 +104,7 @@ else {
         });
     });
 
+    
     window.onload = function() {
     if(!window.location.hash) {
         window.location = window.location + '#loaded';
