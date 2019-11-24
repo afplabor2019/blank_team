@@ -7,6 +7,7 @@ require_once 'lib/functions.php';
 
 if(!loggedIn() && !isset($_SESSION['guest_user_id'])){
     $_SESSION['guest_user_id'] = GenerateID();
+    $_SESSION['guest_user_shippingID'] = GenerateID();
 }
 
 $page = isset($_GET['p']) ? $_GET['p'] : 'home'; //ha a p-nek van értéke akkor az lesz a page értéke, ha nincs, akkor a login fog betölteni.                                                // jellemzően első betöltéskor lezs ez így.

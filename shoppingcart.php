@@ -22,7 +22,10 @@ if(is_post()){
     //update quantity change in database
     foreach ($order_item as $key => $value) {
         $sql->execute("UPDATE `order_item` SET `quantity` = ? WHERE `item_id` = ?",$_POST['quantity'.$value['item_id']],$value['item_id']);    
-}
+    }
+    if(isset($_POST['buy'])){
+        header("Location:".url('buy'));
+    } 
     if(isset($_POST['button'])){
         $result = $sql->execute("SELECT `order_id` FROM `order_item` WHERE `item_id` = ?",$_POST['button']);
         $sql->execute("DELETE FROM `order_item` WHERE `item_id` = ?",$_POST['button']);
@@ -30,9 +33,7 @@ if(is_post()){
        
         header("Location:".url('shoppingcart')."#loaded");
     }
-    else if(isset($_POST['buy'])){
-        //header("Location:".url('buy'));
-    } 
+    
 
     
 }
@@ -74,7 +75,7 @@ if($orders_array != '()'){
     <?php endforeach; ?>  
     </div>
     <span class ="sp-total">Total : <?php echo $total ?> €</span><br>
-    <button class ="shopping-cart-btn" type="submit" name="buy" id="buy"><Span>Buy</span></button>
+    <input  class ="shopping-cart-btn" type="submit" name="buy" id="buy" value="Buy">
     <input type="submit" id ="hidden" style="display:none">
     </form>
 

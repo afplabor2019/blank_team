@@ -5,18 +5,20 @@ $errors = [];
 
 if(is_post())
 {
-    $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_id']);
+    $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_shippingID']);
     
     if(isset($_POST['username'])) $userName = $_POST['username'];
     if(isset($_POST['email']))$email = $_POST['email'];
     if(isset($_POST['fullname']))$fullName = $_POST['fullname'];
-    if(isset($_POST['recipient']))$recipient = $_POST['recipient']; if($recipient == null) $recipient ="none";
-    if(isset($_POST['country']))$country = $_POST['country']; if($country == null) $country ="none";
-    if(isset($_POST['city']))$city = $_POST['city']; if($city == null) $city ="none";
-    if(isset($_POST['adress']))$adress = $_POST['adress']; if($adress == null) $adress ="none";
-    if(isset($_POST['tel']))$tel = $_POST['tel']; if($tel == null) $tel ="none";
-    if(isset($_POST['cemail']))$cemail = $_POST['cemail']; if($cemail == null) $cemail ="none";
+
     
+    if(isset($_POST['recipient']))$recipient = $_POST['recipient']; if($_POST['recipient'] == null) $recipient ="none";
+    if(isset($_POST['country']))$country = $_POST['country']; if($_POST['country'] == null) $country ="none";
+    if(isset($_POST['city']))$city = $_POST['city']; if($_POST['city'] == null) $city ="none";
+    if(isset($_POST['adress']))$adress = $_POST['adress']; if($_POST['adress'] == null) $adress ="none";
+    if(isset($_POST['tel']))$tel = $_POST['tel']; if($_POST['tel'] == null) $tel ="none";
+    if(isset($_POST['cemail']))$cemail = $_POST['cemail']; if($_POST['cemail'] == null) $cemail ="none";
+
     
 
     //email
@@ -71,7 +73,6 @@ if(is_post())
         $sql->execute("UPDATE `users` SET `profile_pic` = ? WHERE `id` = ?",$fullpath, $_SESSION['user_id']);
     }
 
-    //recipient
     if(isset($recipient)){
         if($recipient == null) $errors['recipient'][] = "Name of recipient is required!";
     }
@@ -114,7 +115,7 @@ if(is_post())
         header("Location: ".url('profile'));
     }
 }
-$suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_id']);
+$suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_shippingID']);
 
   if(isset($_SESSION['user_id']))
   $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$_SESSION['user_id']);
@@ -127,12 +128,10 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
         <img id = "pic" src = "<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" alt = "profile picture">
         <form action="<?php echo url('editProfile')?>" method ="POST" enctype="multipart/form-data" autocomplete="off">
         <input type ="file" name ="pic" id ="pic" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> <br>
-        <button class ="edit-image-btn" type="submit" value = "edit" name="letsedit"><Span>Save Profile Picture</span></button>
-        </form>
+        <input type="submit" class ="edit-image-btn" type="submit"  name="letsedit">
 
     </div>
     <div class="e-p-left-side"> 
-        <form action="<?php echo url('editProfile')?>" method ="POST" enctype="multipart/form-data">
             <h1>Personal data</h1>
             <label for="username">User Name</label><br>
             <input type="text" name = "username" value="<?php echo $_SESSION['user_user_name'] ?>"><br>
@@ -156,7 +155,11 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
             <label for="country">Country</label> <br>
               <!--#region county  -->
                     <select class="country" name="country">
-                        <option value="<?php echo isset($suggestions[0]['country']) && $suggestions[0]['country'] != "none"  ? $suggestions[0]['country'] : "" ?>"></option>
+                    <option 
+                            value="<?php echo isset($suggestions[0]['country']) ? $suggestions[0]['country'] : "" ?>" 
+                            <?php echo isset($suggestions[0]['country']) ? "SELECTED" :"" ?>>
+                            <?php echo isset($suggestions[0]['country']) ? $suggestions[0]['country'] : "" ?>
+                        </option>
                         <optgroup label="North America">
                             <option value="US">United States</option>
                             <option value="UM">United States Minor Outlying Islands</option>
