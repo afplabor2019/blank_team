@@ -215,9 +215,9 @@ position: relative;
   border-radius: 6px;
   padding: 8px 0;
   position: absolute;
-  bottom: -350%;
+  bottom: -475%;
   left: 50%;
-  margin-left: -80px;
+  margin-left: -90px;
 }
 
 /* Popup arrow */

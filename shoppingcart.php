@@ -104,6 +104,20 @@ else {
         });
     });
 
+    $(document).ready(function() {
+        $("button").click(function() {
+            var tempInput = this.value;
+            var inputName = this.name;
+            $.post(window.location ,{
+                name: inputName,
+                multi: tempInput
+            }, function(data,status){
+               $("#hidden").click();
+
+            });
+        });
+    });
+
     
     window.onload = function() {
     if(!window.location.hash) {
