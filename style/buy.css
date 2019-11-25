@@ -49,7 +49,7 @@
     padding-left: 10%;
 }
 
-input[type="text"], input[type="number"], .country {
+.buy-container input[type="text"], input[type="number"], .country {
     width: 70%;
     margin-left: 15%;
 } 
