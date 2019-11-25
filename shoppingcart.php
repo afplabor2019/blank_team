@@ -20,6 +20,7 @@ $order_item = $sql->execute("SELECT * FROM `order_item` WHERE `order_id` IN $ord
 
 if(is_post()){
     //update quantity change in database
+    if(isset($order_item))
     foreach ($order_item as $key => $value) {
         $sql->execute("UPDATE `order_item` SET `quantity` = ? WHERE `item_id` = ?",$_POST['quantity'.$value['item_id']],$value['item_id']);    
     }
@@ -59,7 +60,7 @@ if($orders_array != '()'){
     ?> 
          
         <div class ="shopping-cart-row" style="background-color:<?php echo $row % 2 == 0 ? 'white' : '' ?>">
-            <button name="button" type="submit" value="<?php echo $value['item_id'] ?>">&#10060</button>
+           <button name="button" type="submit" value="<?php echo $value['item_id'] ?>">&#10060</button>
             <span class ="shopping-cart-delete-cross"> </span>
             <span class ="shopping-cart-gametitle" title="<?php echo $item[0]['title'] ?>"><?php echo $item[0]['title'] ?></span>
             <span class ="shopping-cart-platform"><?php echo $item[0]['platform'] ?></span>
@@ -119,6 +120,14 @@ else {
         });
     });
 
+    $(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
     
     window.onload = function() {
     if(!window.location.hash) {

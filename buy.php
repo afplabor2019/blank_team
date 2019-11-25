@@ -40,7 +40,16 @@
                
         }
     }
-?>
+?>      
+            <h1>Payment</h1>
+            
+
+
+
+
+
+
+
         <h1>Shipping informations</h1>
         <label for="recipient">Name of recipient</label><br>
             <input type="text" name = "recipient" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['client_name'] : "" ?>"><br>

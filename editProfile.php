@@ -128,7 +128,6 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
         <img id = "pic" src = "<?php echo isset($_SESSION['user_id']) ? $profilepic[0]['profile_pic'] : $profilepic ?>" alt = "profile picture">
         <form action="<?php echo url('editProfile')?>" method ="POST" enctype="multipart/form-data" autocomplete="off">
         <input type ="file" name ="pic" id ="pic" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> <br>
-        <input type="submit" class ="edit-image-btn" type="submit"  name="letsedit">
 
     </div>
     <div class="e-p-left-side"> 
