@@ -109,7 +109,44 @@ foreach ($best_scored as $key => $value) {
             Eius perspiciatis eum ex porro labore maiores incidunt cumque obcaecati odio quam veniam voluptate at voluptatem inventore quaerat, atque saepe velit reprehenderit molestiae in. Cumque corrupti quam debitis delectus ut?
             Voluptatibus, aut? Officiis nostrum blanditiis corrupti! Nemo quis iste eius ullam suscipit repellendus consectetur, est minus modi? Quos nam, corrupti quia perferendis sed rerum eos, quidem fugiat quaerat quod vitae.
              </p>
-        <div></div>
+        <div>People said about us:</div> <br>
+        <?php 
+
+    $reviews = $sql->execute("SELECT * FROM `reviews` WHERE `product_id` = 1 AND `score` >4");
+    $count = $sql->execute("SELECT Count(*) as `count` FROM `reviews` WHERE `product_id` = ? ",1);
+    foreach ($reviews as $key => $value) {
+        echo "<div class='recent-reviews'>";
+        $profilepic = $sql->execute("SELECT `profile_pic` FROM `users` WHERE id = ?",$value['user_id']);
+        $username = $sql->execute("SELECT `user_name` FROM `users` WHERE id = ?",$value['user_id']);
+        $message = $value['msg'];
+        $score = $value['score'];
+        $generatedid=GenerateID(4);
+        echo "<div class='recent-r-right'>";     
+        echo "<img src=".$profilepic[0]['profile_pic']." class=p-review-profile-pic>";
+        echo "<p>".$username[0]['user_name']."</p></div>";
+        echo "<div class='recent-r-left'><span class=rating>";
+        if($score == 5) echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5 checked>";
+        else  echo "<input type=radio class=rating-input id=rating-input-1-5 name=rating-input$generatedid value =5>";
+        echo "<label for=rating-input-1-5 class=rating-star></label>";
+        if($score ==4) echo "<input type=radio class=rating-input id=rating-input-1-4 name=rating-input$generatedid value =4 checked>";
+        else  echo "<input type=radio class=rating-input id=rating-input-1-4 name=rating-input$generatedid value =4>";
+        echo "<label for=rating-input-1-4 class=rating-star></label>";
+        if($score == 3)echo "<input type=radio class=rating-input id=rating-input-1-3 name=rating-input$generatedid value =3 checked>";
+        else echo "<input type=radio class=rating-input id=rating-input-1-3 name=rating-input$generatedid value =3>";
+        echo "<label for=rating-input-1-3 class=rating-star></label>";
+        if($score ==2)echo "<input type=radio class=rating-input id=rating-input-1-2 name=rating-input$generatedid value =2 checked>";
+        else"<input type=radio class=rating-input id=rating-input-1-2 name=rating-input$generatedid value =2>";
+        echo "<label for=rating-input-1-2 class=rating-star></label>";
+        if($score == 1) echo "<input type=radio class=rating-input id=rating-input-1-1 name=rating-input$generatedid value =1 checked>";
+        else echo "<input type=radio class=rating-input id=rating-input-1-1 name=rating-input$generatedid value =1>";
+        echo "<label for=rating-input-1-1 class=rating-star></label>";
+        echo "</span><br>";
+        echo "<textarea name=review class=p-review readonly>$message</textarea></div>";  
+        echo "</div>";
+    }
+    ?>
+
+</div>
     </div>
 </div> 
 <?php require_once "pages/footer.php"; ?>

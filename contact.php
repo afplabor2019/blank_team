@@ -18,11 +18,27 @@ if(is_post()){
         mail("coolestwebshop@gmail.com",$subject,$from." asked: ".$message,$headers);
     }
 
+    $average_data = $sql->execute("SELECT score,review_count FROM `products` WHERE id = ?",57);
+    if(!empty($average_data))
+    if($average_data[0]['review_count'] == 0){
+            $avarageScore = $average_data[0]['score'];
+    } else
+        $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];
+
     if(isset($_POST['review']))
     $reviewDescription = $_POST['review'];
     if(isset($_POST['review']) && $reviewDescription  == null) $errors['err'][] = "Message is required!";
     if(!isset($_SESSION['user_id'])) $errors['err'][] = "You have to log in to leave a review!";
     if(!isset($_POST['rating-input'])) $errors['err'][] = "You have to give a rating!";
+
+    if(count($errors) == 0){
+        $sql->execute("INSERT INTO `reviews`(`id`, `user_id`, `product_id`, `msg`, `score`) VALUES (?,?,?,?,?)",GenerateID(),$_SESSION['user_id'],1,$reviewDescription,$_POST['rating-input']);
+        $sql->execute("UPDATE `products` SET `score` = ? WHERE `id` = ?",$average_data[0]['score']+$_POST['rating-input'],1);
+        $sql->execute("UPDATE `products` SET `review_count` = ? WHERE `id` = ?" ,$average_data[0]['review_count']+1,1);
+        $average_data[0]['score'] += $_POST['rating-input'];
+        $average_data[0]['review_count'] += 1;
+        $avarageScore = $average_data[0]['score'] / $average_data[0]['review_count'];    
+    }       
 
 }
 ?>
@@ -45,7 +61,7 @@ if(is_post()){
 <button class ="contact-btn" type="submit" value="Send"><Span>Send</span></button>
 </form>
 </div>
-<h1 class="product-h">Leave a review of this game!</h1>
+<h1 class="product-h">Leave a review of our webshop!</h1>
 <div class="p-send-review">
 <div class="leave-review">
     <?php 
