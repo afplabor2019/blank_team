@@ -59,21 +59,29 @@ $errors = [];
         }
     }
 ?>
+ <div class="buy-container">
+    <h1 class="login-h">SHOPPING CART</h1> 
     <form action="<?php echo url('buy')?>" method="POST">
-        <label for="takeover">Takeover method</label> <br>
-            <input type="radio" name="takeover" value="gls"> GLS delivery <br>
-            <input type="radio" name="takeover" value="store"> At store <br>
-            <input type="radio" name="takeover" value="post"> Post Point <br>
-            <input type="radio" name="takeover" value="pickpack"> Pick Pack Point <br>
+    <h1 class="buy-title-h">Take and pay for your goodies</h1>
+    <p class="buy-info">Firts, you need to be give information about where you want to take your package and which way do you want to pay.</p>
+        <div class="buy-takeover-container">
+        <div class="buy-takeover">
+        <label for="takeover"><p>Takeover method</p></label><br>
+            <input type="radio" name="takeover" value="gls"><span>GLS delivery</span><br>
+            <input type="radio" name="takeover" value="store"> <span>At store</span><br>
+            <input type="radio" name="takeover" value="post"> <span>Post Point</span><br>
+            <input type="radio" name="takeover" value="pickpack"><span>Pick Pack Point</span><br>
             <?php if(isset($errors['takeover'])) foreach ($errors['takeover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
-
-        <label for="payment">Payment method</label> <br>
-            <input type="radio" name="payment" value="cash"> Cash <br>
-            <input type="radio" name="payment" value="card"> Credit card <br>
-            <input type="radio" name="payment" value="parts"> Loan
+        </div>
+        <div class="buy-pay">
+        <label for="payment"><p>Payment method</p></label><br>
+            <input type="radio" name="payment" value="cash">  <span>Cash</span> <br>
+            <input type="radio" name="payment" value="card">  <span>Credit card</span> <br>
+            <input type="radio" name="payment" value="parts"> <span>Loan </span>
             <?php if(isset($errors['payment'])) foreach ($errors['payment'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
-            
-        <h1>Shipping informations</h1>
+        </div>
+        </div>
+        <h1 class="buy-title-h">Shipping informations</h1>
         <label for="recipient">Name of recipient</label><br>
             <input type="text" name = "recipient" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['client_name'] : "" ?>"><br>
             <?php if(isset($errors['recipient'])) foreach ($errors['recipient'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
@@ -348,13 +356,15 @@ $errors = [];
 
             <label for="cemail">Contact email</label><br>
             <input type="text" name = "cemail" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['email'] : "" ?>"><br>
-            <?php if(isset($errors['cemail'])) foreach ($errors['cemail'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+            <?php if(isset($errors['cemail'])) foreach ($errors['cemail'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
 
-            
+            <p class="buy-info">If you want leave some plus information to the postman, you can do that here.</p>
             <label for="comment">Comment</label>
             <textarea name="comment"></textarea> <br>
-            <label for="checkout"> <?php echo $_SESSION['total'] ?> €</label> <br>
-            <input type="submit" name="checkout" value="Checkout">
+            <h1 class="buy-title-h">And the total price is...</h1>
+            <p class="buy-info">If every information is right, click the Checkout button to continue.</p>
+            <label for="checkout"><p class="pricetag"><?php echo $_SESSION['total'] ?> €<p></label> <br>
+            <button type="submit" class="buy-btn" name="checkout" value="Checkout"><Span>Checkout</span></button>
             </form>
-
+<div>
 <?php include_once "pages/footer.php"; ?>

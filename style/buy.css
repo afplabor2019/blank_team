@@ -3,38 +3,83 @@
     border-radius: 5px;
     background: #f2f2f2;
     padding: 2%;
+    margin-bottom: 10%;
     
     overflow: hidden;
     position: static;
+}
+
+.buy-info {
+    padding: 1% 2%;
+
 }
 
 .buy-title-h {
     background: white;
     width: 99%;
     padding: 10px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
     text-align: left;
+    margin-bottom: 1%;
 }
 
-.buy-container p {
-    padding-left: 2%;
+
+.buy-container span {
+    padding-left: 3%;
 }
 
 .buy-takeover-container {
     width: 100%;
     overflow: hidden;
     position: static;
+    margin-bottom: 3%;
 }
 
 .buy-takeover {
     float: left;
     width: 50%;
-    padding-left: 2%;
+    padding-left: 20%;
+    border-right: 10px solid white;
 }
 
 .buy-pay {
     float: right;
     width: 50%;
-    padding-left: 2%;
+    padding-left: 10%;
+}
+
+input[type="text"], input[type="number"], .country {
+    width: 70%;
+    margin-left: 15%;
+} 
+
+.buy-container textarea {
+    width: 99%;
+}
+
+.buy-takeover-container p {
+    padding-left: -2%;
+}
+
+.pricetag {
+    font-size: 60px;
+    color: #33cc33;
+    padding: 2% 10%;
+    text-align: right;
+}
+
+.buy-btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff4d4d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 22px;
+    padding: 20px;
+    width: 20%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 40%;
 }
