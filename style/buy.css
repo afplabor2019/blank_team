@@ -1,0 +1,40 @@
+.buy-container {
+    width: 100%;
+    border-radius: 5px;
+    background: #f2f2f2;
+    padding: 2%;
+    
+    overflow: hidden;
+    position: static;
+}
+
+.buy-title-h {
+    background: white;
+    width: 99%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.buy-container p {
+    padding-left: 2%;
+}
+
+.buy-takeover-container {
+    width: 100%;
+    overflow: hidden;
+    position: static;
+}
+
+.buy-takeover {
+    float: left;
+    width: 50%;
+    padding-left: 2%;
+}
+
+.buy-pay {
+    float: right;
+    width: 50%;
+    padding-left: 2%;
+}
