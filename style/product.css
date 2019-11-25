@@ -43,13 +43,14 @@
 }
 
 .product-title {
-    font-size: 200%;
+    font-size: 100%;
     font-weight: bold;
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
 }
 
 .product-item p {
-    font-size: 150%;
+    font-size: 100%;
     font-weight: bold;
 }
 
