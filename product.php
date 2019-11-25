@@ -85,9 +85,17 @@
 <h1 class="product-h">Leave a review of this game!</h1>
 <div class="p-send-review">
 <div class="leave-review">
-    
+    <?php 
+    if(loggedIn()){
+        $userpictemp = $sql->execute("SELECT `profile_pic` FROM `users` WHERE `id` = ?",$_SESSION['user_id']); 
+        $userpic = $userpictemp[0]['profile_pic'];
+    } else{
+        $userpic = "images/user.jpg";
+    }
+
+    ?>
     <form action="<?php echo url('product')."&id=$productid" ?>" method = "POST">
-    <div class="product-profile-img"><img src="images/user.jpg" alt="" class="p-review-profile-pic"></div>
+    <div class="product-profile-img"><img src="<?php echo $userpic ?>" alt="" class="p-review-profile-pic"></div>
     <div class="review-right">
     <span class="rating">
         <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input" value =5>

@@ -1,12 +1,22 @@
 <?php include_once "pages/head.php"; ?>
 <?php 
+$errors = [];
     $sql = new SQL();
     if(loggedIn()){
-        
         $user_shipping_data = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_shippingID']);
     }
    
     if(is_post()){
+
+    $recipient = $_POST['recipient']; 
+    $country = $_POST['country']; 
+    $city = $_POST['city']; 
+    $adress = $_POST['adress'];
+    $tel = $_POST['tel']; 
+    $email = $_POST['cemail'];
+    if(!empty($_POST['takeover'])) $takeover_method =$_POST['takeover'] ;
+    if(!empty($_POST['payment']))  $payment_method = $_POST['payment'];
+  
 
         //recipient
         if(isset($recipient)){
@@ -27,34 +37,39 @@
          if(isset($adress)){
             if($adress == null) $errors['adress'][] = "Please choose a country!";
         }
+
+        if(!isset($takeover_method))  $errors['takeover'][] = "Please choose a takeover method!";
+        if(!isset($payment_method))  $errors['payment'][] = "Please choose a payment method!";
+
+        //email
+        if ($email == null) $errors['email'][] = 'Email is required!';
+        else if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
+        $emails = $sql->execute("SELECT `email` FROM users");
+        foreach($emails as $row) 
+            if($row['email'] == $email)
+                $errors['email'][] = 'Email is already taken!';
         
         //Set changes
-        if(count($errors) == 0) {
-            if(loggedIn()){
-                $sql->execute("UPDATE `shippings` SET `country`=?,`client_name`=?,`city`=?,`address`=?,`tel`=?,`email`=? WHERE `id` = ?",
-                    $country,$recipient,$city,$adress,$tel,$cemail,$_SESSION['user_shippingID']);
-            }else{
-                $sql->execute("INSERT INTO `shippings`(`id`, `country`, `client_name`, `city`, `address`, `tel`, `email`) VALUES (?,?,?,?,?,?,?)",
-                    $_SESSION['guest_user_shippingID'],$country,$recipient,$city,$adress,$tel,$cemail);
-            }
-               
-        }
     }
-?>      
-            <h1>Payment</h1>
+?>
+    <form action="<?php echo url('buy')?>" method="POST">
+        <label for="takeover">Takeover method</label> <br>
+            <input type="radio" name="takeover" value="gls"> GLS delivery <br>
+            <input type="radio" name="takeover" value="store"> At store <br>
+            <input type="radio" name="takeover" value="post"> Post Point <br>
+            <input type="radio" name="takeover" value="pickpack"> Pick Pack Point <br>
+            <?php if(isset($errors['takeover'])) foreach ($errors['takeover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+
+        <label for="payment">Payment method</label> <br>
+            <input type="radio" name="payment" value="cash"> Cash <br>
+            <input type="radio" name="payment" value="card"> Credit card <br>
+            <input type="radio" name="payment" value="parts"> Loan
+            <?php if(isset($errors['payment'])) foreach ($errors['payment'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
             
-
-
-
-
-
-
-
         <h1>Shipping informations</h1>
         <label for="recipient">Name of recipient</label><br>
             <input type="text" name = "recipient" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['client_name'] : "" ?>"><br>
             <?php if(isset($errors['recipient'])) foreach ($errors['recipient'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-
             <label for="country">Country</label> <br>
               <!--#region county  -->
                     <select class="country" name="country">
@@ -309,8 +324,8 @@
                         </optgroup>
                         <option value="AQ">Antarctica</option>
                     </select>
-        <!-- #endregion  -->
-        <?php if(isset($errors['country'])) foreach ($errors['country'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+                <!-- #endregion  -->
+            <?php if(isset($errors['country'])) foreach ($errors['country'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
         
             <label for="city">City</label><br>
             <input type="text" name = "city" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['city'] : "" ?>"><br>
@@ -327,5 +342,12 @@
             <label for="cemail">Contact email</label><br>
             <input type="text" name = "cemail" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['email'] : "" ?>"><br>
             <?php if(isset($errors['cemail'])) foreach ($errors['cemail'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+
+            
+            <label for="comment">Comment</label>
+            <textarea name="comment"></textarea>
+
+            <input type="submit" name="checkout" value="Checkout">
+            </form>
 
 <?php include_once "pages/footer.php"; ?>
