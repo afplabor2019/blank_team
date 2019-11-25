@@ -3,3 +3,4 @@
 .documents/~$*.*
 # PHPStorm temp files and settings:
 .idea/*
+.documents/Tests/~$Test Cases.xlsx
