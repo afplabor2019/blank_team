@@ -66,6 +66,7 @@ else
         $sql_string .= " AND `platform` IN $platformString";
     else if(isset($_POST['platformothers']) && $_POST['platformothers'] == "Others")
         $sql_string .= " AND `platform` NOT IN ('PC','XBOX 360','XBOX One','PS2','PS3','PS4','Nintendo Switch')";
+        $sql_string .= " AND `stored` > 0";
     
     $_SESSION['ajax_query'] = $sql_string;   
 }

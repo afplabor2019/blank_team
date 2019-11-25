@@ -53,7 +53,6 @@ $errors = [];
                 $sql->execute("UPDATE `products` SET `stored` = ? WHERE `id` = ?",$quan,$value['item_id']);
                 $sql->execute("DELETE FROM `orders` WHERE `id` = ?",$value['order_id']);
                 $sql->execute("DELETE FROM `order_item` WHERE `order_id` = ?",$value['order_id']);
-
                 header("Location: ".url('home'));
             }
             
@@ -353,8 +352,8 @@ $errors = [];
 
             
             <label for="comment">Comment</label>
-            <textarea name="comment"></textarea>
-
+            <textarea name="comment"></textarea> <br>
+            <label for="checkout"> <?php echo $_SESSION['total'] ?> €</label> <br>
             <input type="submit" name="checkout" value="Checkout">
             </form>
 

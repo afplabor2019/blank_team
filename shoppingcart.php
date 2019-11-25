@@ -72,7 +72,7 @@ if($orders_array != '()'){
             <input type="number" class="shopping-cart-quantity" id="input" name ="<?php echo "quantity".$item[0]['id'] ?>" min ="1" max = "<?php echo $item[0]['stored'] ?>"
                 value="<?php echo $quantity[0]['quantity']?>">
             <span class ="shopping-cart-total">Total : <?php echo isset($_POST['quantity'.$item[0]['id']]) ? $_POST['quantity'.$item[0]['id']] * $item[0]['price'] : $item[0]['price']?> €</span><br>
-         <?php if (isset($_POST['quantity'.$item[0]['id']])) $total += $_POST['quantity'.$item[0]['id']] * $item[0]['price'];  ?>
+         <?php if (isset($_POST['quantity'.$item[0]['id']])) {$total += $_POST['quantity'.$item[0]['id']] * $item[0]['price']; $_SESSION['total'] = $total; } ?>
         </div>
   
     <?php endforeach; ?>  
