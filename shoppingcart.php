@@ -16,6 +16,8 @@ $orders_array.= ")";
 //getting the order_item of the user using order_ids
 if($orders_array != '()')
 $order_item = $sql->execute("SELECT * FROM `order_item` WHERE `order_id` IN $orders_array");
+if(!empty($order_item))
+$_SESSION['order'] = $order_item;
 
 
 if(is_post()){

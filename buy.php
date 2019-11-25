@@ -5,6 +5,7 @@ $errors = [];
     if(loggedIn()){
         $user_shipping_data = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_shippingID']);
     }
+    $orders = $_SESSION['order'];
    
     if(is_post()){
 
@@ -42,14 +43,21 @@ $errors = [];
         if(!isset($payment_method))  $errors['payment'][] = "Please choose a payment method!";
 
         //email
-        if ($email == null) $errors['email'][] = 'Email is required!';
-        else if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['email'][] = 'Invalid email!';
-        $emails = $sql->execute("SELECT `email` FROM users");
-        foreach($emails as $row) 
-            if($row['email'] == $email)
-                $errors['email'][] = 'Email is already taken!';
-        
+        if ($email == null) $errors['cemail'][] = 'Email is required!';
+        else if(!(preg_match("/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email))) $errors['cemail'][] = 'Invalid email!';
         //Set changes
+        if(count($errors) == 0){
+            foreach ($orders as $key => $value) {
+                $stored = $sql->execute("SELECT `stored` FROM `products` WHERE `id` = ?",$value['item_id']);
+                $quan = $stored[0]['stored']-$value['quantity'];
+                $sql->execute("UPDATE `products` SET `stored` = ? WHERE `id` = ?",$quan,$value['item_id']);
+                $sql->execute("DELETE FROM `orders` WHERE `id` = ?",$value['order_id']);
+                $sql->execute("DELETE FROM `order_item` WHERE `order_id` = ?",$value['order_id']);
+
+                header("Location: ".url('home'));
+            }
+            
+        }
     }
 ?>
     <form action="<?php echo url('buy')?>" method="POST">

@@ -24,7 +24,6 @@ if(is_post()){
     if(!isset($_SESSION['user_id'])) $errors['err'][] = "You have to log in to leave a review!";
     if(!isset($_POST['rating-input'])) $errors['err'][] = "You have to give a rating!";
 
-
 }
 ?>
 <div class="contact-container">
