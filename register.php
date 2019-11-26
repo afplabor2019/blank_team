@@ -77,7 +77,7 @@ if(is_post())
         <div class="register-data">
             <form action ="<?php echo url('register'); ?>" method ="POST" autocomplete="off">
                 <div class="r-left-side">
-                    <label for="email"> Email </label><br>
+                    <label for="email">Email </label><br>
                     <label for="userName"> User Name </label><br>
                     <label for="fullName"> Full Name </label><br>
                     <label for="password"> Password </label><br>

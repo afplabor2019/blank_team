@@ -2,7 +2,7 @@
 <footer>
     <div class="footer">
         <div class ="footer-left-side">
-        <p>&copy; 2019. Blank Team. All rights reserved. </p>
+        <p style="font-size: 15px;">&copy; 2019. Blank Team. All rights reserved. </p>
             <ul>
                 <li>
                     <p>2005-2019 Mozilla and individual contributors. Content is available under 

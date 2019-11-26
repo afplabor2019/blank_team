@@ -427,7 +427,7 @@ $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSIO
             <button class ="edit-profile-btn" type="submit" value = "edit" name="letsedit"><Span>Save changes</span></button>
 
             </form>
-    </div>
+        </div>
 </div>
 <script>
 var loadFile = function(event) {
