@@ -76,14 +76,14 @@ if(is_post())
         <a href = "<?php echo url('forgottenPassword') ?>"> Forgot your password? </a>
     </div>
     <div class="login-right-side">
-            <h1 class="login-h">Nem vagy még tagunk?</h1>
-            <p class="login-text">Akkor itt az ideje megtudnod miért éri meg nálunk regisztrálnod...</p>
+            <h1 class="login-h">Not a member?</h1>
+            <p class="login-text">Here are some benefits for being a registered user:</p>
             <p>
                 <ul class="login-ul">
-                    <li>Nálunk garantált kedvezmények várnak.</li>
-                    <li>20 ezer forint felett elengedjük a szállitási költséget.</li>
-                    <li>BlablablaBlablablaBlablabla</li>
-                    <li>Blablabla...</li>
+                    <li>Monthly sales</li>
+                    <li>Free shipping </li>
+                    <li>Saved shipping information</li>
+                    <li>You can leave review of the games and our webshop!</li>
                 </ul>
             </p>
             <br>

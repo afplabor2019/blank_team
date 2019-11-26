@@ -141,7 +141,7 @@ if(is_post())
     <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
 
     <label for="adimg"> Ad Image (not required) </label> <br>
-    <input type ="file" name ="adimg"  onchange="loadFile2(event)" accept="image/png, image/jpeg, image/jpg" /> 
+    <input type ="file" name ="adimg"  onchange="loadFile2(event)" accept="image/png, image/jpeg, image/jpg" /> <br>
 
     <label for="stored"> Quantity </label> <br>
     <input type ="number" name ="stored" value = "<?php echo isset($release_year) ? $release_year : ""; ?>"> <br>

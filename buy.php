@@ -63,7 +63,7 @@ $errors = [];
     <h1 class="login-h">SHOPPING CART</h1> 
     <form action="<?php echo url('buy')?>" method="POST">
     <h1 class="buy-title-h">Take and pay for your goodies</h1>
-    <p class="buy-info">Firts, you need to be give information about where you want to take your package and which way do you want to pay.</p>
+    <p class="buy-info">Firts, you need to give information about where you want to pick up your package and how do you want to pay.</p>
         <div class="buy-takeover-container">
         <div class="buy-takeover">
         <label for="takeover"><p>Takeover method</p></label><br>
@@ -358,11 +358,11 @@ $errors = [];
             <input type="text" name = "cemail" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['email'] : "" ?>"><br>
             <?php if(isset($errors['cemail'])) foreach ($errors['cemail'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
 
-            <p class="buy-info">If you want leave some plus information to the postman, you can do that here.</p>
+            <p class="buy-info">If you want to leave some plus information to the postman, you can do that here.</p>
             <label for="comment">Comment</label>
             <textarea name="comment"></textarea> <br>
-            <h1 class="buy-title-h">And the total price is...</h1>
-            <p class="buy-info">If every information is right, click the Checkout button to continue.</p>
+            <p class="buy-info">If every information is right, click the Checkout button to complete your purchase.</p>
+            <h1 class="buy-title-h">Total price: </h1>
             <label for="checkout"><p class="pricetag"><?php echo $_SESSION['total'] ?> €<p></label> <br>
             <button type="submit" class="buy-btn" name="checkout" value="Checkout"><Span>Checkout</span></button>
             </form>

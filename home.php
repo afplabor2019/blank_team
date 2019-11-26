@@ -18,7 +18,7 @@ foreach ($best_scored as $key => $value) {
         <section class="home-big-ad">
         <div class="home-title">
             <a>
-                Legújabb megjelenések
+                Top trending
             </a>
         </div>
        
@@ -66,7 +66,7 @@ foreach ($best_scored as $key => $value) {
         <div></div>
         <div class="home-title">
             <a>
-                Óriási reklám helye
+                Best reviewed
             </a>
             <p style="text-align: justify">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate dolore accusantium fugiat corrupti vitae voluptatem recusandae, deleniti rerum mollitia sapiente incidunt perferendis, aspernatur voluptates! Nostrum nam totam ipsum autem eum.

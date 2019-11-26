@@ -87,7 +87,7 @@ if($orders_array != '()'){
 <?php }
 //if there are no items in the shopping cart.
 else {
-    echo "<h1> Your shopping cart is empty! </h1>";
+    echo "<h1 class=login-h> Your shopping cart is empty! </h1>";
 }  ?>
 <?php require_once "pages/footer.php"; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
