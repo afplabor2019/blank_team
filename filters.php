@@ -61,7 +61,7 @@
         </div>
         <div class="filter-publisher">
             <p><label>Publisher</label></p>
-            <input name="publisher" type="text-p" id="publisher" style="width:80%;margin-bottom:10%"<?php if(isset($publisher) && $publisher != null) echo "value=$publisher"; ?>>
+            <input name="publisher" type="text" id="publisher" style="width:80%;margin-bottom:10%"<?php if(isset($publisher) && $publisher != null) echo "value=$publisher"; ?>>
         </div>
         <input type="text" name ="slidermin" id="slidermin" value = 0 style = "display: none">
         <input type="text" name ="slidermax" id="slidermax" value = 200 style = "display: none">

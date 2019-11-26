@@ -12,6 +12,13 @@ if(isset($_GET['n'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<div class="products-types">
+<div class="product-types-platform" style="background-color:#006FCD;">PLAYSTATION</div>
+<div class="product-types-platform" style="background-color:#00ac26;">XBOX</div>
+<div class="product-types-platform" style="background-color:#E30214;">NINTENDO</div>
+<div class="product-types-platform" style="background-color:#FACA04;">PC GAMES</div>
+<div class="product-types-platform" style="background-color:#383838;">OTHERS</div>
+</div>
 <div class="products-container">
 <?php include_once "filters.php"; ?>
 <div class="product-list" id="product-list"></div> <!--PRODUCT LIST-->

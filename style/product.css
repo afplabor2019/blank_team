@@ -4,6 +4,31 @@
     overflow: hidden;
 }
 
+.products-types {
+    position: fixed;
+    overflow: hidden;
+    width: 10%;
+    margin-top:0;
+    margin-bottom: 3%;
+    margin-left: 57.5%;
+}
+
+.product-types-platform {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 50px;
+    margin: 10% 0;
+    background-color: aqua;
+    color: white;
+    padding: 8% 0;
+    padding-right: 10%;
+    text-align: right;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-weight: bold;
+}
+
 .product-list {
     display: flex;
     flex-direction: row;
@@ -43,16 +68,15 @@
 }
 
 .product-title {
-    font-size: 100%;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.product-item p {
-    font-size: 100%;
-    font-weight: bold;
-}
 
 .product-item:hover{
     transform: scale(.975);
@@ -70,6 +94,7 @@
 .slide-buttons {
     padding-left: 80%;
     margin-bottom: 10%;
+
 }
 
 .button input[type="submit"] {
@@ -109,7 +134,7 @@
 .button {
     width: 100%;
     overflow: hidden;
-    position: static;
+    position: relative;
     margin: 0;
     display: inline-flex;
     flex-direction: row;
@@ -117,15 +142,17 @@
 }
 
 .prevbtn {
-    margin-left: -300%;
-    margin-bottom: 0;
-    margin-top: 0;
+    width: 50%;
+    padding-left: 15%;
+    padding-bottom: 5%;
+    float: left;
 }
 
 .nextbtn {
-    margin-left: -40%;
-    margin-bottom: 0;
-    margin-top: 0;
+    width: 50%;
+    padding-left: 15%;
+    padding-bottom: 5%;
+    float: right;
 }
 
 .p-image {

@@ -102,9 +102,9 @@ $product = $sql->execute($starterString.$sql_string." LIMIT $offset,12");
                 break;} ?>">
         </a>
     <?php
-        echo "<p class=product-title>".$value['title'];"</p>";
-        echo "<br><p class=product-title style='text-align: left'>".$value['price']. " €";"</p>";
-        echo "<p style='text-align: left;'>".$value['platform'];"</p>";
+        echo "<p class='product-title'>".$value['title'];"</p>";
+        echo "<br><p class='product-price' style='float:right; padding-right: 3%; font-size: 17px'; padding-bottom:2%>".$value['price']. " €";"</p>";
+        /*echo "<p style='text-align: left;'>".$value['platform'];"</p>";*/
         echo "</div>";
     }
     echo "</div>";
@@ -117,10 +117,8 @@ $recordCount = $sql->execute($sql_string2.$sql_string);
 
 <!--SLIDE BUTTONS -->
 <div class="button">
-<div class="slide-buttons">
     <div class="prevbtn"><input type ="submit" name ="prevbtn" id="prevbtn" value="Previous" style="<?php echo $offset ==0 ? "display:none" : " " ?>"></div>
     <div class="nextbtn"><input type ="submit" name="nextbtn" id="nextbtn" value="Next" style ="<?php echo $recordCount[0]['records']-$offset <= 12 ? "display:none" : " " ?>"></div> 
-</div>
 </div>
 <a href="#" id ="top"></a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

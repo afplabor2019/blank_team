@@ -103,3 +103,9 @@
     background-color: white;
     color: black;
   }
+
+  .product-filters input[type="text"], .product-filters  input[type="number"] {
+    width: 80%;
+    padding-left: 0;
+    margin-left: 0;
+  }
