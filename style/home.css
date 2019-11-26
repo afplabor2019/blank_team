@@ -1,9 +1,15 @@
-.home-title a {
+.home-titles {
+    width: 100%;
+    padding: 8px;
     text-transform: uppercase;
     font-size: 25px;
     font-weight: bold;
+    text-align: left;
+    font-weight: bold;
+    background: #f2f2f2;
+    border-radius: 5px;
+    margin-bottom: 1%;
 }
-
 
 .home-ad-image .home-image {
     opacity: 1;
@@ -68,6 +74,14 @@ img {vertical-align: middle;}
   max-width: 1000px;
   position: relative;
   margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-item img {
+  width : 90%;
+  height: 90%;
+  padding: 0 5%;
 }
 
 /* Next & previous buttons */
@@ -159,10 +173,10 @@ img {vertical-align: middle;}
 .box-hover {
     background-color: rgba(0, 0, 0, 0.6);
      position: absolute;
-     width: 99%;
-     min-height: 460px;
+     width: 100%;
+     min-height: 100%;
      /*height: 600px;*/
-     margin: 5px 5px 0 5px;
+     margin-left: 0;
      opacity: 0;
      color:transparent;
      -webkit-transition:  0.4s;
@@ -175,3 +189,79 @@ img {vertical-align: middle;}
      opacity:1;
  } 
  
+.com-soon-img {
+  position: relative;
+  width: 100%;
+  padding: 2%;
+}
+
+.home-cs-image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.h-csimg-middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.com-soon-img:hover .home-cs-image {
+  opacity: 0.3;
+}
+
+.com-soon-img:hover .h-csimg-middle {
+  opacity: 1;
+}
+
+.h-csimg-text {
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+ .home-opinion-box {
+   width: 100%;
+   position: relative;
+   overflow: hidden;
+   margin-bottom: 4%;
+ }
+
+ .h-opinion-left-side {
+  width: 30%;
+  float: left;
+ }
+
+ .h-opinion-left-side img {
+    width : 70%;
+    height: 70%;
+    margin: 5% 15%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+
+ .h-opinion-left-side p {
+   text-align: center;
+   margin-bottom: 3%;
+   font-weight: bold;
+   font-style: italic;
+ }
+
+ .message-box {
+   width: 70%;
+   float: right;
+   padding: 2% 5%;
+   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+ }
+
