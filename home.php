@@ -41,7 +41,7 @@ foreach ($best_scored as $key => $value) {
                                 <div style="font-size: 20pt">
                                     <?=$newest[$i]['title']?>
                                 </div>
-                                <div style="max-height: 275px; padding: 5px; line-height:22px !important; text-align: justify;">
+                                <div style="max-height: 275px; padding: 4%; line-height:22px !important; text-align: justify;">
                                     <?=$newest[$i]['description']?>
                                 </div>
                             </div>
