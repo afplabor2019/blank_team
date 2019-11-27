@@ -71,14 +71,12 @@ img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  width: 100%;
+  margin: 2%;
   position: relative;
   margin: auto;
   overflow: hidden;
-  position: relative;
 }
-
-
 
 /* Next & previous buttons */
 .prev, .next {
@@ -137,6 +135,11 @@ img {vertical-align: middle;}
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+}
+
+.home-coverimg {
+  width: 40%;
+  padding: 4%;
 }
 
 .active, .dot:hover {

@@ -34,11 +34,11 @@ foreach ($best_scored as $key => $value) {
                 <div class="mySlides fade">
                     <a href="<?=url('product')?>&id=<?=$newest[$i]['id']?>">
                         <div class="box-hover">
-                            <div class="product-item" style="float: left;">
+                            <div class="home-coverimg" style="float: left;">
                                 <img src="<?=$newest[$i]['cover']?>" style="width: 100%;">
                             </div>
                             <div>
-                                <div style="font-size: 26pt">
+                                <div style="font-size: 20pt">
                                     <?=$newest[$i]['title']?>
                                 </div>
                                 <div style="max-height: 275px; padding: 5px; line-height:22px !important; text-align: justify;">
@@ -48,7 +48,7 @@ foreach ($best_scored as $key => $value) {
                         </div>
                     </a>
                     <div class="numbertext">1 / <?=sizeof($newest)?></div>
-                    <img src="<?=$newest[$i]['adpic']?>" style="width:100%">
+                    <img src="<?=$newest[$i]['adpic']?>" style="width:100%; height: 600px">
                     <div class="text"></div>
                 </div>
             <?php
