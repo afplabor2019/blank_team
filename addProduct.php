@@ -82,19 +82,28 @@ if(is_post())
 ?>
 
 <!-- HTML -->
+<div class="addp-container">
+<h1 class="login-h">ADD PRODUCT</h1> 
 <form action ="<?php echo url('addProduct'); ?>" method ="POST" autocomplete="off" enctype="multipart/form-data" >
+    
 
-<img id="img" src="images\\user.jpg" alt="your image" width =350 height = 350 style="float: right;padding-top:2%"/> <br>
+    <div class="addp-img-right">
+    <label for="cover"> <p>cover</p>  </label> <br>
+    <img id="img" src="images\\user.jpg" alt="your image" style="float: right;padding-top:2%"/> <br>
+    <input type ="file" name ="cover" id ="cover" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> 
+    <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+    </div>    
 
-    <label for="name"> Title </label> <br>
+    <div class="addp-left">
+    <label for="name"> <p>Title</p> </label> <br>
     <input type ="text" name ="name" value = "<?php echo isset($name) ? $name : ""; ?>"> <br>
     <?php if(isset($errors['name'])) foreach ($errors['name'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="publisher"> Publisher </label> <br>
+    <label for="publisher"><p>Publisher</p>  </label> <br>
     <input type ="text" name ="publisher" value = "<?php echo isset($publisher) ? $publisher : ""; ?>"> <br>
     <?php if(isset($errors['publisher'])) foreach ($errors['publisher'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="type"> Type </label> <br>
+    <label for="type"><p>Type</p>  </label> <br>
     <select name ="type">
         <option value="Select Type" selected>Select Type</option>
         <option value="Strategy">Strategy</option>
@@ -110,11 +119,11 @@ if(is_post())
     <?php if(isset($errors['type'])) foreach ($errors['type'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
 
-    <label for="price"> Price </label> <br>
+    <label for="price"> <p>Price</p> </label> <br>
     <input type ="number" step="0.01" min ="0.0" name ="price" value = "<?php echo isset($price) ? $price : ""; ?>"> <br>
     <?php if(isset($errors['price'])) foreach ($errors['price'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="platform"> Platform </label> <br>
+    <label for="platform"> <p>Platform</p> </label> <br>
     <select name ="platform">
         <option value="Select Platform" selected>Select Platform</option>
         <option value="PC">PC</option>
@@ -132,30 +141,28 @@ if(is_post())
     </select> <br>
     <?php if(isset($errors['platform'])) foreach ($errors['platform'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="release_year"> Release year </label> <br>
+    <label for="release_year"> <p>Release year </p></label> <br>
     <input type ="number" name ="release_year" value = "<?php echo isset($release_year) ? $release_year : ""; ?>"> <br>
     <?php if(isset($errors['release_year'])) foreach ($errors['release_year'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="cover"> cover </label> <br>
-    <input type ="file" name ="cover" id ="cover" onchange="loadFile(event)" accept="image/png, image/jpeg, image/jpg" /> 
-    <?php if(isset($errors['cover'])) foreach ($errors['cover'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
-
-    <label for="adimg"> Ad Image (not required) </label> <br>
-    <input type ="file" name ="adimg"  onchange="loadFile2(event)" accept="image/png, image/jpeg, image/jpg" /> <br>
-
-    <label for="stored"> Quantity </label> <br>
+    <label for="stored"> <p>Quantity</p> </label> <br>
     <input type ="number" name ="stored" value = "<?php echo isset($release_year) ? $release_year : ""; ?>"> <br>
     <?php if(isset($errors['stored'])) foreach ($errors['stored'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
-    <label for="description"> Description </label> <br>
+    <label for="description"><p>Description</p>  </label> <br>
     <textarea name = "description"> </textarea>
     <?php if(isset($errors['description'])) foreach ($errors['description'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+    </div>
+    <div class="adp-adimg">
+    <label for="adimg"> <p>Ad Image (not required)</p> </label> <br>
+    <img id="img2" src="images\\user.jpg" alt="your image" style="padding-top:2%"/> <br>
+    <input type ="file" name ="adimg"  onchange="loadFile2(event)" accept="image/png, image/jpeg, image/jpg" /> <br>
+    </div>
 
+    <button class ="addp-btn" type="submit">Register</button>
     
-    <img id="img2" src="images\\user.jpg" alt="your image" width =500 height = 350 style="float: right;padding-top:2%"/> <br>
-    <button class ="button" type="submit">Register</button>
-
 </form>
+</div>
 <script>
 var loadFile = function(event) {
 	var image = document.getElementById('img');
