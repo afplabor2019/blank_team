@@ -108,9 +108,10 @@ if(is_post())
             $sql->execute("UPDATE `users` SET `fullname` = ? WHERE `id` = ?",$fullName,$_SESSION['user_id']);
             $_SESSION['user_fullname'] = $fullName;
         }
-
+            if(isset($suggestions[0]['id']))
             $sql->execute("UPDATE `shippings` SET `country`=?,`client_name`=?,`city`=?,`address`=?,`tel`=?,`email`=? WHERE `id` = ?",$country,$recipient,$city,$adress,$tel,$cemail,$_SESSION['user_shippingID']);
-       
+            else
+            $sql->execute("INSERT INTO `shippings`(`id`, `country`, `client_name`, `city`, `address`, `tel`, `email`) VALUES (?,?,?,?,?,?,?)",$_SESSION['user_shippingID'],$country,$recipient,$city,$adress,$adress,$tel,$cemail);
 
         header("Location: ".url('profile'));
     }
