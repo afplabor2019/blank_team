@@ -90,7 +90,7 @@
                       <?php if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) :?>
                       <a href="<?php echo url('addProduct') ?>" <?php echo $page == 'addProduct' ? 'class="active"' : '';?>>Add Product</a>
                         <?php endif;?>
-                      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>  
+
     </div>
                     <script>
     function myFunction() {
