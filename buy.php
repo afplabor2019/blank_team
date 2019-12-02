@@ -83,13 +83,13 @@ $errors = [];
         </div>
         <h1 class="buy-title-h">Shipping informations</h1>
         <label for="recipient">Name of recipient</label><br>
-            <input type="text" name = "recipient" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['client_name'] : "" ?>"><br>
+            <input type="text" name = "recipient" value="<?php echo (isset($user_shipping_data) && $user_shipping_data[0]['client_name'] != "none") ? $user_shipping_data[0]['client_name'] : "" ?>"><br>
             <?php if(isset($errors['recipient'])) foreach ($errors['recipient'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
             <label for="country">Country</label> <br>
               <!--#region county  -->
                     <select class="country" name="country">
                         <option 
-                            value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['country'] : "" ?>" 
+                            value="<?php echo (isset($user_shipping_data)  && $user_shipping_data[0]['country'] != "none") ? $user_shipping_data[0]['country'] : "" ?>" 
                             <?php echo isset($user_shipping_data) ? "SELECTED" :"" ?>>
                             <?php echo isset($user_shipping_data[0]['country']) ? $user_shipping_data[0]['country'] : "" ?>
                         </option>
@@ -343,19 +343,19 @@ $errors = [];
             <?php if(isset($errors['country'])) foreach ($errors['country'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
         
             <label for="city">City</label><br>
-            <input type="text" name = "city" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['city'] : "" ?>"><br>
+            <input type="text" name = "city" value="<?php echo (isset($user_shipping_data)  && $user_shipping_data[0]['city'] != "none") ? $user_shipping_data[0]['city'] : "" ?>"><br>
             <?php if(isset($errors['city'])) foreach ($errors['city'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
             <label for="adress">Adress</label><br>
-            <input type="text" name = "adress" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['address'] : "" ?>"><br>
+            <input type="text" name = "adress" value="<?php echo (isset($user_shipping_data)  && $user_shipping_data[0]['address'] != "none") ? $user_shipping_data[0]['address'] : "" ?>"><br>
             <?php if(isset($errors['adress'])) foreach ($errors['adress'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
             <label for="tel">Telephone number</label><br>
-            <input type="number" name = "tel" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['tel'] : "" ?>"><br>
+            <input type="number" name = "tel" value="<?php echo (isset($user_shipping_data)  && $user_shipping_data[0]['tel'] != "none") ? $user_shipping_data[0]['tel'] : "" ?>"><br>
             <?php if(isset($errors['tel'])) foreach ($errors['tel'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
 
             <label for="cemail">Contact email</label><br>
-            <input type="text" name = "cemail" value="<?php echo isset($user_shipping_data) ? $user_shipping_data[0]['email'] : "" ?>"><br>
+            <input type="text" name = "cemail" value="<?php echo (isset($user_shipping_data)  && $user_shipping_data[0]['email'] != "none") ? $user_shipping_data[0]['email'] : "" ?>"><br>
             <?php if(isset($errors['cemail'])) foreach ($errors['cemail'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
 
             <p class="buy-info">If you want to leave some plus information to the postman, you can do that here.</p>
