@@ -13,10 +13,7 @@ $sql = new SQL();
 $newest = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `id` DESC LIMIT 6","none");
 
 //best products
-$best_scored = $sql->execute("SELECT * FROM `products` ORDER BY `score` DESC LIMIT 6 ");
-foreach ($best_scored as $key => $value) {
-
-}
+$best_scored = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `score` DESC LIMIT 6 ", "none");
 
 ?>
 <div class="page-home">
@@ -70,7 +67,45 @@ foreach ($best_scored as $key => $value) {
         <div></div>
         <div class="home-title">
             <h1 class="home-titles">BEST REVIEWED</h1>  
-            <p>A legjobban értékelt játékokból 5-6 megjelenitése egymás mellett és két irányba lapozása</p>
+            <div class="slideshow-container">
+            <?php
+            for ($i=0; $i < sizeof($best_scored); $i++):
+            ?>
+                <div class="mySlides2 fade">
+                    <a href="<?=url('product')?>&id=<?=$best_scored[$i]['id']?>">
+                        <div class="box-hover">
+                            <div class="home-coverimg" style="float: left;">
+                                <img src="<?=$best_scored[$i]['cover']?>" style="width: 100%;">
+                            </div>
+                            <div>
+                                <div style="font-size: 20pt">
+                                    <?=$best_scored[$i]['title']?>
+                                </div>
+                                <div style="max-height: 275px; padding: 4%; line-height:22px !important; text-align: justify;">
+                                    <?=$best_scored[$i]['description']?>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="numbertext">1 / <?=sizeof($best_scored)?></div>
+                    <img src="<?=$best_scored[$i]['adpic']?>" style="width:100%; height: 600px">
+                    <div class="text"></div>
+                </div>
+            <?php
+            endfor;
+            ?>
+
+            <a class="prev" onclick="plusSlides2(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides2(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <?php for ($j=0; $j < sizeof($best_scored); $j++):?>
+                <span class="dot2" onclick="currentSlide2(<?=($j+1)?>)"></span> 
+            <?php endfor; ?>
+        </div>
         </div>
         <div class="home-title">
             <h1 class="home-titles">coming soon...</h1>  
@@ -124,6 +159,7 @@ foreach ($best_scored as $key => $value) {
 </div> 
 <?php require_once "pages/footer.php"; ?>
 <script>
+    var intervalID = setInterval(function(){plusSlides(1)}, 10000);
     var slideIndex = 1;
         showSlides(slideIndex);
 
@@ -153,5 +189,38 @@ foreach ($best_scored as $key => $value) {
         }
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
+    }
+</script>
+<script>
+    var intervalID2 = setInterval(function(){plusSlides2(1)}, 8000);
+    var slideIndex2 = 1;
+        showSlides2(slideIndex2);
+
+    function plusSlides2(n) {
+        showSlides2(slideIndex2 += n);
+    }
+
+    function currentSlide2(n) {
+        showSlides2(slideIndex2 = n);
+    }
+
+    function showSlides2(n) {
+        var j;
+        var slides2 = document.getElementsByClassName("mySlides2");
+        var dots2 = document.getElementsByClassName("dot2");
+        if (n > slides2.length) {
+            slideIndex2 = 1;
+        }    
+        if (n < 1) {
+            slideIndex2 = slides2.length;
+        }
+        for (j = 0; j < slides2.length; j++) {
+            slides2[j].style.display = "none";  
+        }
+        for (j = 0; j < dots2.length; j++) {
+            dots2[j].className = dots2[j].className.replace(" active", "");
+        }
+        slides2[slideIndex2-1].style.display = "block";  
+        dots2[slideIndex2-1].className += " active";
     }
 </script>
