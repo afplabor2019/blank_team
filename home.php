@@ -10,11 +10,11 @@
 $sql = new SQL();
 
 //newest products
-$newest = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `id` DESC LIMIT 6","none");
+$newest = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> \"none\") AND (`adpic` IS NOT NULL) ORDER BY `id` DESC LIMIT 6");
 
 //best products
-$best_scored1 = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `score` DESC LIMIT 4 ", "none");
-$best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `score` DESC LIMIT 4,8 ", "none");
+$best_scored1 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none\") AND (`cover` IS NOT NULL) ORDER BY `score` DESC LIMIT 4 ");
+$best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none\") AND (`cover` IS NOT NULL) ORDER BY `score` DESC LIMIT 4,4 ");
 
 ?>
 <div class="page-home">
