@@ -93,8 +93,8 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                     ?>
                                         <div class="col-sm-3">
                                             <div class="col-item">
-                                                <div class="photo" style="min-height: 270px;">
-                                                    <img src="<?=$best_scored1[$j]['cover']?>" class="img-responsive" />
+                                                <div class="product-image" style="min-height: 380px; padding-bottom: 0% !important; background-color: unset !important;">
+                                                    <img style="min-height: 360px; background-color: unset !important;" src="<?=$best_scored1[$j]['cover']?>" class="img-responsive" />
                                                 </div>
                                                 <div class="info">
                                                     <div class="col-md-6 " style="min-height: 177px;">
@@ -148,8 +148,8 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                     ?>
                                         <div class="col-sm-3">
                                             <div class="col-item">
-                                                <div class="photo" style="min-height: 270px;">
-                                                    <img src="<?=$best_scored2[$j]['cover']?>" class="img-responsive" />
+                                                <div class="product-image" style="min-height: 380px; padding-bottom: 0% !important; background-color: unset !important;">
+                                                    <img style="min-height: 360px;" src="<?=$best_scored2[$j]['cover']?>" class="img-responsive" />
                                                 </div>
                                                 <div class="info">
                                                     <div class="col-md-6" style="min-height: 177px;">
