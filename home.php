@@ -13,7 +13,8 @@ $sql = new SQL();
 $newest = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `id` DESC LIMIT 6","none");
 
 //best products
-$best_scored = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `score` DESC LIMIT 6 ", "none");
+$best_scored1 = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `score` DESC LIMIT 4 ", "none");
+$best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND (`adpic` IS NOT NULL) ORDER BY `score` DESC LIMIT 4,8 ", "none");
 
 ?>
 <div class="page-home">
@@ -67,45 +68,139 @@ $best_scored = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND 
         <div></div>
         <div class="home-title">
             <h1 class="home-titles">BEST REVIEWED</h1>  
-            <div class="slideshow-container">
-            <?php
-            for ($i=0; $i < sizeof($best_scored); $i++):
-            ?>
-                <div class="mySlides2 fade">
-                    <a href="<?=url('product')?>&id=<?=$best_scored[$i]['id']?>">
-                        <div class="box-hover">
-                            <div class="home-coverimg" style="float: left;">
-                                <img src="<?=$best_scored[$i]['cover']?>" style="width: 100%;">
+            <!-- SLIDER -->
+            <div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-9">
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Controls -->
+                            <div class="controls pull-right hidden-xs">
+                                <a class="left fa fa-chevron-left btn btn-danger" href="#carousel-example"
+                                    data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-danger" href="#carousel-example"
+                                        data-slide="next"></a>
                             </div>
-                            <div>
-                                <div style="font-size: 20pt">
-                                    <?=$best_scored[$i]['title']?>
+                        </div>
+                    </div>
+                    <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active" style="background-color: unset !important;">
+                                <div class="row">
+                                    <?php
+                                    for ($j=0; $j < sizeof($best_scored1); $j++):
+                                    ?>
+                                        <div class="col-sm-3">
+                                            <div class="col-item">
+                                                <div class="photo">
+                                                    <img src="<?=$best_scored1[$j]['cover']?>" class="img-responsive" />
+                                                </div>
+                                                <div class="info">
+                                                    <div class="col-md-6">
+                                                        <div class="price row">
+                                                            <h4 style="color: black;"><?=$best_scored1[$j]['title']?></h4>
+                                                            <h5 class="price-text-color"><?=$best_scored1[$j]['price']?>€</h5>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="rating row">
+                                                            <?php
+                                                            for ($s=1; $s < 6; $s++) {
+                                                                if($best_scored1[$j]['review_count'] != 0)
+                                                                    $score = $best_scored1[$j]['score'] / $best_scored1[$j]['review_count'];
+                                                                else
+                                                                    $score = 0;
+                                                                //var_dump($score);
+                                                                if($s <= $score){
+                                                                    
+                                                                    echo('<i class="price-text-color fa fa-star"></i>');
+                                                                }
+                                                                else{
+                                                                    echo('<i class="fa fa-star"></i>');
+                                                                }
+                                                            }
+                                                            ?>
+                                                            <!--i class="price-text-color fa fa-star"></i>
+                                                            <i class="price-text-color fa fa-star"></i>
+                                                            <i class="price-text-color fa fa-star"></i>
+                                                            <i class="price-text-color fa fa-star"></i>
+                                                            <i class="fa fa-star"></i-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="separator clear-left">
+                                                        <p class="btn-details">
+                                                            <a href="<?=url('product')."&id=".$best_scored1[$j]['id']?>" class="hidden-sm">More details</a></p>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    endfor;
+                                    ?>
                                 </div>
-                                <div style="max-height: 275px; padding: 4%; line-height:22px !important; text-align: justify;">
-                                    <?=$best_scored[$i]['description']?>
+                            </div>
+                            <div class="item" style="background-color: unset !important;">
+                                <div class="row">
+                                    <?php
+                                    for ($j=0; $j < sizeof($best_scored2); $j++):
+                                    ?>
+                                        <div class="col-sm-3">
+                                            <div class="col-item">
+                                                <div class="photo">
+                                                    <img src="<?=$best_scored2[$j]['cover']?>" class="img-responsive" />
+                                                </div>
+                                                <div class="info">
+                                                    <div class="col-md-6">
+                                                        <div class="price row">
+                                                            <h4 style="color: black;"><?=$best_scored2[$j]['title']?></h4>
+                                                            <h5 class="price-text-color"><?=$best_scored2[$j]['price']?>€</h5>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="rating row">
+                                                            <?php
+                                                            for ($s=1; $s < 6; $s++) {
+                                                                if($best_scored2[$j]['review_count'] != 0)
+                                                                    $score = $best_scored2[$j]['score'] / $best_scored2[$j]['review_count'];
+                                                                else
+                                                                    $score = 0;
+                                                                //var_dump($score);
+                                                                if($s <= $score){
+                                                                    
+                                                                    echo('<i class="price-text-color fa fa-star"></i>');
+                                                                }
+                                                                else{
+                                                                    echo('<i class="fa fa-star"></i>');
+                                                                }
+                                                            }
+                                                            ?>
+                                                            <!--i class="price-text-color fa fa-star"></i>
+                                                            <i class="price-text-color fa fa-star"></i>
+                                                            <i class="price-text-color fa fa-star"></i>
+                                                            <i class="price-text-color fa fa-star"></i>
+                                                            <i class="fa fa-star"></i-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="separator clear-left">
+                                                        <p class="btn-details">
+                                                            <a href="<?=url('product')."&id=".$best_scored2[$j]['id']?>" class="hidden-sm">More details</a></p>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    endfor;
+                                    ?>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <div class="numbertext">1 / <?=sizeof($best_scored)?></div>
-                    <img src="<?=$best_scored[$i]['adpic']?>" style="width:100%; height: 600px">
-                    <div class="text"></div>
+                    </div>
                 </div>
-            <?php
-            endfor;
-            ?>
-
-            <a class="prev" onclick="plusSlides2(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides2(1)">&#10095;</a>
-
-        </div>
-        <br>
-
-        <div style="text-align:center">
-            <?php for ($j=0; $j < sizeof($best_scored); $j++):?>
-                <span class="dot2" onclick="currentSlide2(<?=($j+1)?>)"></span> 
-            <?php endfor; ?>
-        </div>
+            </div>
+            <!--/SLIDER -->
         </div>
         <div class="home-title">
             <h1 class="home-titles">coming soon...</h1>  
@@ -161,7 +256,7 @@ $best_scored = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND 
 <script>
     var intervalID = setInterval(function(){plusSlides(1)}, 10000);
     var slideIndex = 1;
-        showSlides(slideIndex);
+    showSlides(slideIndex);
 
     function plusSlides(n) {
         showSlides(slideIndex += n);
@@ -189,38 +284,5 @@ $best_scored = $sql->execute("SELECT * FROM `products` WHERE (`adpic` <> ?) AND 
         }
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
-    }
-</script>
-<script>
-    var intervalID2 = setInterval(function(){plusSlides2(1)}, 8000);
-    var slideIndex2 = 1;
-        showSlides2(slideIndex2);
-
-    function plusSlides2(n) {
-        showSlides2(slideIndex2 += n);
-    }
-
-    function currentSlide2(n) {
-        showSlides2(slideIndex2 = n);
-    }
-
-    function showSlides2(n) {
-        var j;
-        var slides2 = document.getElementsByClassName("mySlides2");
-        var dots2 = document.getElementsByClassName("dot2");
-        if (n > slides2.length) {
-            slideIndex2 = 1;
-        }    
-        if (n < 1) {
-            slideIndex2 = slides2.length;
-        }
-        for (j = 0; j < slides2.length; j++) {
-            slides2[j].style.display = "none";  
-        }
-        for (j = 0; j < dots2.length; j++) {
-            dots2[j].className = dots2[j].className.replace(" active", "");
-        }
-        slides2[slideIndex2-1].style.display = "block";  
-        dots2[slideIndex2-1].className += " active";
     }
 </script>
