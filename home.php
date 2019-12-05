@@ -97,7 +97,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                                     <img src="<?=$best_scored1[$j]['cover']?>" class="img-responsive" />
                                                 </div>
                                                 <div class="info">
-                                                    <div class="col-md-8" style="min-height: 177px;">
+                                                    <div class="col-md-6 " style="min-height: 177px;">
                                                         <div class="price row">
                                                             <h4 style="color: black;height: 60px;overflow: hidden;text-overflow: ellipsis;white-space: normal;"><?=$best_scored1[$j]['title']?></h4>
                                                             <h5 class="price-text-color"><?=$best_scored1[$j]['price']?>€</h5>
@@ -152,7 +152,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                                     <img src="<?=$best_scored2[$j]['cover']?>" class="img-responsive" />
                                                 </div>
                                                 <div class="info">
-                                                    <div class="col-md-8" style="min-height: 177px;">
+                                                    <div class="col-md-6" style="min-height: 177px;">
                                                         <div class="price row">
                                                             <h4 style="color: black;height: 60px;overflow: hidden;text-overflow: ellipsis;white-space: normal;"><?=$best_scored2[$j]['title']?></h4>
                                                             <h5 class="price-text-color"><?=$best_scored2[$j]['price']?>€</h5>
