@@ -93,13 +93,13 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                     ?>
                                         <div class="col-sm-3">
                                             <div class="col-item">
-                                                <div class="photo">
+                                                <div class="photo" style="min-height: 270px;">
                                                     <img src="<?=$best_scored1[$j]['cover']?>" class="img-responsive" />
                                                 </div>
                                                 <div class="info">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8" style="min-height: 177px;">
                                                         <div class="price row">
-                                                            <h4 style="color: black;"><?=$best_scored1[$j]['title']?></h4>
+                                                            <h4 style="color: black;height: 60px;overflow: hidden;text-overflow: ellipsis;white-space: normal;"><?=$best_scored1[$j]['title']?></h4>
                                                             <h5 class="price-text-color"><?=$best_scored1[$j]['price']?>€</h5>
                                                         </div>
                                                         <br><br>
@@ -129,7 +129,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                                     </div>
                                                     <div class="separator clear-left">
                                                         <p class="btn-details">
-                                                            <a href="<?=url('product')."&id=".$best_scored1[$j]['id']?>" class="hidden-sm">More details</a></p>
+                                                            <a href="<?=url('product')."&id=".$best_scored1[$j]['id']?>" class="hidden-sm" style="color: red;">More details</a></p>
                                                     </div>
                                                     <div class="clearfix">
                                                     </div>
@@ -148,13 +148,13 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                     ?>
                                         <div class="col-sm-3">
                                             <div class="col-item">
-                                                <div class="photo">
+                                                <div class="photo" style="min-height: 270px;">
                                                     <img src="<?=$best_scored2[$j]['cover']?>" class="img-responsive" />
                                                 </div>
                                                 <div class="info">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8" style="min-height: 177px;">
                                                         <div class="price row">
-                                                            <h4 style="color: black;"><?=$best_scored2[$j]['title']?></h4>
+                                                            <h4 style="color: black;height: 60px;overflow: hidden;text-overflow: ellipsis;white-space: normal;"><?=$best_scored2[$j]['title']?></h4>
                                                             <h5 class="price-text-color"><?=$best_scored2[$j]['price']?>€</h5>
                                                         </div>
                                                         <br><br>
@@ -184,7 +184,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                                     </div>
                                                     <div class="separator clear-left">
                                                         <p class="btn-details">
-                                                            <a href="<?=url('product')."&id=".$best_scored2[$j]['id']?>" class="hidden-sm">More details</a></p>
+                                                            <a href="<?=url('product')."&id=".$best_scored2[$j]['id']?>" class="hidden-sm" style="color: red;">More details</a></p>
                                                     </div>
                                                     <div class="clearfix">
                                                     </div>
