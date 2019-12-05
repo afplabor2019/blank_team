@@ -1,7 +1,7 @@
 <?php require_once "pages/head.php";?>
 <!--
 <style>
-.mySlides {display:none}
+.feature_slider {display:none}
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
 .w3-badge {height:13px;width:13px;padding:0}
 </style>-->
@@ -29,7 +29,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
             <?php
             for ($i=0; $i < sizeof($newest); $i++):
             ?>
-                <div class="mySlides fade">
+                <div class="feature_slider fadeanim">
                     <a href="<?=url('product')?>&id=<?=$newest[$i]['id']?>">
                         <div class="box-hover">
                             <div class="home-coverimg" style="float: left;">
@@ -77,13 +77,13 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                         <div class="col-md-3">
                             <!-- Controls -->
                             <div class="controls pull-right hidden-xs">
-                                <a class="left fa fa-chevron-left btn btn-danger" href="#carousel-example"
-                                    data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-danger" href="#carousel-example"
+                                <a class="left fa fa-chevron-left btn btn-danger" href="#carousel-s"
+                                    data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-danger" href="#carousel-s"
                                         data-slide="next"></a>
                             </div>
                         </div>
                     </div>
-                    <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+                    <div id="carousel-s" class="carousel slide hidden-xs" data-ride="carousel">
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active" style="background-color: unset !important;">
@@ -268,7 +268,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
 
     function showSlides(n) {
         var i;
-        var slides = document.getElementsByClassName("mySlides");
+        var slides = document.getElementsByClassName("feature_slider");
         var dots = document.getElementsByClassName("dot");
         if (n > slides.length) {
             slideIndex = 1;
