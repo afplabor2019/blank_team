@@ -96,24 +96,15 @@
                       <a href="<?php echo url('contact') ?>" <?php echo $page == 'contact' ? 'class="active"' : ''; ?>>Support</a>
                       <?php if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) :?>
                       <a href="<?php echo url('addProduct') ?>" <?php echo $page == 'addProduct' ? 'class="active"' : '';?>>Add Product</a>
-                        <?php endif;?>
-
-    </div>
-                    <script>
-    function myFunction() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-    }
-
+                        <?php 
+                        endif;
+                        ?>
+</div>
+<script>
     function myFunction2() {
       var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
     }
-  </script>
-
+</script>
 </header>
 <main class="container">
