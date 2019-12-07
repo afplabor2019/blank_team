@@ -71,7 +71,6 @@ if(is_post())
 }
 ?>
 
-<!--HTML-->
     <div class="register-form">
         <h1 class="reg-h">REGISTER</h1>
         <div class="register-data">
@@ -85,24 +84,24 @@ if(is_post())
                     <label for="bday"> Birth Date </label><br>
                 </div>
                 <div class="r-right-side">
-                    <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> <br>
-                    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<p class ='input-error'> $value </p>"; ?>                     
-                    <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> <br>
-                    <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-                    <input type ="text" name ="fullName" value = "<?php echo isset($fullName) ? $fullName : ""; ?>"> <br>
-                    <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-                    <input type ="password" name ="password"> <br>
-                    <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-                    <input type ="password" name ="cpassword"> <br>
-                    <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
+                    <input type ="text" name ="email" value = "<?php echo isset($email) ? $email : ""; ?>"> 
+                    <?php if(isset($errors['email'])) foreach ($errors['email'] as $value) echo "<span class ='input-error'> $value </span>"; ?>                     
+                    <input type ="text" name ="userName" value = "<?php echo isset($userName) ? $userName : ""; ?>"> 
+                    <?php if(isset($errors['userName'])) foreach ($errors['userName'] as $value) echo "<span class ='input-error'> $value </span>"; ?> 
+                    <input type ="text" name ="fullName" value = "<?php echo isset($fullName) ? $fullName : ""; ?>"> 
+                    <?php if(isset($errors['fullName'])) foreach ($errors['fullName'] as $value) echo "<span class ='input-error'> $value </span>"; ?> 
+                    <input type ="password" name ="password"> 
+                    <?php if(isset($errors['password'])) foreach ($errors['password'] as $value) echo "<span class ='input-error'> $value </span>"; ?> 
+                    <input type ="password" name ="cpassword"> 
+                    <?php if(isset($errors['cpassword'])) foreach ($errors['cpassword'] as $value) echo "<span class ='input-error'> $value </span>"; ?> 
                     <input type="date" name="bday" min ="1900-01-01" max=<?php echo date("Y-m-d") ?> value = "<?php echo isset($birthDate) ? $birthDate : ''; ?>">
-                    <?php if(isset($errors['bdate'])) foreach ($errors['bdate'] as $value) echo "<p class ='input-error'> $value </p>"; ?> <br>
+                    <?php if(isset($errors['bdate'])) foreach ($errors['bdate'] as $value) echo "<span class ='input-error'> $value </span>"; ?> 
                 </div>
             <script type="text/javascript">
                 var onloadCallback = function() { grecaptcha.render('html_element',{'sitekey' : '6LeAgcAUAAAAALIya8oqHrmjIajlp46W3l_ejOuH'});};
             </script>
             <!-- EZ a div a captcha -->
-            <div class="r-captcha" id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<p class ='input-error'> $value </p>"; ?>
+            <div class="r-captcha" id="html_element"></div><?php if(isset($errors['captcha'])) foreach ($errors['captcha'] as $value) echo "<span class ='input-error'> $value </span>"; ?>
             <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
             <div class="r-bottom">
             <button class ="register-button" id = "myBtn" type="submit"><span>Register</span></button>

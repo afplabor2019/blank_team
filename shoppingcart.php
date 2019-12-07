@@ -27,7 +27,8 @@ if(is_post()){
         $sql->execute("UPDATE `order_item` SET `quantity` = ? WHERE `item_id` = ?",$_POST['quantity'.$value['item_id']],$value['item_id']);    
     }
     if(isset($_POST['buy'])){
-        header("Location:".url('buy'));
+        $URL="http://localhost:8080/blank_team/?p=buy";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";  
     } 
     if(isset($_POST['button'])){
         $result = $sql->execute("SELECT `order_id` FROM `order_item` WHERE `item_id` = ?",$_POST['button']);

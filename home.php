@@ -19,7 +19,6 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
 ?>
 <div class="page-home">
     <div class="main-column">
-        <!--<img src="menogif.gif" alt="So 2004">-->
         <section class="home-big-ad">
         <div class="home-title">
         <h1 class="home-titles">TOP TRENDING</h1>  
@@ -67,7 +66,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
         </section>
         <div></div>
         <div class="home-title">
-            <h1 class="home-titles">BEST REVIEWED</h1>  
+            <h1 class="home-titles">MOST POPULAR</h1>  
             <!-- SLIDER -->
             <div>
                 <div class="row">

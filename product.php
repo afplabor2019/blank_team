@@ -56,7 +56,6 @@
             $sql->execute("INSERT INTO `orders`(`id`, `user_id`, `shipping_id`) VALUES (?,?,?)",$orderid,isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_SESSION['guest_user_id'],$shipping == null ? "none" : $shipping);
         
             $sql->execute("INSERT INTO `order_item`(`order_id`, `item_id`, `quantity`, `del`) VALUES (?,?,?,?)",$orderid,$productid,1,0);
-            //header("Location:". url('product')."&id=$productid");
             $URL="http://localhost:8080/blank_team/?p=product&id={$productid}";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";        
             }

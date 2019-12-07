@@ -48,19 +48,20 @@
 }
 
 .r-left-side {
-    width: 20%;
+  padding-top: 1%;
+    width: 30%;
     float: left;
     font-size: 15px;
 }
 
 .r-right-side {
-    width: 80%;
+    width: 70%;
     float: right;
-    padding-left: 5%;
+  
 }
 
 .r-captcha {
-  padding-top: 40%;
+  padding-top: 50%;
   padding-left: 25%;
 }
 

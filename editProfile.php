@@ -113,7 +113,8 @@ if(is_post())
             else
             $sql->execute("INSERT INTO `shippings`(`id`, `country`, `client_name`, `city`, `address`, `tel`, `email`) VALUES (?,?,?,?,?,?,?)",$_SESSION['user_shippingID'],$country,$recipient,$city,$adress,$adress,$tel,$cemail);
 
-        header("Location: ".url('profile'));
+            $URL="http://localhost:8080/blank_team/?p=profile";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";  
     }
 }
 $suggestions = $sql->execute("SELECT * FROM `shippings` WHERE `id` = ?",$_SESSION['user_shippingID']);

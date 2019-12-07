@@ -8,7 +8,10 @@ $sql = new SQL();
   }
   else
   $profilepic = "images\\profilepic\\user.jpg";
-    if(is_post())  header("Location: ".url('editProfile'));
+    if(is_post()) {
+      $URL="http://localhost:8080/blank_team/?p=editProfile";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";  
+    }
 
 
 

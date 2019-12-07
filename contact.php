@@ -44,8 +44,8 @@ if(is_post()){
 ?>
 <div class="contact-container">
 <h1 class="contact-h"> CONTACT </h1><br>
-<p>If you have some problem with any part of our website, or you can give us some really helpful advice, we will gladly take it.
-    Our team from the customer service will help you out as soon as possible and we will work hard to find the solution. </p>
+<p>If you have any problem with our website, or you could give us some really helpful advice, we will gladly take it.
+    Our team from the customer service will help you out as soon as possible and we will work hard to find a solution. </p>
 <form action="#" method="POST">
 <?php if(isset($errors['login'])) foreach ($errors['login'] as $key => $value) echo "<p> $value </p>" ?>
 <label for="email">To:</label>
