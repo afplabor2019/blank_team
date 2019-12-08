@@ -12,11 +12,11 @@ if(is_post())
 
 ?>
 
-<form action ="<?php echo url('confirmVerificationCode') ?>" method ="POST">
+<form action ="<?php echo url('confirmVerificationCode') ?>" method ="POST" autocomplete="off">
 <label for="code"> Verification Code </label>
     <input type ="text" name ="code"> <br>
     <?php if(isset($errors['code'])) foreach ($errors['code'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
-    <button type ="submit"> Verify </button>
+    <input class ="edit-profile-btn" value ="Verify" type ="submit">  </button>
 </form>
 <?php
 

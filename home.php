@@ -93,6 +93,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                     ?>
                                         <div class="col-sm-3">
                                             <div class="col-item">
+                                            <a href="<?=url('product')."&id=".$best_scored1[$j]['id']?>" class="hidden-sm" style="color: red;">
                                                 <div class="product-image" style="min-height: 380px; padding-bottom: 0% !important; background-color: unset !important;">
                                                     <img style="min-height: 360px; background-color: unset !important;" src="<?=$best_scored1[$j]['cover']?>" class="img-responsive" />
                                                 </div>
@@ -128,8 +129,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                                                         </div>
                                                     </div>
                                                     <div class="separator clear-left">
-                                                        <p class="btn-details">
-                                                            <a href="<?=url('product')."&id=".$best_scored1[$j]['id']?>" class="hidden-sm" style="color: red;">More details</a></p>
+                                                            </a>
                                                     </div>
                                                     <div class="clearfix">
                                                     </div>

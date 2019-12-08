@@ -102,8 +102,8 @@ $product = $sql->execute($starterString.$sql_string." LIMIT $offset,12");
                 break;} ?>">
         </a>
     <?php
-        echo "<p class='product-title'>".$value['title'];"</p>";
-        echo "<br><p class='product-price' style='float:right; padding-right: 3%; font-size: 17px'; padding-bottom:2%>".$value['price']. " €";"</p>";
+        echo "<p class='actual-product-title-and-price '>".$value['title'];"</p>";
+        echo "<br><p class='actual-product-title-and-price ' style='float:right; padding-right: 3%; font-size: 17px'; padding-bottom:2%>".$value['price']. " €";"</p>";
         /*echo "<p style='text-align: left;'>".$value['platform'];"</p>";*/
         echo "</div>";
     }

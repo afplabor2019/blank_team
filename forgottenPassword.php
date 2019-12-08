@@ -31,7 +31,6 @@ $value="";
         $message = "Password restoration code: ".$restorationCode;
         $headers  ="From: ".WSNAME."<coolemail@gmail.com>\r\n";
         $headers .="Do not reply to this email";
-        $headers .= "Content-type: text\html\r\n";
         mail($email,$subject,$message,$headers);
         header("Location: ".url('confirmVerificationCode'));                  
     }
