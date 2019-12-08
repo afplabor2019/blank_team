@@ -44,7 +44,7 @@ $best_scored2 = $sql->execute("SELECT * FROM `products` WHERE (`cover` <> \"none
                             </div>
                         </div>
                     </a>
-                    <div class="numbertext">1 / <?=sizeof($newest)?></div>
+                    <div class="numbertext"></div>
                     <img src="<?=$newest[$i]['adpic']?>" style="width:100%; height: 600px">
                     <div class="text"></div>
                 </div>
