@@ -20,7 +20,8 @@ $cnpassword = $_POST['cnpassword'];
     //Change password
     if(count($errors) == 0){
         $sql->execute("UPDATE `users` SET `password` = ? WHERE `email` = ?",password_hash($npassword,PASSWORD_DEFAULT),$_SESSION['email']);
-        header("Location: ".url('login'));
+        $URL="http://localhost:8080/blank_team/?p=login";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";  
     }
        
 }

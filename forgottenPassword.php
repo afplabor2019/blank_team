@@ -32,7 +32,8 @@ $value="";
         $headers  ="From: ".WSNAME."<coolemail@gmail.com>\r\n";
         $headers .="Do not reply to this email";
         mail($email,$subject,$message,$headers);
-        header("Location: ".url('confirmVerificationCode'));                  
+        $URL="http://localhost:8080/blank_team/?p=confirmVerificationCode";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";                  
     }
  }
 

@@ -4,8 +4,11 @@ $errors = [];
 if(is_post())
 {
     $restorationCode = $_POST['code'];
-    if($_SESSION['restorationCode'] == $restorationCode)
-        header("Location: ".url('changePassword'));
+    if($_SESSION['restorationCode'] == $restorationCode){
+        $URL="http://localhost:8080/blank_team/?p=changePassword";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";  
+    }
+
     else
         $errors['code'][] = "Invalid Verification Code.";
 }
