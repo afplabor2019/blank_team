@@ -20,6 +20,7 @@ if(is_post())
     <input type ="text" name ="code"> <br>
     <?php if(isset($errors['code'])) foreach ($errors['code'] as $value) echo "<p class ='input-error'> $value </p>"; ?> 
     <input class ="edit-profile-btn" value ="Verify" type ="submit">  </button>
+    
 </form>
 <?php
 
